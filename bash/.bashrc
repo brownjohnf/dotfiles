@@ -8,6 +8,7 @@ export TERM=xterm-color
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=
 export HISTIGNORE="exit:ls:la:lla:ll"
+export HISTFILE=$HOME/private_dotfiles/bash/histories/$(hostname)/.bash_history
 
 # flush history to file on each command
 export PROMPT_COMMAND='history -a'
