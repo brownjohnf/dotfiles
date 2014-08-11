@@ -38,5 +38,9 @@ source ~/repos/ansible/hacking/env-setup > /dev/null
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+if [ -f $HOME/.displays ]; then
+  source $HOME/.displays
+fi
+
 date >> ~/.bash_history
 

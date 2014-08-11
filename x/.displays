@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Uncomment and modify the lines below to configure monitors.
+xrandr --current
+# xrandr --output HDMI1 --rotate left
+# xrandr --output HDMI1 --left-of HDMI2
+

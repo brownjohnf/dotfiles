@@ -19,7 +19,6 @@ case "$1" in
     case "$2" in
       'deps')
         echo '--> Installing dependencies...'
-        sudo aptitude update
         sudo aptitude install -y vim curl htop wget screen
         ;;
       'git')
@@ -34,6 +33,7 @@ case "$1" in
       *)
         $0 install deps
         $0 install git
+        $0 install i3
         $0 setup
         ;;
     esac
@@ -92,6 +92,7 @@ case "$1" in
         mkdir -p $HOME/.i3
         ln -fs $HERE/i3/.i3/config $HOME/.i3/config
         cp $HERE/i3/.i3status.conf $HOME/.i3status.conf
+        cp $HERE/x/.displays $HOME/.displays
         echo "==> Set up i3 WM. Edit ~/.i3status.conf to set up networking stats:"
         ifconfig | egrep '^\w+' | awk '{print $1}'
         ;;
