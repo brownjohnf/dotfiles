@@ -100,16 +100,16 @@ bindsym $mod+Shift+minus move scratchpad
 # show/hide/cycle scratchpads
 bindsym $mod+minus scratchpad show
 
-set $w1 "1: term"
-set $w2 "2: www"
-set $w3 "3: comm"
-set $w4 "4: pwds"
+set $w1 '1: term'
+set $w2 '2: www'
+set $w3 '3: comm'
+set $w4 '4: pwds'
 set $w5 5
 set $w6 6
 set $w7 7
 set $w8 8
-set $w9 "9: editors"
-set $w0 "10: mail"
+set $w9 '9: editors'
+set $w0 '10: mail'
 
 # switch to workspace
 bindsym $mod+1 workspace $w1
