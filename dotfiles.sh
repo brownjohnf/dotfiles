@@ -91,8 +91,19 @@ case "$1" in
         echo '--> Setting up i3 config...'
         mkdir -p $HOME/.i3
         ln -fs $HERE/i3/.i3/config $HOME/.i3/config
-        cp $HERE/i3/.i3status.conf $HOME/.i3status.conf
-        cp $HERE/x/.displays $HOME/.displays
+
+        if [ -f $HOME/.i3status.conf ]; then
+          echo "--> i3status config already in place; skipping."
+        else
+          cp $HERE/i3/.i3status.conf $HOME/.i3status.conf
+        fi
+
+        if [ -f $HOME/.displays ]; then
+          echo "--> displays config already in place; skipping."
+        else
+          cp $HERE/x/.displays $HOME/.displays
+        fi
+
         echo "==> Set up i3 WM. Edit ~/.i3status.conf to set up networking stats:"
         ifconfig | egrep '^\w+' | awk '{print $1}'
         ;;
