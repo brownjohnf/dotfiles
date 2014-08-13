@@ -1,5 +1,7 @@
 [[ $- == *i* ]] || return
 
+setxkbmap -variant dvorak
+
 export TERM=xterm-color
 #export COLORTERM=gnome-256
 . ~/.bash_aliases
