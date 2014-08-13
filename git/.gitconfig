@@ -1,8 +1,6 @@
 [user]
 	name = John (Jack) Brown
 	email = jack@brownjohnf.com
-[credential]
-	helper = osxkeychain
 [color]
 	ui = true
 [github]
