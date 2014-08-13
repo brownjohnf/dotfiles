@@ -108,6 +108,9 @@ case "$1" in
         echo "==> Set up i3 WM. Edit ~/.i3status.conf to set up networking stats:"
         ifconfig | egrep '^\w+' | awk '{print $1}'
         ;;
+      'terminal')
+        mkdir -p $HOME/.config/xfce4/terminal
+        ln -fs $HERE/terminal/xfce4/terminalrc $HOME/.config/xfce4/terminal/terminalrc
       *)
         $0 setup bash
         $0 setup polipo
@@ -118,6 +121,7 @@ case "$1" in
         $0 setup sublime
         $0 setup ssh
         $0 setup i3
+        $0 setup terminal
         ;;
     esac
     ;;
