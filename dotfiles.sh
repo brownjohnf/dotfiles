@@ -25,7 +25,7 @@ case "$1" in
         sudo aptitude install -y git
         ;;
       'i3')
-        sudo aptitude install -y i3 i3-wm i3lock i3status xinit
+        sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils xfce4-terminal
         ;;
       'sublime')
         echo 'INSTALL SUBLIME !!'
@@ -34,6 +34,7 @@ case "$1" in
         $0 install deps
         $0 install git
         $0 install i3
+        $0 install sublime
         $0 setup
         ;;
     esac
