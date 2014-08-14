@@ -30,6 +30,19 @@ case "$1" in
       'sublime')
         echo 'INSTALL SUBLIME !!'
         ;;
+      'software')
+        sudo sh -c "echo deb https://get.docker.io/ubuntu docker main \
+          > /etc/apt/sources.list.d/docker.list"
+        sudo sh -c "echo deb http://downloads.hipchat.com/linux/apt stable main \
+          > /etc/apt/sources.list.d/atlassian-hipchat.list"
+        sudo sh -c "wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -"
+        sudo aptitude update
+        sudo aptitude install -y alsa-base alsa-tools alsa-utils build-essential \
+          chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils hipchat lxc-docker \
+          vlc spotify-client libreadline-dev
+        curl "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_amd64.deb" > /tmp/sublime.deb
+        sudo dpkg -i /tmp/sublime.deb
+        ;;
       *)
         $0 install deps
         $0 install git
