@@ -124,6 +124,7 @@ case "$1" in
       'terminal')
         mkdir -p $HOME/.config/xfce4/terminal
         ln -fs $HERE/terminal/xfce4/terminalrc $HOME/.config/xfce4/terminal/terminalrc
+        ;;
       *)
         $0 setup bash
         $0 setup polipo
