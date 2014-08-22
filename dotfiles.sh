@@ -125,6 +125,11 @@ case "$1" in
         mkdir -p $HOME/.config/xfce4/terminal
         ln -fs $HERE/terminal/xfce4/terminalrc $HOME/.config/xfce4/terminal/terminalrc
         ;;
+      'bin')
+        mkdir -p $HOME/bin
+        ln -fs $HERE/bin/emount.sh $HOME/bin/emount.sh
+        ln -fs $HERE/bin/eumount.sh $HOME/bin/eumount.sh
+        ;;
       *)
         $0 setup bash
         $0 setup polipo
