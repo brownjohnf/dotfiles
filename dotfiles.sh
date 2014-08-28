@@ -19,10 +19,7 @@ case "$1" in
     case "$2" in
       'deps')
         echo '--> Installing dependencies...'
-        sudo aptitude install -y vim curl htop wget screen
-        ;;
-      'git')
-        sudo aptitude install -y git
+        sudo aptitude install -y vim curl htop wget screen git
         ;;
       'i3')
         sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils xfce4-terminal
@@ -39,15 +36,20 @@ case "$1" in
         sudo aptitude update
         sudo aptitude install -y alsa-base alsa-tools alsa-utils build-essential \
           chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils hipchat lxc-docker \
-          vlc spotify-client libreadline-dev
+          vlc spotify-client libreadline-dev firefox
         curl "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_amd64.deb" > /tmp/sublime.deb
         sudo dpkg -i /tmp/sublime.deb
         ;;
+      '3d')
+        sudo aptitude install -y python-numpy python-opengl openscad python-wxgtk2.8
+        curl http://software.ultimaker.com/current/cura_14.07-debian_amd64.deb > /tmp/cura.deb
+        sudo dpkg -i /tmp/cura.deb
+        ;;
       *)
         $0 install deps
-        $0 install git
         $0 install i3
         $0 install sublime
+        $0 install software
         $0 setup
         ;;
     esac
@@ -62,6 +64,7 @@ case "$1" in
         ln -fs $HERE/bash/.bash_logout $HOME/.bash_logout
         ln -fs $HERE/bash/.bashrc $HOME/.bashrc
         touch $HOME/.bash_history
+        sudo usermod -aG dialout $USER
         ;;
       'polipo')
         echo '--> Installing polipo dotfiles...'
@@ -130,6 +133,9 @@ case "$1" in
         ln -fs $HERE/bin/emount.sh $HOME/bin/emount.sh
         ln -fs $HERE/bin/eumount.sh $HOME/bin/eumount.sh
         ;;
+      'docker')
+        sudo usermod -aG docker $USER
+        ;;
       *)
         $0 setup bash
         $0 setup polipo
@@ -141,6 +147,8 @@ case "$1" in
         $0 setup ssh
         $0 setup i3
         $0 setup terminal
+        $0 setup bin
+        $0 setup docker
         ;;
     esac
     ;;

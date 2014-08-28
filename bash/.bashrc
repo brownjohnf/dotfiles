@@ -1,6 +1,6 @@
 [[ $- == *i* ]] || return
 
-setxkbmap -variant dvorak
+#setxkbmap -variant dvorak
 
 export TERM=xterm-color
 #export COLORTERM=gnome-256
