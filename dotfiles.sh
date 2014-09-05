@@ -17,40 +17,55 @@ fi
 case "$1" in
   'install')
     case "$2" in
-      'deps')
+      'base')
         echo '--> Installing dependencies...'
-        sudo aptitude install -y vim curl htop wget screen git
+        sudo aptitude update
+        sudo aptitude install -y vim curl htop wget screen git alsa-base \
+          alsa-tools alsa-utils build-essential leafpad \
+          chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
+          vlc libreadline-dev firefox
         ;;
       'i3')
-        sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils xfce4-terminal
+        sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils \
+          xfce4-terminal
         ;;
       'sublime')
-        echo 'INSTALL SUBLIME !!'
+        curl "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3065_amd64.deb" > /tmp/sublime.deb
+        sudo dpkg -i /tmp/sublime.deb
         ;;
-      'software')
+      'docker')
         sudo sh -c "echo deb https://get.docker.io/ubuntu docker main \
           > /etc/apt/sources.list.d/docker.list"
+        sudo aptitude update
+        sudo aptitude install -y lxc-docker
+        ;;
+      'hipchat')
         sudo sh -c "echo deb http://downloads.hipchat.com/linux/apt stable main \
           > /etc/apt/sources.list.d/atlassian-hipchat.list"
         sudo sh -c "wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -"
         sudo aptitude update
-        sudo aptitude install -y alsa-base alsa-tools alsa-utils build-essential \
-          chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils hipchat lxc-docker \
-          vlc spotify-client libreadline-dev firefox
-        curl "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_amd64.deb" > /tmp/sublime.deb
-        sudo dpkg -i /tmp/sublime.deb
+        sudo aptitude install -y hipchat
+        ;;
+      'spotify')
+        sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list'
+        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 94558F59
+        sudo aptitude update
+        sudo aptitude install -y spotify-client
         ;;
       '3d')
         sudo aptitude install -y python-numpy python-opengl openscad python-wxgtk2.8
         curl http://software.ultimaker.com/current/cura_14.07-debian_amd64.deb > /tmp/cura.deb
         sudo dpkg -i /tmp/cura.deb
         ;;
-      *)
-        $0 install deps
+      'all')
+        $0 install base
         $0 install i3
         $0 install sublime
-        $0 install software
-        $0 setup
+        $0 install docker
+        $0 install hipchat
+        $0 install spotify
+        $0 install 3d
+        $0 setup all
         ;;
     esac
     ;;
@@ -136,7 +151,7 @@ case "$1" in
       'docker')
         sudo usermod -aG docker $USER
         ;;
-      *)
+      'all')
         $0 setup bash
         $0 setup polipo
         $0 setup vim
