@@ -19,6 +19,7 @@ case "$1" in
     case "$2" in
       'base')
         echo '--> Installing dependencies...'
+        sudo apt-get update && sudo apt-get install aptitude
         sudo aptitude update
         sudo aptitude install -y vim curl htop wget screen git alsa-base \
           alsa-tools alsa-utils build-essential leafpad \
@@ -147,6 +148,7 @@ case "$1" in
         mkdir -p $HOME/bin
         ln -fs $HERE/bin/emount.sh $HOME/bin/emount.sh
         ln -fs $HERE/bin/eumount.sh $HOME/bin/eumount.sh
+        ln -fs $HERE/bin/cryptmake.sh $HOME/bin/cryptmake.sh
         ;;
       'docker')
         sudo usermod -aG docker $USER
