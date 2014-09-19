@@ -58,6 +58,10 @@ case "$1" in
         curl http://software.ultimaker.com/current/cura_14.07-debian_amd64.deb > /tmp/cura.deb
         sudo dpkg -i /tmp/cura.deb
         ;;
+      'fig')
+        sudo sh -c 'curl -L https://github.com/docker/fig/releases/download/0.5.2/linux > /usr/local/bin/fig'
+        sudo sh -c 'chmod +x /usr/local/bin/fig'
+        ;;
       'all')
         $0 install base
         $0 install i3
