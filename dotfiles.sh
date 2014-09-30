@@ -153,6 +153,8 @@ case "$1" in
         ln -fs $HERE/bin/emount.sh $HOME/bin/emount.sh
         ln -fs $HERE/bin/eumount.sh $HOME/bin/eumount.sh
         ln -fs $HERE/bin/cryptmake.sh $HOME/bin/cryptmake.sh
+        ln -fs $HERE/bin/memreport.sh $HOME/bin/memreport.sh
+        ln -fs $HERE/bin/spark $HOME/bin/spark
         ;;
       'docker')
         sudo usermod -aG docker $USER
