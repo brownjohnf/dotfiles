@@ -37,3 +37,6 @@ set guifont=ComicSansNeueMono:20 "Monospace:20
 " set lines=53 "full height
 " set equalalways
 " vnew
+
+autocmd BufWritePre * :%s/\s\+$//e
+
