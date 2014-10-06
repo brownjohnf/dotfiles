@@ -28,6 +28,9 @@ fi
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# Add the go bin path
+export PATH="$HOME/go/bin:$PATH"
+
 export EDITOR=/usr/bin/vim
 
 # set vim command line editing
