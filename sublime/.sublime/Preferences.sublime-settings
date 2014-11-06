@@ -20,6 +20,14 @@
 		"*.sublime-project",
 		"*.sublime-workspace"
 	],
+	"folder_exclude_patterns":
+	[
+		"vendor/bundle",
+		".svn",
+		".git",
+		".hg",
+		"CVS"
+	],
 	"font_face": "Inconsolata",
 	"font_size": 9,
 	"highlight_modified_tabs": true,
