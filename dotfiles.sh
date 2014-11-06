@@ -24,7 +24,7 @@ case "$1" in
         sudo aptitude install -y vim curl htop wget screen git alsa-base \
           alsa-tools alsa-utils build-essential leafpad \
           chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
-          vlc libreadline-dev firefox
+          vlc libreadline-dev firefox xsel
         ;;
       'i3')
         sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils \
@@ -35,10 +35,7 @@ case "$1" in
         sudo dpkg -i /tmp/sublime.deb
         ;;
       'docker')
-        sudo sh -c "echo deb https://get.docker.io/ubuntu docker main \
-          > /etc/apt/sources.list.d/docker.list"
-        sudo aptitude update
-        sudo aptitude install -y lxc-docker
+        curl -sSL https://get.docker.io/ubuntu/ | sudo sh -
         ;;
       'hipchat')
         sudo sh -c "echo deb http://downloads.hipchat.com/linux/apt stable main \
@@ -59,7 +56,7 @@ case "$1" in
         sudo dpkg -i /tmp/cura.deb
         ;;
       'fig')
-        sudo sh -c 'curl -L https://github.com/docker/fig/releases/download/0.5.2/linux > /usr/local/bin/fig'
+        sudo sh -c 'curl -L https://github.com/docker/fig/releases/download/1.0.0/fig-Linux-x86_64 > /usr/local/bin/fig'
         sudo sh -c 'chmod +x /usr/local/bin/fig'
         ;;
       'all')
@@ -155,6 +152,10 @@ case "$1" in
         ln -fs $HERE/bin/cryptmake.sh $HOME/bin/cryptmake.sh
         ln -fs $HERE/bin/memreport.sh $HOME/bin/memreport.sh
         ln -fs $HERE/bin/spark $HOME/bin/spark
+        ln -fs $HERE/bin/genpass $HOME/bin/genpass
+        ln -fs $HERE/bin/zap $HOME/bin/zap
+        ln -fs $HERE/bin/copy $HOME/bin/copy
+        ln -fs $HERE/bin/docker.sh $HOME/bin/docker.sh
         ;;
       'docker')
         sudo usermod -aG docker $USER
