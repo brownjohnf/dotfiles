@@ -34,4 +34,4 @@ export PATH="$HOME/go/bin:$PATH"
 export EDITOR=/usr/bin/vim
 
 # set vim command line editing
-# set -o vi
+set -o vi

@@ -28,7 +28,7 @@ set incsearch
 " set list
 " set listchars=tab:>-,trail:>.,eol:$
 
-set expandtab
+"set expandtab
 set tabstop=2
 set shiftwidth=2
 set guifont=ComicSansNeueMono:20 "Monospace:20
