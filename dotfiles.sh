@@ -14,63 +14,118 @@ if [ $# -lt 1 ]; then
   exit
 fi
 
-case "$1" in
-  'install')
-    case "$2" in
-      'base')
-        echo '--> Installing dependencies...'
-        sudo apt-get update && sudo apt-get install aptitude
-        sudo aptitude update
-        sudo aptitude install -y vim curl htop wget screen git alsa-base \
-          alsa-tools alsa-utils build-essential leafpad \
-          chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
-          vlc libreadline-dev firefox nethogs iotop iftop xsel
-        ;;
-      'i3')
-        sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils \
-          xfce4-terminal
-        ;;
-      'sublime')
-        curl "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3065_amd64.deb" > /tmp/sublime.deb
-        sudo dpkg -i /tmp/sublime.deb
-        ;;
-      'docker')
-        curl -sSL https://get.docker.io/ubuntu/ | sudo sh -
-        ;;
-      'hipchat')
-        sudo sh -c "echo deb http://downloads.hipchat.com/linux/apt stable main \
-          > /etc/apt/sources.list.d/atlassian-hipchat.list"
-        sudo sh -c "wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -"
-        sudo aptitude update
-        sudo aptitude install -y hipchat
-        ;;
-      'spotify')
-        sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list'
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 94558F59
-        sudo aptitude update
-        sudo aptitude install -y spotify-client
-        ;;
-      '3d')
-        sudo aptitude install -y python-numpy python-opengl openscad python-wxgtk2.8
-        curl http://software.ultimaker.com/current/cura_14.07-debian_amd64.deb > /tmp/cura.deb
-        sudo dpkg -i /tmp/cura.deb
-        ;;
-      'fig')
-        sudo sh -c 'curl -L https://github.com/docker/fig/releases/download/1.0.0/fig-Linux-x86_64 > /usr/local/bin/fig'
-        sudo sh -c 'chmod +x /usr/local/bin/fig'
-        ;;
-      'all')
-        $0 install base
-        $0 install i3
-        $0 install sublime
-        $0 install docker
-        $0 install hipchat
-        $0 install spotify
-        $0 install 3d
-        $0 setup all
-        ;;
-    esac
-    ;;
+if [ `cat /etc/os-release | grep SUSE | wc -l` -gt 0 ]; then
+  echo "--> Assuming SUSE."
+
+  distro="SUSE"
+
+  case $1 in
+    install)
+      case $2 in
+        base)
+          echo "--> Installing base deps..."
+          sudo zypper refresh
+          sudo zypper in -ly vim curl htop wget screen git leafpad \
+            chromium cryptsetup pcmanfm ecryptfs-utils vlc \
+            readline-devel MozillaFirefox iotop iftop xsel \
+            xfce4-terminal MozillaThunderbird
+          ;;
+        i3)
+          echo "--> Installing i3..."
+          sudo zypper in -ly i3 i3lock i3status dmenu
+          ;;
+        all)
+          $0 install base
+          $0 install i3
+          ;;
+      esac
+      ;;
+    setup)
+      case $2 in
+        i3)
+          echo "--> Setting up SUSE-specific i3 stuff..."
+          sudo ln -fs $HERE/x/SUSE/windowmanager /etc/sysconfig/windowmanager
+          ;;
+      esac
+      ;;
+  esac
+fi
+
+if [ `cat /etc/os-release | grep Ubuntu | wc -l` -gt 0 ]; then
+	echo "--> Assuming Ubuntu."
+
+	case "$1" in
+		'install')
+			case "$2" in
+				'base')
+					echo '--> Installing dependencies...'
+					sudo apt-get update && sudo apt-get install aptitude
+					sudo aptitude update
+					sudo aptitude install -y vim curl htop wget screen git alsa-base \
+					alsa-tools alsa-utils build-essential leafpad \
+					chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
+					vlc libreadline-dev firefox nethogs iotop iftop xsel xfce4-terminal
+					;;
+				'i3')
+					sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils \
+					xfce4-terminal
+					;;
+				'sublime')
+					curl "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3065_amd64.deb" > /tmp/sublime.deb
+					sudo dpkg -i /tmp/sublime.deb
+					;;
+				'docker')
+					curl -sSL https://get.docker.io/ubuntu/ | sudo sh -
+					;;
+				'hipchat')
+					sudo sh -c "echo deb http://downloads.hipchat.com/linux/apt stable main \
+					> /etc/apt/sources.list.d/atlassian-hipchat.list"
+					sudo sh -c "wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -"
+					sudo aptitude update
+					sudo aptitude install -y hipchat
+					;;
+				'spotify')
+					sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list'
+					sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 94558F59
+					sudo aptitude update
+					sudo aptitude install -y spotify-client
+					;;
+				'3d')
+					sudo aptitude install -y python-numpy python-opengl openscad python-wxgtk2.8
+					curl http://software.ultimaker.com/current/cura_14.07-debian_amd64.deb > /tmp/cura.deb
+					sudo dpkg -i /tmp/cura.deb
+					;;
+				'fig')
+					sudo sh -c 'curl -L https://github.com/docker/fig/releases/download/1.0.0/fig-Linux-x86_64 > /usr/local/bin/fig'
+					sudo sh -c 'chmod +x /usr/local/bin/fig'
+					;;
+				'all')
+					$0 install base
+					$0 install i3
+					$0 install sublime
+					$0 install docker
+					$0 install hipchat
+					$0 install spotify
+					$0 install 3d
+					$0 setup all
+					;;
+			esac
+			;;
+		setup)
+			case $2 in
+				bash)
+					sudo usermod -aG dialout $USER
+					;;
+			  i3)
+					echo '--> Setting up X...'
+					ln -fs $HERE/x/.xinitrc $HOME/.xinitrc
+					;;
+			esac
+			;;
+	esac
+fi
+
+case $1 in
   'setup')
     case "$2" in
       'bash')
@@ -81,7 +136,6 @@ case "$1" in
         ln -fs $HERE/bash/.bash_logout $HOME/.bash_logout
         ln -fs $HERE/bash/.bashrc $HOME/.bashrc
         touch $HOME/.bash_history
-        sudo usermod -aG dialout $USER
         ;;
       'polipo')
         echo '--> Installing polipo dotfiles...'
@@ -120,8 +174,6 @@ case "$1" in
         mkdir -p $HOME/.ssh
         ;;
       'i3')
-        echo '--> Setting up X...'
-        ln -fs $HERE/x/.xinitrc $HOME/.xinitrc
         echo '--> Setting up i3 config...'
         mkdir -p $HOME/.i3
         ln -fs $HERE/i3/.i3/config $HOME/.i3/config
@@ -158,7 +210,7 @@ case "$1" in
         ln -fs $HERE/bin/docker.sh $HOME/bin/docker.sh
         ;;
       'docker')
-        sudo usermod -aG docker $USER
+        # sudo usermod -aG docker $USER
         ;;
       'all')
         $0 setup bash
@@ -175,15 +227,6 @@ case "$1" in
         $0 setup docker
         ;;
     esac
-    ;;
-  'system')
-    if [ `uname -a | grep Ubuntu | wc -l` -gt 0 ]; then
-      echo "Ubuntu"
-    elif [ `uname -a | grep Fedora | wc -l` -gt 0 ]; then
-      echo "Fedora"
-    else
-      echo "Can't determine Linux version. Pass SYSTEM."
-    fi
     ;;
   *)
     echo "Don't know that one!"
