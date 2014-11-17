@@ -35,3 +35,7 @@ export EDITOR=/usr/bin/vim
 
 # set vim command line editing
 set -o vi
+
+export TERMINAL='/usr/bin/xfce4-terminal'
+export XDG_CONFIG_DIRS=$XDG_CONFIG_DIRS:$HOME/.config
+
