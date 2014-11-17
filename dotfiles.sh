@@ -64,7 +64,8 @@ if [ `cat /etc/os-release | grep Ubuntu | wc -l` -gt 0 ]; then
 					sudo aptitude install -y vim curl htop wget screen git alsa-base \
 					alsa-tools alsa-utils build-essential leafpad \
 					chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
-					vlc libreadline-dev firefox nethogs iotop iftop xsel xfce4-terminal
+					vlc libreadline-dev firefox nethogs iotop iftop xsel xfce4-terminal \
+					nmap whois
 					;;
 				'i3')
 					sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils \
