@@ -8,7 +8,7 @@
 		"*-min.js"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/Theme - Flatland/Flatland Monokai.tmTheme",
 	"create_window_at_startup": false,
 	"default_line_ending": "unix",
 	"drag_text": false,
@@ -57,6 +57,7 @@
 	"show_full_path": true,
 	"show_line_endings": true,
 	"tab_size": 2,
+	"theme": "Flatland Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"tree_animation_enabled": false,
 	"trim_trailing_white_space_on_save": true,

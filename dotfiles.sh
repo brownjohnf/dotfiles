@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 <install> <all>"
+  exit
+fi
+
 USER=$(whoami)
 GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
@@ -9,9 +14,9 @@ if [ `uname | grep Linux | wc -l` -lt 1 ]; then
   exit
 fi
 
-if [ $# -lt 1 ]; then
-  echo "Usage: $0 <install> <all>"
-  exit
+if [ `cat /etc/os-release | grep SUSE | wc -l` -lt 1 ]; then
+  echo "--> Assuming SUSE install."
+  exit 0
 fi
 
 if [ `cat /etc/os-release | grep SUSE | wc -l` -gt 0 ]; then

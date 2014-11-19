@@ -221,3 +221,5 @@ exec nm-applet
 # exec spotify
 # exec chromium-browser
 
+exec --no-startup-id feh --bg-max -B white mdhq_by_tune_logo.png
+
