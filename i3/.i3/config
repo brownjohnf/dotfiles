@@ -210,13 +210,14 @@ assign [class="Sublime_text"]         $w9
 
 assign [class="Thunderbird"]          $w0
 
-exec firefox
-exec xchat
-exec thunderbird
-exec terminator
-exec hipchat
-exec subl
-exec truecrypt
-exec spotify
-exec chromium-browser
+exec nm-applet
+# exec firefox
+# exec xchat
+# exec thunderbird
+# exec terminator
+# exec hipchat
+# exec subl
+# exec truecrypt
+# exec spotify
+# exec chromium-browser
 
