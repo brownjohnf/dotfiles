@@ -9,16 +9,6 @@ USER=$(whoami)
 GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
 
-if [ `uname | grep Linux | wc -l` -lt 1 ]; then
-  echo "You must be on a Linux system."
-  exit
-fi
-
-if [ `cat /etc/os-release | grep SUSE | wc -l` -lt 1 ]; then
-  echo "--> Assuming SUSE install."
-  exit 0
-fi
-
 if [ `cat /etc/os-release | grep SUSE | wc -l` -gt 0 ]; then
   echo "--> Assuming SUSE."
 
