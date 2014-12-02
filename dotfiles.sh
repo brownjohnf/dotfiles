@@ -195,15 +195,13 @@ case $1 in
         ;;
       'bin')
         mkdir -p $HOME/bin
-        ln -fs $HERE/bin/emount.sh $HOME/bin/emount.sh
-        ln -fs $HERE/bin/eumount.sh $HOME/bin/eumount.sh
-        ln -fs $HERE/bin/cryptmake.sh $HOME/bin/cryptmake.sh
         ln -fs $HERE/bin/memreport.sh $HOME/bin/memreport.sh
         ln -fs $HERE/bin/spark $HOME/bin/spark
         ln -fs $HERE/bin/genpass $HOME/bin/genpass
         ln -fs $HERE/bin/zap $HOME/bin/zap
         ln -fs $HERE/bin/copy $HOME/bin/copy
         ln -fs $HERE/bin/docker.sh $HOME/bin/docker.sh
+        ln -fs $HERE/bin/vault $HOME/bin/vault
         ;;
       'docker')
         # sudo usermod -aG docker $USER

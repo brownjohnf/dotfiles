@@ -43,26 +43,26 @@ case $command in
     ls -la /dev/mapper | egrep '\->' | awk '{print $9}'
   ;;
   mount)
-    echo "--> Mounting $1 at /mnt/$2..."
-    mkdir -p /mnt/$mountpoint
-    cryptsetup luksOpen $device $mountpoint
-    mount /dev/mapper/$mountpoint /mnt/$mountpoint
+    echo "--> Mounting $device at /mnt/$mountpoint"
+    sudo mkdir -p /mnt/$mountpoint
+    sudo cryptsetup luksOpen $device $mountpoint
+    sudo mount /dev/mapper/$mountpoint /mnt/$mountpoint
     echo "--> Mounting complete."
   ;;
   umount)
     echo "--> Unmounting /mnt/$mountpoint..."
-    umount /mnt/$mountpoint
-    cryptsetup luksClose /dev/mapper/$mountpoint
+    sudo umount /mnt/$mountpoint
+    sudo cryptsetup luksClose /dev/mapper/$mountpoint
     echo "--> Unmounting complete."
   ;;
   create)
     echo "--> This will partition, encrypt, format, and mount a device at $1\1"
-    fdisk $device
-    cryptsetup luksFormat $device
-    cryptsetup luksOpen $device $mountpoint
-    mkfs -t ext4 /dev/mapper/$mountpoint
-    mkdir -p /mnt/$mountpoint
-    mount /dev/mapper/$mountpoint /mnt/$mountpoint
+    sudo fdisk $device
+    sudo cryptsetup luksFormat $device
+    sudo cryptsetup luksOpen $device $mountpoint
+    sudo mkfs -t ext4 /dev/mapper/$mountpoint
+    sudo mkdir -p /mnt/$mountpoint
+    sudo mount /dev/mapper/$mountpoint /mnt/$mountpoint
     echo "--> Your new volume is encrypted, formatted, and mounted at /mnt/$2"
   ;;
   *)
