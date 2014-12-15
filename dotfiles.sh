@@ -60,7 +60,7 @@ if [ `cat /etc/os-release | grep Ubuntu | wc -l` -gt 0 ]; then
 					alsa-tools alsa-utils build-essential leafpad \
 					chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
 					vlc libreadline-dev firefox nethogs iotop iftop xsel xfce4-terminal \
-					nmap whois
+					nmap whois network-manager-openvpn
 					;;
 				'i3')
 					sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils \
