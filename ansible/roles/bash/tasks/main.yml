@@ -1,0 +1,10 @@
+---
+- copy:
+    src: "{{item}}"
+    dest: "/home/{{user}}/{{item}}"
+  with_items:
+    - .bash_aliases
+    - .bash_profile
+    - .bash_prompts
+    - .bash_logout
+    - .bashrc

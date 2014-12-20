@@ -1,0 +1,10 @@
+---
+- get_url:
+  url: https://get.docker.io/ubuntu/
+  dest: /tmp/docker_install.sh
+- shell:
+    file: /tmp/docker_install.sh
+- get_url:
+    url: https://github.com/docker/fig/releases/download/1.0.0/fig-Linux-x86_64
+    dest: /usr/local/bin/fig
+    mode: 0751

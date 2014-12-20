@@ -1,0 +1,27 @@
+---
+- apt:
+    pkg: "{{item}}"
+  with_items:
+    - i3
+    - i3-wm
+    - i3lock
+    - i3status
+    - xinit
+    - x11-xserver-utils
+
+- file:
+    path: "/home/{{user}}/.i3"
+    state: directory
+
+- copy:
+    src: config
+    dest: "/home/{{user}}/.i3/config"
+
+- copy:
+    src: .displays
+    dest: "/home/{{user}}/.displays"
+
+- copy:
+    src: .i3status.conf
+    dest: "/home/{{user}}/.i3status.conf"
+

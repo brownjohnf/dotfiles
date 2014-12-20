@@ -1,0 +1,12 @@
+---
+- apt_repository:
+    repo: deb http://downloads.hipchat.com/linux/apt stable main
+    state: present
+    update_cache: yes
+- apt_key:
+    url: https://www.hipchat.com/keys/hipchat-linux.key
+    state: present
+- apt:
+    pkg: "{{item}}"
+  with_items:
+    - hipchat

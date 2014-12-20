@@ -1,0 +1,15 @@
+---
+# - apt:
+#   pkg: vim
+
+- copy:
+    src: "{{item}}"
+    dest: "/home/{{user}}/{{item}}"
+  with_items:
+    - .vimrc
+    - .gvimrc
+    - .vim
+
+- command: "mv /home/{{user}}/.vim/.vim /home/{{user}}/vim"
+- command: rm -rf /home/{{user}}/.vim
+- command: "mv /home/{{user}}/vim /home/{{user}}/.vim"

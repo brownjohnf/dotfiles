@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  vars:
+    user: jfbrown
+  # pre_tasks:
+  #   - apt:
+  #       update_cache: yes
+  roles:
+    - default
+    - bash
+    - polipo
+    - vim
+    - git
+    - ruby
+    - sublime
+    - ssh
+    # - cad
+    # - docker
+    # - hipchat
+    # - i3
+    # - spotify

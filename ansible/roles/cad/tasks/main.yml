@@ -1,0 +1,14 @@
+---
+- get_url:
+    url: http://software.ultimaker.com/current/cura_14.07-debian_amd64.deb
+    dest: /tmp/cura.deb
+- apt:
+    deb: /tmp/cura.deb
+    state: present
+- apt:
+    pkg: "{{item}}"
+  with_items:
+    - python-numpy
+    - python-opengl
+    - openscad
+    - python-wxgtk2.8

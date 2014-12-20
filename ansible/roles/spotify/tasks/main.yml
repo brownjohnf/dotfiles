@@ -1,0 +1,13 @@
+---
+- apt_repository:
+    repo: deb http://repository.spotify.com stable non-free
+    state: present
+    update_cache: yes
+- apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: 94558F59
+    state: present
+- apt:
+    pkg: "{{item}}"
+  with_items:
+    - spotify-client

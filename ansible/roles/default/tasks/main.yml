@@ -1,0 +1,50 @@
+---
+- group:
+    name: "{{user}}"
+- user:
+    name: "{{user}}"
+    shell: /bin/bash
+# - apt:
+#     pkg: "{{item}}"
+#   with_items:
+#     - curl
+#     - htop
+#     - wget
+#     - screen
+#     - alsa-base
+#     - alsa-tools
+#     - alsa-utils
+#     - build-essential
+#     - leafpad
+#     - chromium-browser
+#     - cryptsetup
+#     - thunar
+#     - dkms
+#     - ecryptfs-utils
+#     - vlc
+#     - libreadline-dev
+#     - firefox
+#     - nethogs
+#     - iotop
+#     - iftop
+#     - xsel
+#     - terminator
+#     - nmap
+#     - whois
+
+- file:
+    path: "/home/{{user}}/bin"
+    state: directory
+
+- copy:
+    src: "{{item}}.sh"
+    dest: "/home/{{user}}/bin/{{item}}"
+    mode: 0751
+  with_items:
+    - copy
+    - cryptmake
+    - ff
+    - genpass
+    - vault
+    - wiscan
+    - zap

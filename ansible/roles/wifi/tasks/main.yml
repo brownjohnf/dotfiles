@@ -1,0 +1,12 @@
+---
+# - apt:
+#     pkg: "{{item}}"
+#   with_items:
+#     - network-manager-gnome
+
+- copy:
+    src: "{{item}}.sh"
+    dest: "/home/{{user}}/bin/{{item}}"
+    mode: 0751
+  with_items:
+    - wiscan

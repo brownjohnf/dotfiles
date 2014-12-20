@@ -1,0 +1,10 @@
+---
+# - apt:
+#   pkg: git
+
+- copy:
+    src: "{{item}}"
+    dest: "/home/{{user}}/{{item}}"
+  with_items:
+    - .git-completion.bash
+    - .gitconfig
