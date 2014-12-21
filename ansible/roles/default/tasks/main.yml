@@ -1,36 +1,28 @@
 ---
-- group:
-    name: "{{user}}"
-- user:
-    name: "{{user}}"
-    shell: /bin/bash
-# - apt:
-#     pkg: "{{item}}"
-#   with_items:
-#     - curl
-#     - htop
-#     - wget
-#     - screen
-#     - alsa-base
-#     - alsa-tools
-#     - alsa-utils
-#     - build-essential
-#     - leafpad
-#     - chromium-browser
-#     - cryptsetup
-#     - thunar
-#     - dkms
-#     - ecryptfs-utils
-#     - vlc
-#     - libreadline-dev
-#     - firefox
-#     - nethogs
-#     - iotop
-#     - iftop
-#     - xsel
-#     - terminator
-#     - nmap
-#     - whois
+- action:
+    module: "{{packager}}"
+    name: "{{item}}"
+    enablerepo: epel
+  with_items:
+    - aptitude
+    - "{{alsa}}"
+    - "{{build-tools}}"
+    - "{{readline}}"
+    - curl
+    - htop
+    - wget
+    - screen
+    - alsa-utils
+    - cryptsetup
+    - dkms
+    - ecryptfs-utils
+    - firefox
+    - nethogs
+    - iotop
+    - iftop
+    - xsel
+    - nmap
+    - whois
 
 - file:
     path: "/home/{{user}}/bin"

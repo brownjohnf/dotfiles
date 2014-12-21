@@ -2,20 +2,34 @@
 - hosts: localhost
   vars:
     user: jfbrown
-  # pre_tasks:
-  #   - apt:
-  #       update_cache: yes
+  vars_files:
+    - [ "vars/{{ansible_os_family}}.yml", "vars/os_defaults.yml" ]
+  vars_prompt:
+    user: "user"
+  pre_tasks:
+    - debug:
+        var: ansible_os_family
+
+    - debug:
+        var: packager
+
+    - apt:
+        update_cache: yes
+      when: "'{{ansible_os_family}}' == 'Debian'"
+
+    - group:
+        name: "{{user}}"
+
+    - user:
+        name: "{{user}}"
+        shell: /bin/bash
+
   roles:
     - default
-    - bash
     - polipo
-    - vim
-    - git
-    - ruby
     - sublime
     - ssh
-    # - cad
-    # - docker
-    # - hipchat
-    # - i3
-    # - spotify
+    - cad
+    - i3
+    - spotify
+    - tune

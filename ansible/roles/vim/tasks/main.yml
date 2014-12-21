@@ -1,8 +1,10 @@
 ---
-# - apt:
-#   pkg: vim
+- action:
+    module: "{{packager}}"
+    name: vim
 
-- copy:
+- name: add vim rc files
+  copy:
     src: "{{item}}"
     dest: "/home/{{user}}/{{item}}"
   with_items:
@@ -10,6 +12,7 @@
     - .gvimrc
     - .vim
 
-- command: "mv /home/{{user}}/.vim/.vim /home/{{user}}/vim"
-- command: rm -rf /home/{{user}}/.vim
-- command: "mv /home/{{user}}/vim /home/{{user}}/.vim"
+- name: add vim themes
+  copy:
+    src: .vim
+    dest: "/home/{{user}}/.vim"

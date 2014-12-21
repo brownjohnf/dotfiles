@@ -1,6 +1,7 @@
 ---
-# - apt:
-#   pkg: git
+- action:
+    module: "{{packager}}"
+    name: git
 
 - copy:
     src: "{{item}}"

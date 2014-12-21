@@ -1,0 +1,6 @@
+---
+dependencies:
+  - { role: git }
+  - { role: hipchat }
+  - { role: ruby }
+  - { role: docker }

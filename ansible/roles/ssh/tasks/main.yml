@@ -1,15 +1,18 @@
 ---
-# - apt:
-#     deb: /tmp/sublime.deb
+- apt:
+    deb: /tmp/sublime.deb
 
 - file:
     path: "/home/{{user}}/.ssh"
     state: directory
 
-- file:
-    path: "/home/{{user}}/.ssh/known_hosts"
-    state: touch
+- copy:
+    content: ""
+    dest: "/home/{{user}}/.ssh/known_hosts"
+    state: present
+    force: no
 
 - template:
     src: authorized_keys
     dest: "/home/{{user}}/.ssh"
+    force: yes

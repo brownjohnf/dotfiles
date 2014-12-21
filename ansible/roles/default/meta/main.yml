@@ -1,0 +1,5 @@
+---
+dependencies:
+  - { role: vim }
+  - { role: git }
+  - { role: bash }

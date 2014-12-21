@@ -1,10 +1,10 @@
 ---
-# - get_url:
-#     url: http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3065_amd64.deb
-#     dest: /tmp/sublime.deb
+- get_url:
+    url: http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3065_amd64.deb
+    dest: /tmp/sublime.deb
 
-# - apt:
-#     deb: /tmp/sublime.deb
+- apt:
+    deb: /tmp/sublime.deb
 
 - file:
     path: /home/{{user}}/.config/sublime-text-3/Packages/User

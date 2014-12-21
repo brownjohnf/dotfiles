@@ -8,6 +8,11 @@
     - i3status
     - xinit
     - x11-xserver-utils
+    - leafpad
+    - chromium-browser
+    - thunar
+    - vlc
+    - terminator
 
 - file:
     path: "/home/{{user}}/.i3"

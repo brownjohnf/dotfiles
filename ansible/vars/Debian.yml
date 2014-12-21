@@ -1,0 +1,11 @@
+---
+packager: apt
+alsa:
+  - alsa-base
+  - alsa-tools
+build-tools:
+  - build-essential
+readline:
+  - libreadline-dev
+dmcrypt:
+  - ecryptfs-utils
