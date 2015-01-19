@@ -60,7 +60,7 @@ if [ `cat /etc/os-release | grep Ubuntu | wc -l` -gt 0 ]; then
 					alsa-tools alsa-utils build-essential leafpad \
 					chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
 					vlc libreadline-dev firefox nethogs iotop iftop xsel xfce4-terminal \
-					nmap whois network-manager-openvpn
+					nmap whois network-manager-openvpn nfs-common
 					;;
 				'i3')
 					sudo aptitude install -y i3 i3-wm i3lock i3status xinit x11-xserver-utils \
@@ -92,7 +92,8 @@ if [ `cat /etc/os-release | grep Ubuntu | wc -l` -gt 0 ]; then
 					sudo dpkg -i /tmp/cura.deb
 					;;
 				'fig')
-					sudo sh -c 'curl -L https://github.com/docker/fig/releases/download/1.0.0/fig-Linux-x86_64 > /usr/local/bin/fig'
+					sudo sh -c 'curl -L https://github.com/docker/fig/releases/download/1.0.0/fig-Linux-x86_64 > \
+						/usr/local/bin/fig'
 					sudo sh -c 'chmod +x /usr/local/bin/fig'
 					;;
 				'all')
@@ -160,7 +161,6 @@ case $1 in
         ;;
       'sublime')
         echo "--> Installing Sublime dotfiles..."
-        echo "--> Forcing symlinked files into home directory..."
         mkdir -p $HOME/.config/sublime-text-3/Packages/User
         ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
           $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
@@ -187,7 +187,7 @@ case $1 in
         fi
 
         echo "==> Set up i3 WM. Edit ~/.i3status.conf to set up networking stats:"
-        ifconfig | egrep '^\w+' | awk '{print $1}'
+        ifconfig | egrep '^\w+' | awk '{print $1}' > /tmp/dotfiles.log
         ;;
       'terminal')
         mkdir -p $HOME/.config/xfce4/terminal
@@ -203,9 +203,6 @@ case $1 in
         ln -fs $HERE/bin/docker.sh $HOME/bin/docker.sh
         ln -fs $HERE/bin/vault $HOME/bin/vault
         ;;
-      'docker')
-        # sudo usermod -aG docker $USER
-        ;;
       'all')
         $0 setup bash
         $0 setup polipo
@@ -218,11 +215,10 @@ case $1 in
         $0 setup i3
         $0 setup terminal
         $0 setup bin
-        $0 setup docker
         ;;
     esac
     ;;
   *)
-    echo "Don't know that one!"
+    echo "Don't know $1!"
     ;;
 esac
