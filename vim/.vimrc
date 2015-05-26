@@ -1,7 +1,7 @@
 set t_Co=256
 set background=dark
-" color solarized
-color molokai
+color solarized
+" color molokai
 let g:molokai_original = 1
 
 set autoindent
