@@ -13,9 +13,9 @@ map <C-n> :NERDTreeToggle<CR>
 
 set t_Co=256
 set background=dark
-color solarized
+" colorscheme solarized
 " color molokai
-let g:molokai_original = 1
+" let g:molokai_original = 1
 
 set autoindent
 set number
@@ -32,7 +32,7 @@ set smartcase
 set title
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-syntax on
+syntax enable
 filetype on
 filetype plugin on
 filetype indent on

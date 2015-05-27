@@ -19,3 +19,33 @@ Host hermes-ui
 	IdentityFile /mnt/pw/keys/tune-dev/id_rsa
 	LocalForward 8080 127.0.0.1:4010
 
+Host *
+	ForwardAgent yes
+
+Host devbox
+	User jackb
+	IdentityFile /mnt/pw/keys/tune-dev/id_rsa
+	IdentitiesOnly yes
+	HostName dp-jackb01-dev.sea1.office.priv
+
+Host *.sea1.office.priv *.use01.plat.priv
+	StrictHostKeyChecking no
+	User jackb
+	IdentityFile /mnt/pw/keys/tune-dev/id_rsa
+	IdentitiesOnly yes
+	ControlMaster yes
+	ControlPath /home/jackb/.ssh/%h.sock
+
+Host overlord preprod *.mobiledevhq.com statsd
+	User deployer
+	IdentityFile /mnt/pw/keys/jfb/id_rsa
+	IdentitiesOnly yes
+
+Host ingrid
+  User jfbrown
+
+Host *.do.bkranch.io
+  User root
+	IdentityFile /mnt/pw/keys/digital_ocean
+	IdentitiesOnly yes
+
