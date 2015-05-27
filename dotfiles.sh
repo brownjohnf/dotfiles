@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ $# -lt 1 ]; then
   echo "Usage: $0 <install> <all>"
   exit
