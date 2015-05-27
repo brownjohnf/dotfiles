@@ -46,6 +46,41 @@ if [ `cat /etc/os-release | grep SUSE | wc -l` -gt 0 ]; then
   esac
 fi
 
+if [ `cat /etc/os-release | grep Arch | wc -l` -gt 0 ]; then
+  echo "--> Assuming Arch."
+
+  distro="ARCHLINUX"
+
+  sudo pacman -S --needed vim curl htop wget screen git firefox terminator
+
+  echo '--> Installing vim dotfiles...'
+  ln -fs $HERE/vim/.vimrc ~/.vimrc
+  ln -fs $HERE/gvim/.gvimrc ~/.gvimrc
+  mkdir -p $HOME/.vim/colors
+  ln -fs $HERE/vim/.vim/colors/molokai.vim $HOME/.vim/colors/molokai.vim
+  ln -fs $HERE/vim/.vim/colors/solarized.vim $HOME/.vim/colors/solarized.vim
+
+	[[ -f $HOME/.i3status.conf ]] || cp $HERE/i3/.i3status.conf $HOME/.i3status.conf
+
+  chmod +x $HERE/bin/vault
+  sudo ln -fs $HERE/bin/vault /usr/local/bin/vault
+
+  echo '--> Installing git dotfiles...'
+  ln -fs $HERE/git/.git-completion.bash $HOME/.git-completion.bash
+  ln -fs $HERE/git/.gitconfig $HOME/.gitconfig
+
+	echo "--> Installing Sublime dotfiles..."
+	mkdir -p $HOME/.config/sublime-text-3/Packages/User
+	ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
+		$HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+
+  echo "    Dotfiles install complete. Follow directions at https://packagecontrol.io/installation to finish setting up sublime."
+fi
+
+exit
+
+
+
 if [ `cat /etc/os-release | grep Ubuntu | wc -l` -gt 0 ]; then
 	echo "--> Assuming Ubuntu."
 

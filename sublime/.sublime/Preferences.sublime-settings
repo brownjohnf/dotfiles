@@ -29,7 +29,7 @@
 		"CVS"
 	],
 	"font_face": "Inconsolata",
-	"font_size": 9,
+	"font_size": 10,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignored_packages":

@@ -1,3 +1,16 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+
+call vundle#end()
+
+map <C-n> :NERDTreeToggle<CR>
+
 set t_Co=256
 set background=dark
 color solarized
