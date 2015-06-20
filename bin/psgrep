@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ps -efwww | grep --color $1
+

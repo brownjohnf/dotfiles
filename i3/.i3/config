@@ -54,10 +54,10 @@ bindsym $mod+n focus up
 bindsym $mod+s focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left  focus left
-bindsym $mod+Down  focus down
-bindsym $mod+Up    focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left  focus left
+# bindsym $mod+Down  focus down
+# bindsym $mod+Up    focus up
+# bindsym $mod+Right focus right
 
 # move focused window
 #bindsym $mod+Shift+h move left
@@ -75,7 +75,7 @@ bindsym $mod+Shift+Right move right
 # bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+u fullscreen
