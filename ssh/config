@@ -3,10 +3,6 @@ Host devbox
 	IdentityFile /mnt/pw/keys/tune-dev/id_rsa
 	User jackb
 
-Host github.com
-  User git
-	IdentityFile /mnt/pw/keys/tune/id_rsa
-
 Host hermes-staging-ui
 	HostName p-mdnsfe01-sta.use01.plat.priv
 	User jackb
