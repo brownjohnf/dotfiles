@@ -31,6 +31,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Add the go bin path
 export PATH="$HOME/go/bin:$PATH"
 
+# Add the ruby bin dir to path
+export PATH=/home/jackb/.gem/ruby/2.2.0/bin:$PATH
+
 export EDITOR=/usr/bin/vim
 
 # set vim command line editing
