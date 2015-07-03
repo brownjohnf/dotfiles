@@ -1,10 +1,20 @@
 #!/bin/bash
 
+set -x
+set -e
+
 USER=$(whoami)
 GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
-binpath=$HOME/.bin
+binpath=$HOME/bin
 
+if [ -d $HOME/.vim/bundle/Vundle.vim ]; then
+	echo "--> Updating vundle..."
+	(cd $HOME/.vim/bundle/Vundle.vim && git pull --rebase origin master)
+else
+	echo "--> Installing Vundle..."
+	git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
 
 # bash
 ln -fs $HERE/bash/.bash_aliases $HOME/.bash_aliases
@@ -44,11 +54,9 @@ chmod -R 0600 $HOME/.ssh/config
 
 # custom binaries
 mkdir -p $binpath
-ln -fs $HERE/bin/genpass      $binpath/genpass
-ln -fs $HERE/bin/zap          $binpath/zap
-ln -fs $HERE/bin/copy         $binpath/copy
-ln -fs $HERE/bin/docker.sh    $binpath/docker.sh
-ln -fs $HERE/bin/vault        $binpath/vault
+for binary in genpass zap copy docker.sh vault psgrep; do
+	ln -fs $HERE/bin/$binary      $binpath/$binary
+done
 
 # i3
 mkdir -p $HOME/.i3

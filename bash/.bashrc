@@ -26,13 +26,24 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+if [ -d "/usr/local/heroku/bin:$PATH" ]; then
+	PATH="/usr/local/heroku/bin:$PATH"
+fi
 
 # Add the go bin path
-export PATH="$HOME/go/bin:$PATH"
+if [ -d "$HOME/go/bin:$PATH" ]; then
+	PATH="$HOME/go/bin:$PATH"
+fi
 
 # Add the ruby bin dir to path
-export PATH=/home/jackb/.gem/ruby/2.2.0/bin:$PATH
+if [ -d "$HOME/.gem/ruby/2.2.0/bin" ]; then
+	PATH=$HOME/.gem/ruby/2.2.0/bin:$PATH
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+	PATH=$HOME/bin:$PATH
+fi
 
 export EDITOR=/usr/bin/vim
 
@@ -41,4 +52,6 @@ export EDITOR=/usr/bin/vim
 
 export TERMINAL='/usr/bin/xfce4-terminal'
 export XDG_CONFIG_DIRS=$XDG_CONFIG_DIRS:$HOME/.config
+
+export PATH
 
