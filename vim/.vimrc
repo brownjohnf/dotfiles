@@ -49,4 +49,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 " set the tags search path to look in the .git folder (as configured via git
 " hooks
 set tags=.git/tags,./tags,tags
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 
