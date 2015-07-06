@@ -68,11 +68,11 @@ bindsym $mod+s focus right
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+h  move left
 bindsym $mod+Shift+t  move down
-bindsym $mod+Shift+n    move up
-bindsym $mod+Shift+s move right
+bindsym $mod+Shift+n  move up
+bindsym $mod+Shift+s 	move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+| split h
+# bindsym $mod+Shift+| split h
 
 # split in vertical orientation
 # bindsym $mod+v split v
@@ -95,7 +95,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # close all windows and exit
-bindsym $mod+Shift+comma workspace $w2; focus parent; kill; workspace $w3; focus parent; kill; workspace $w9; focus parent; kill; workspace $w0; focus parent; kill
+# bindsym $mod+Shift+comma workspace $w2; focus parent; kill; workspace $w3; focus parent; kill; workspace $w9; focus parent; kill; workspace $w0; focus parent; kill
 
 # focus the child container
 # bindsym $mod+d focus child

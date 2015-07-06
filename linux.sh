@@ -54,7 +54,7 @@ chmod -R 0600 $HOME/.ssh/config
 
 # custom binaries
 mkdir -p $binpath
-for binary in genpass zap copy docker.sh vault psgrep; do
+for binary in genpass zap copy docker.sh vault psgrep muxme; do
 	ln -fs $HERE/bin/$binary      $binpath/$binary
 done
 
