@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chmod 0400 /mnt/pw/keys/**/id_rsa
+
