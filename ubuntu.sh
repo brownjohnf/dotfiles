@@ -27,20 +27,6 @@ sudo dpkg -i /tmp/sublime.deb /tmp/cura.deb
 # Docker
 wget -qO- https://get.docker.com/ | sh
 
-# Docker Machine
-sudo sh -c "
-curl -L https://github.com/docker/machine/releases/download/v0.3.0/docker-machine_linux-amd64 > \
-	/usr/local/bin/docker-machine && \
-	chmod +x /usr/local/bin/docker-machine
-"
-
-# Docker Compose
-sudo sh -c "
-curl -L https://github.com/docker/compose/releases/download/1.3.1/docker-compose-Linux-x86_64 \
-	> /usr/local/bin/docker-compose && \
-	chmod +x /usr/local/bin/docker-compose
-"
-
 # Hipchat
 sudo sh -c "
 echo deb http://downloads.hipchat.com/linux/apt stable main \
