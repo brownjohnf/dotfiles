@@ -27,6 +27,9 @@ Host hermes-be
 Host maersk-be
 	HostName p-mdmabe02.use01.plat.priv
 
+Host maersk
+	HostName p-mdmafe01.use01.plat.priv
+
 Host mobile
 	HostName p-mdhqfe01.use01.plat.priv
 
