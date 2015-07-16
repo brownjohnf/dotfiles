@@ -36,6 +36,10 @@ Host mobile
 Host mobile-be
 	HostName p-mdhqbe01.use01.plat.priv
 
+Host tmcgp-sta
+	HostName p-tmcgp01-sta.use01.plat.priv
+	LocalForward 127.0.0.1:8090 127.0.0.1:8080
+
 Host devbox
 	User jackb
 	IdentityFile /mnt/pw/keys/tune-dev/id_rsa

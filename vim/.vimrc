@@ -26,6 +26,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set tabstop=2
 set shiftwidth=2
 set equalalways " always set window splits to equal heights
+set listchars=tab:>✖,trail:✖
 
 " Disable the arrow keys
 noremap <Up> <Nop>

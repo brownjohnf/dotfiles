@@ -5,7 +5,7 @@ GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
 binpath=$HOME/.bin
 
-# install deps
+# install packages
 sudo pacman -S --needed \
   btrfs-progs \
   chromium \
@@ -44,4 +44,9 @@ else
   cp $HERE/x/.displays $HOME/.displays
 fi
 
+# set the default browser to firefox
+xdg-mime default firefox.desktop x-scheme-handler/http
+xdg-mime default firefox.desktop x-scheme-handler/https
+
 ./linux.sh
+
