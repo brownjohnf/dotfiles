@@ -1,6 +1,10 @@
 Host *
 	ForwardAgent yes
 
+Host emily
+	HostName Emilys-MBP
+	User emily
+
 Host devbox
 	HostName dp-jackb01-dev.sea1.office.priv
 	IdentityFile /mnt/pw/keys/tune-dev/id_rsa

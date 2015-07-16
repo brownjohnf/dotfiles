@@ -21,4 +21,6 @@ alias df='df -h'
 alias xterm='xterm -rv'
 alias irb='docker run -it --rm -v $(pwd):/data dockerfile/ruby irb'
 alias emacs='emacs -nw'
+alias dm=docker-machine
+alias dc=docker-compose
 
