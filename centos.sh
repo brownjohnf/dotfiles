@@ -10,20 +10,21 @@ binpath=$HOME/.bin
 
 echo '--> Installing dependencies...'
 sudo yum update -y && sudo yum install -y \
-	curl \
-	git \
-	htop \
-	iftop \
-	iotop \
-	nethogs \
-	nmap \
-	screen \
-	unzip \
-	vim \
-	wget \
-	whois \
-	xsel \
-	zsh
+  curl \
+  git \
+  htop \
+  iftop \
+  iotop \
+  nethogs \
+  nmap \
+  screen \
+  tmux \
+  unzip \
+  vim \
+  wget \
+  whois \
+  xsel \
+  zsh
 
 ./linux.sh
 
