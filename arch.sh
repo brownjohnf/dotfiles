@@ -21,6 +21,7 @@ sudo pacman -S --needed \
   sudo \
   terminator \
   tmux \
+  unzip \
   uzbl-browser \
   vim \
   wget \

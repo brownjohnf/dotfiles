@@ -26,7 +26,9 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set tabstop=2
 set shiftwidth=2
 set equalalways " always set window splits to equal heights
-set listchars=tab:>✖,trail:✖
+set list " Used for showing non-printing characters
+set listchars=tab:>✖,trail:✖ " limit non-printing chars to tab/trail
+set expandtab " use spaces in place of tabs
 
 " Disable the arrow keys
 noremap <Up> <Nop>
@@ -39,10 +41,7 @@ filetype on
 filetype plugin on
 filetype indent on
 
-"" Used for showing non-printing characters
-" set list
 
-"set expandtab
 
 " clean up trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e

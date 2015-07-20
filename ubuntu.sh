@@ -11,7 +11,7 @@ binpath=$HOME/.bin
 echo '--> Installing dependencies...'
 sudo apt-get update -y && sudo apt-get install -y aptitude
 sudo aptitude update && sudo aptitude install -y \
-	vim curl htop wget screen git alsa-base \
+	vim curl htop wget screen git alsa-base unzip \
 	alsa-tools alsa-utils build-essential leafpad \
 	chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
 	vlc libreadline-dev firefox nethogs iotop iftop xsel xfce4-terminal \

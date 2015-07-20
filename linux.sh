@@ -81,3 +81,13 @@ curl -L https://github.com/docker/compose/releases/download/1.3.1/docker-compose
 	> /usr/local/bin/docker-compose && \
 	chmod +x /usr/local/bin/docker-compose
 "
+
+# Rancher Compose
+# sudo sh -c "
+# curl -L https://releases.rancher.com/compose/latest/rancher-compose-linux-amd64.tar.gz \
+#	> /tmp/rancher-compose.tar.gz && \
+#	cp /tmp/rancher-compose/rancher-compose /usr/local/bin/rancher-compose && \
+#	/usr/local/bin/rancher-compose && \
+#	chmod +x /usr/local/bin/rancher-compose
+#"
+
