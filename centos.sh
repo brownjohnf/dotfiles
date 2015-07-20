@@ -12,10 +12,7 @@ echo '--> Installing dependencies...'
 sudo yum update -y && sudo yum install -y \
   curl \
   git \
-  htop \
-  iftop \
   iotop \
-  nethogs \
   nmap \
   screen \
   tmux \
@@ -23,10 +20,9 @@ sudo yum update -y && sudo yum install -y \
   vim \
   wget \
   whois \
-  xsel \
   zsh
 
 ./linux.sh
 
-chsh /bin/zsh
+chsh -s /bin/zsh
 

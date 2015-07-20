@@ -24,6 +24,17 @@ ln -fs $HERE/bash/.bash_logout $HOME/.bash_logout
 ln -fs $HERE/bash/.bashrc $HOME/.bashrc
 touch $HOME/.bash_history
 
+# zsh
+if [ -f $HOME/.zshrc ]; then
+  echo "you have a zshrc! merge it here and then re-run"
+  # exit 1
+else
+  for f in .zshrc; do
+    # ln -fs $HERE/zsh/$f      $HOME/$f
+  done
+fi
+touch $HOME/.zsh_history
+
 # vim
 ln -fs $HERE/vim/.vimrc ~/.vimrc
 ln -fs $HERE/gvim/.gvimrc ~/.gvimrc
