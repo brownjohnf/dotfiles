@@ -5,7 +5,7 @@ alias l='ls -CF'
 alias lla='ls -alh'
 alias dir='dir --color=auto'
 alias diffd='diff -s -t -E --tabsize 2 --suppress-common-lines'
-alias ff='firefox --profilemanager'
+alias ff=freight-forwarder
 alias vdir='vdir --color=auto'
 alias vi='vim'
 alias gg='git lg'

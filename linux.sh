@@ -59,13 +59,15 @@ for binary in genpass zap copy docker.sh vault psgrep muxme set-ssh-perms rebase
 done
 
 # i3
-mkdir -p $HOME/.i3
-ln -fs $HERE/i3/.i3/config $HOME/.i3/config
-if [ -f $HOME/.i3status.conf ]; then
-  echo "--> i3status config already in place; skipping."
-else
-  echo "--> Adding $HOME/.i3status config file"
-  cp /etc/i3status.conf $HOME/.i3status.conf
+if [ -f /etc/i3status.conf ]; then
+  mkdir -p $HOME/.i3
+  ln -fs $HERE/i3/.i3/config $HOME/.i3/config
+  if [ -f $HOME/.i3status.conf ]; then
+    echo "--> i3status config already in place; skipping."
+  else
+    echo "--> Adding $HOME/.i3status config file"
+    cp /etc/i3status.conf $HOME/.i3status.conf
+  fi
 fi
 
 # Docker Machine
