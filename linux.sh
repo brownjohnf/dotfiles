@@ -127,3 +127,11 @@ sudo ln -fs /usr/local/bin/docker-compose-1.4.0 /usr/local/bin/docker-compose
 #  chmod +x /usr/local/bin/rancher-compose
 #"
 
+# legacy docker versions for compatibility
+for binary in docker-1.6.2; do
+sudo sh -c "
+curl -L https://get.docker.com/builds/Linux/x86_64/$binary \
+  > /usr/local/bin/$binary && \
+  chmod +x /usr/local/bin/$binary
+"
+done
