@@ -8,6 +8,6 @@ git fetch upstream
 git pull --rebase upstream master
 
 if [ -f rebase.local.sh ]; then
-	./rebase.local.sh
+  ./rebase.local.sh
 fi
 

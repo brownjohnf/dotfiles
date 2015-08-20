@@ -9,6 +9,9 @@ colors
 prompt adam2
 
 setopt HIST_IGNORE_DUPS
+setopt interactivecomments
+bindkey -e
+
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=500000000
 SAVEHIST=500000000
@@ -23,8 +26,7 @@ alias dc=docker-compose
 alias dm=docker-machine
 alias rc=rancher-compose
 
-
-# pyenv
+# Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -39,4 +41,6 @@ func dm-devbox ()
   export DOCKER_CERT_PATH="/home/jackb/benjamin/.docker/certs/client/dev";
   export DOCKER_HOST="tcp://dp-jackb01-dev.sea1.office.priv:2376"
 }
+
+export EDITOR=vim
 

@@ -15,19 +15,31 @@ sudo pacman -S --needed \
   gstreamer0.10-base \
   htop \
   i3-wm \
+  iotop \
+  linux-headers \
+  makepasswd \
+  nodejs \
   nethogs \
+  net-tools \
   openssh \
   parted \
+  qt4 \
   redshift \
+  rsync \
+  ruby \
   sudo \
   terminator \
   tmux \
   unzip \
   uzbl-browser \
+  vagrant \
   vim \
+  virtualbox \
+  vlc \
   wget \
   xorg \
   xorg-xinit \
+  xsel \
   zsh
 
 # grab AUR packages
