@@ -15,7 +15,7 @@ sudo pacman -S --needed \
   gstreamer0.10-base \
   htop \
   i3-wm \
-	nethogs \
+  nethogs \
   openssh \
   parted \
   redshift \

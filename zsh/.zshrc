@@ -13,7 +13,7 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=500000000
 SAVEHIST=500000000
 
-PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 alias c=clear
 alias ll="ls -lh"
@@ -23,10 +23,15 @@ alias dc=docker-compose
 alias dm=docker-machine
 alias rc=rancher-compose
 
+
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 func dm-devbox ()
 {
@@ -34,3 +39,4 @@ func dm-devbox ()
   export DOCKER_CERT_PATH="/home/jackb/benjamin/.docker/certs/client/dev";
   export DOCKER_HOST="tcp://dp-jackb01-dev.sea1.office.priv:2376"
 }
+
