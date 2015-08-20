@@ -99,19 +99,34 @@ else
   git clone https://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 fi
 
+# oh-my-zsh
+[[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # Docker Machine
-sudo sh -c "
+[[ -f /usr/local/bin/docker-machine-0.3.0 ]] || sudo sh -c "
 curl -L https://github.com/docker/machine/releases/download/v0.3.0/docker-machine_linux-amd64 > \
-  /usr/local/bin/docker-machine && \
-  chmod +x /usr/local/bin/docker-machine
+  /usr/local/bin/docker-machine-0.3.0 && \
+  chmod +x /usr/local/bin/docker-machine-0.3.0
 "
+[[ -f /usr/local/bin/docker-machine-0.4.0 ]] || sudo sh -c "
+curl -L https://github.com/docker/machine/releases/download/v0.4.0/docker-machine_linux-amd64 > \
+  /usr/local/bin/docker-machine-0.4.0 && \
+  chmod +x /usr/local/bin/docker-machine-0.4.0
+"
+sudo ln -fs /usr/local/bin/docker-machine-0.4.0 /usr/local/bin/docker-machine
 
 # Docker Compose
-sudo sh -c "
+[[ -f /usr/local/bin/docker-compose-1.3.1 ]] || sudo sh -c "
 curl -L https://github.com/docker/compose/releases/download/1.3.1/docker-compose-Linux-x86_64 \
-  > /usr/local/bin/docker-compose && \
-  chmod +x /usr/local/bin/docker-compose
+  > /usr/local/bin/docker-compose-1.3.1 && \
+  chmod +x /usr/local/bin/docker-compose-1.3.1
 "
+[[ -f /usr/local/bin/docker-compose-1.4.0 ]] || sudo sh -c "
+curl -L https://github.com/docker/compose/releases/download/1.4.0/docker-compose-Linux-x86_64 \
+  > /usr/local/bin/docker-compose-1.4.0 && \
+  chmod +x /usr/local/bin/docker-compose-1.4.0
+"
+sudo ln -fs /usr/local/bin/docker-compose-1.4.0 /usr/local/bin/docker-compose
 
 # Rancher Compose
 # sudo sh -c "
