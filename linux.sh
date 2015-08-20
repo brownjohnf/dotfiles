@@ -25,29 +25,24 @@ ln -fs $HERE/bash/.bashrc $HOME/.bashrc
 touch $HOME/.bash_history
 
 # zsh
-if [ -f $HOME/.zshrc ]; then
-  echo "you have a zshrc! merge it here and then re-run"
-  # exit 1
-else
-  for f in .zshrc; do
-    ln -fs $HERE/zsh/$f      $HOME/$f
-  done
-fi
+for f in .zshrc; do
+  ln -fs $HERE/zsh/$f $HOME/$f
+done
 touch $HOME/.zsh_history
 
 # vim
-ln -fs $HERE/vim/.vimrc ~/.vimrc
+ln -fs $HERE/vim/.vimrc   ~/.vimrc
 ln -fs $HERE/gvim/.gvimrc ~/.gvimrc
 mkdir -p $HOME/.vim/colors
-ln -fs $HERE/vim/.vim/colors/molokai.vim $HOME/.vim/colors/molokai.vim
-ln -fs $HERE/vim/.vim/colors/solarized.vim $HOME/.vim/colors/solarized.vim
+ln -fs $HERE/vim/.vim/colors/molokai.vim    $HOME/.vim/colors/molokai.vim
+ln -fs $HERE/vim/.vim/colors/solarized.vim  $HOME/.vim/colors/solarized.vim
 
 # tmux
 ln -fs $HERE/tmux/.tmux.conf $HOME/.tmux.conf
 
 # git
 ln -fs $HERE/git/.git-completion.bash $HOME/.git-completion.bash
-ln -fs $HERE/git/.gitconfig $HOME/.gitconfig
+ln -fs $HERE/git/.gitconfig           $HOME/.gitconfig
 
 # ruby
 ln -fs $HERE/ruby/.irbrc $HOME/.irbrc
