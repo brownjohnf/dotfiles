@@ -3,6 +3,7 @@
 set -e
 set -x
 
+git fetch origin
 git fetch upstream
 git pull --rebase upstream master
 

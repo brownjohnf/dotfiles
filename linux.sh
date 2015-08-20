@@ -81,6 +81,11 @@ if [ -f /etc/i3status.conf ]; then
   fi
 fi
 
+# rbenv
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+# rbenv install
+
+
 # Docker Machine
 sudo sh -c "
 curl -L https://github.com/docker/machine/releases/download/v0.3.0/docker-machine_linux-amd64 > \
