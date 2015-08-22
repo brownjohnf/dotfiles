@@ -3,24 +3,24 @@
 default_session=${PWD##*/}
 
 if [ "$1" == "" ]; then
-	if [ -f .tmux.conf ]; then
-		tmux -f .tmux.conf attach
-	else
-		session=$default_session
+  if [ -f .tmux.conf ]; then
+    tmux -f .tmux.conf attach
+  else
+    session=$default_session
 
-		tmux has-session -t $session
-		if [ $? != 0 ]; then
-			tmux new-session -s $session -d
-		fi
-		tmux attach -t $session
-	fi
+    tmux has-session -t $session
+    if [ $? != 0 ]; then
+      tmux new-session -s $session -d
+    fi
+    tmux attach -t $session
+  fi
 else
-	session=$1
+  session=$1
 
-	tmux has-session -t $session
-	if [ $? != 0 ]; then
-		tmux new-session -s $session -d
-	fi
-	tmux attach -t $session
+  tmux has-session -t $session
+  if [ $? != 0 ]; then
+    tmux new-session -s $session -d
+  fi
+  tmux attach -t $session
 fi
 
