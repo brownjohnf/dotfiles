@@ -106,6 +106,11 @@ eval "$(pyenv init -)"
 PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# Heroku Toolbelt
+if [ -d "/usr/local/heroku/bin" ]; then
+  PATH="/usr/local/heroku/bin:$PATH"
+fi
+
 func dm-devbox ()
 {
   export DOCKER_TLS_VERIFY=1;
