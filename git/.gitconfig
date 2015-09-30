@@ -1,10 +1,10 @@
 [user]
 	name = John (Jack) Brown
-	email = jackb@tune.com
+	email = jack@brownjohnf.com
 [color]
 	ui = true
 [github]
-	user = hasJackb
+	user = brownjohnf
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset' --abbrev-commit
 [push]
