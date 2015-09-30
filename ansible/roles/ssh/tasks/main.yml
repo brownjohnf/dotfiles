@@ -6,12 +6,6 @@
     path: "/home/{{user}}/.ssh"
     state: directory
 
-- copy:
-    content: ""
-    dest: "/home/{{user}}/.ssh/known_hosts"
-    state: present
-    force: no
-
 - template:
     src: authorized_keys
     dest: "/home/{{user}}/.ssh"

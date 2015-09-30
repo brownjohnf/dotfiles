@@ -53,11 +53,6 @@ mkdir -p $HOME/.config/sublime-text-3/Packages/User
 ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
   $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
-# ssh
-mkdir -p $HOME/.ssh
-ln -fs $HERE/ssh/config $HOME/.ssh/config
-chmod -R 0600 $HOME/.ssh/config
-
 # custom binaries
 mkdir -p $binpath
 for binary in genpass zap copy docker.sh vault psgrep muxme set-ssh-perms rebase.sh; do

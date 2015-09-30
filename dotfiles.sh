@@ -202,10 +202,6 @@ case $1 in
         ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
           $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
         ;;
-      'ssh')
-        echo '--> Ensuring ssh directory is present...'
-        mkdir -p $HOME/.ssh
-        ;;
       'i3')
         echo '--> Setting up i3 config...'
         mkdir -p $HOME/.i3
