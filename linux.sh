@@ -49,8 +49,8 @@ ln -fs $HERE/ruby/.irbrc $HOME/.irbrc
 touch $HOME/.irb_history
 
 # rbenv
-if [ -f $HOME/.rbenv ]; then
-  $(cd $HOME/.rbenv && git pull)
+if [ -d $HOME/.rbenv ]; then
+  (cd $HOME/.rbenv && git pull)
 else
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
