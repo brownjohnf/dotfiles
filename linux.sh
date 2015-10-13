@@ -48,6 +48,16 @@ ln -fs $HERE/git/.gitconfig           $HOME/.gitconfig
 ln -fs $HERE/ruby/.irbrc $HOME/.irbrc
 touch $HOME/.irb_history
 
+# rbenv
+if [ -f $HOME/.rbenv ]; then
+  $(cd $HOME/.rbenv && git pull)
+else
+  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+  echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
+
 # sublime
 mkdir -p $HOME/.config/sublime-text-3/Packages/User
 ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
