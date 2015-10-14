@@ -48,3 +48,4 @@ sudo aptitude update
 sudo aptitude install -y spotify-client hipchat
 
 ./linux.sh
+

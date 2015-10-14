@@ -53,9 +53,14 @@ if [ -d $HOME/.rbenv ]; then
   (cd $HOME/.rbenv && git pull)
 else
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-  echo 'eval "$(rbenv init -)"' >> ~/.bashrc
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
+
+# pyenv
+if [ -d $HOME/.pyenv ]; then
+  (cd $HOME/.pyenv && git pull)
+else
+  git clone https://github.com/yyuu/pyenv.git ~/.pyenv
 fi
 
 # sublime
@@ -139,9 +144,9 @@ sudo ln -fs /usr/local/bin/docker-compose-1.4.0 /usr/local/bin/docker-compose
 
 # legacy docker versions for compatibility
 for binary in docker-1.6.2; do
-sudo sh -c "
-curl -L https://get.docker.com/builds/Linux/x86_64/$binary \
-  > /usr/local/bin/$binary && \
-  chmod +x /usr/local/bin/$binary
-"
+  [[ -f /usr/local/bin/$binary ]] || sudo sh -c "
+  curl -L https://get.docker.com/builds/Linux/x86_64/$binary \
+    > /usr/local/bin/$binary && \
+    chmod +x /usr/local/bin/$binary
+  "
 done
