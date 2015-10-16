@@ -17,7 +17,8 @@ sudo aptitude update && sudo aptitude install -y \
 	vlc libreadline-dev firefox nethogs iotop iftop xsel xfce4-terminal \
 	nmap whois network-manager-openvpn nfs-common \
 	i3 i3-wm i3lock i3status xinit x11-xserver-utils xfce4-terminal \
-	python-numpy python-opengl openscad python-wxgtk2.8 zsh tmux
+	python-numpy python-opengl openscad python-wxgtk2.8 zsh tmux \
+  ipcalc
 
 # Sublime & Cura
 curl "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb" > /tmp/sublime.deb

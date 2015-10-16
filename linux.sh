@@ -104,6 +104,26 @@ else
   git clone https://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 fi
 
+# nodenv
+if [ -d $HOME/.nodenv ]; then
+  echo '--> Upgrading nodenv...'
+  (cd $HOME/.nodenv && git pull --rebase origin master)
+else
+  echo '--> Installing nodenv...'
+  git clone https://github.com/OiNutter/nodenv.git $HOME/.nodenv
+fi
+
+
+# node-build
+if [ -d $HOME/.nodenv/plugins/node-build ]; then
+  echo '--> Upgrading node-build...'
+  (cd $HOME/.nodenv/plugins/node-build && git pull --rebase origin master)
+else
+  echo '--> Installing node-build...'
+  git clone https://github.com/OiNutter/node-build.git $HOME/.nodenv/plugins/node-build
+fi
+
+
 # oh-my-zsh
 [[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 

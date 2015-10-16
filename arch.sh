@@ -16,6 +16,7 @@ sudo pacman -S --needed \
   htop \
   i3-wm \
   iotop \
+  ipcalc \
   linux-headers \
   makepasswd \
   nodejs \
@@ -24,6 +25,7 @@ sudo pacman -S --needed \
   openssh \
   parted \
   qt4 \
+  readline \
   redshift \
   rsync \
   ruby \
