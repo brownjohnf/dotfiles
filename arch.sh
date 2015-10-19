@@ -6,7 +6,7 @@ HERE="$HOME/dotfiles"
 binpath=$HOME/.bin
 
 # install packages
-sudo pacman -S --needed \
+sudo pacman -Syy --needed \
   btrfs-progs \
   chromium \
   colordiff \
