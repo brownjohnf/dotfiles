@@ -106,6 +106,9 @@ eval "$(pyenv init -)"
 PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# nvm
+source $HOME/.nvm/nvm.sh
+
 # Heroku Toolbelt
 if [ -d "/usr/local/heroku/bin" ]; then
   PATH="/usr/local/heroku/bin:$PATH"

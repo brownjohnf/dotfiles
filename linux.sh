@@ -50,10 +50,20 @@ touch $HOME/.irb_history
 
 # rbenv
 if [ -d $HOME/.rbenv ]; then
-  (cd $HOME/.rbenv && git pull)
+  echo '--> Upgrading rbenv...'
+  (cd $HOME/.rbenv && git pull --rebase origin master)
 else
-  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  echo '--> Installing rbenv...'
+  git clone https://github.com/sstephenson/rbenv.git $HOME/.rbenv
+fi
+
+# rbenv-install
+if [ -d $HOME/.rbenv/plugins/ruby-build ]; then
+  echo '--> Upgrading rbenv-install...'
+  (cd $HOME/.rbenv/plugins/ruby-build && git pull --rebase origin master)
+else
+  echo '--> Installing rbenv-install'
+  git clone https://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 fi
 
 # pyenv
@@ -62,6 +72,14 @@ if [ -d $HOME/.pyenv ]; then
 else
   git clone https://github.com/yyuu/pyenv.git ~/.pyenv
 fi
+
+# nvm
+if [ -d $HOME/.nvm ]; then
+  (cd $HOME/.nvm && git fetch)
+else
+  git clone https://github.com/creationix/nvm.git $HOME/.nvm
+fi
+(cd $HOME/.nvm && git checkout `git describe --abbrev=0 --tags`)
 
 # sublime
 mkdir -p $HOME/.config/sublime-text-3/Packages/User
@@ -85,44 +103,6 @@ if [ -f /etc/i3status.conf ]; then
     cp /etc/i3status.conf $HOME/.i3status.conf
   fi
 fi
-
-# rbenv
-if [ -d $HOME/.rbenv ]; then
-  echo '--> Upgrading rbenv...'
-  (cd $HOME/.rbenv && git pull --rebase origin master)
-else
-  echo '--> Installing rbenv...'
-  git clone https://github.com/sstephenson/rbenv.git $HOME/.rbenv
-fi
-
-# rbenv-install
-if [ -d $HOME/.rbenv/plugins/ruby-build ]; then
-  echo '--> Upgrading rbenv-install...'
-  (cd $HOME/.rbenv/plugins/ruby-build && git pull --rebase origin master)
-else
-  echo '--> Installing rbenv-install'
-  git clone https://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-fi
-
-# nodenv
-if [ -d $HOME/.nodenv ]; then
-  echo '--> Upgrading nodenv...'
-  (cd $HOME/.nodenv && git pull --rebase origin master)
-else
-  echo '--> Installing nodenv...'
-  git clone https://github.com/OiNutter/nodenv.git $HOME/.nodenv
-fi
-
-
-# node-build
-if [ -d $HOME/.nodenv/plugins/node-build ]; then
-  echo '--> Upgrading node-build...'
-  (cd $HOME/.nodenv/plugins/node-build && git pull --rebase origin master)
-else
-  echo '--> Installing node-build...'
-  git clone https://github.com/OiNutter/node-build.git $HOME/.nodenv/plugins/node-build
-fi
-
 
 # oh-my-zsh
 [[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

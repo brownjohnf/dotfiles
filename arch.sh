@@ -32,6 +32,7 @@ sudo pacman -S --needed \
   sudo \
   terminator \
   tmux \
+  traceroute \
   unzip \
   uzbl-browser \
   vagrant \
