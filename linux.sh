@@ -93,7 +93,10 @@ for binary in genpass zap copy docker.sh psgrep muxme set-ssh-perms rebase.sh; d
 done
 
 # vault
-wget https://raw.githubusercontent.com/brownjohnf/vault/master/bin/vault -O $binpath/vault
+for util in vault; do
+  wget https://raw.githubusercontent.com/brownjohnf/$util/master/bin/$util -O $binpath/$util
+  chmod +x $binpath/$util
+done
 
 # i3
 if [ -f /etc/i3status.conf ]; then
