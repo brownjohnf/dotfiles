@@ -88,9 +88,12 @@ ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
 
 # custom binaries
 mkdir -p $binpath
-for binary in genpass zap copy docker.sh vault psgrep muxme set-ssh-perms rebase.sh; do
+for binary in genpass zap copy docker.sh psgrep muxme set-ssh-perms rebase.sh; do
   ln -fs $HERE/bin/$binary      $binpath/$binary
 done
+
+# vault
+wget https://raw.githubusercontent.com/brownjohnf/vault/master/bin/vault -O $binpath/vault
 
 # i3
 if [ -f /etc/i3status.conf ]; then
@@ -150,3 +153,6 @@ for binary in docker-1.6.2; do
     chmod +x /usr/local/bin/$binary
   "
 done
+
+echo "SUCCESS"
+

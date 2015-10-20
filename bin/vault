@@ -66,6 +66,7 @@ case $command in
     echo "--> Your new volume is encrypted, formatted, and mounted at /mnt/$mountpoint"
   ;;
   *)
-    echo "Usage: $0 [mount|umount|create|--help] /path/to/dev3 mntpoint"
+    echo "Usage: $0 [mount|umount|create|--help] /path/to/dev3 mountpoint"
   ;;
 esac
+
