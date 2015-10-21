@@ -88,8 +88,13 @@ ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
 
 # custom binaries
 mkdir -p $binpath
-for binary in genpass zap copy docker.sh psgrep muxme set-ssh-perms rebase.sh; do
+for binary in genpass zap copy curldiff docker.sh psgrep muxme set-ssh-perms rebase.sh; do
   ln -fs $HERE/bin/$binary      $binpath/$binary
+done
+
+# Clean up legacy symlinks for new per-repo install
+for binary in vault; do
+  [ -h $binpath/$binary ] && rm $binpath/$binary
 done
 
 # vault

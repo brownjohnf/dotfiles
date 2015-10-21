@@ -1,0 +1,9 @@
+#!/bin/bash
+
+which icdiff || (echo 'Missing icdiff (https://github.com/jeffkaufman/icdiff)!'; exit 1)
+which curl || (echo 'Missing curl!'; exit 1)
+which less || (echo 'Missing less!'; exit 1)
+
+# This makes 2 curl requests and sends them to icdiff
+icdiff -u <(curl -sS -D - -L $1) <(curl -sS -D - -L $2) | less
+
