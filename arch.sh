@@ -9,6 +9,7 @@ binpath=$HOME/.bin
 sudo pacman -S --needed \
   btrfs-progs \
   chromium \
+  colordiff \
   dnsutils \
   epiphany \
   firefox \
@@ -18,6 +19,7 @@ sudo pacman -S --needed \
   iotop \
   ipcalc \
   linux-headers \
+  lsof \
   makepasswd \
   nodejs \
   nethogs \
