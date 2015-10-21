@@ -3,11 +3,18 @@
 set -e
 set -x
 
-git fetch origin
-git fetch upstream
-git pull --rebase upstream master
+# Detect the correct remote to use for rebasing
+if [ $(git remote | grep upstream | wc -l) -gt 0 ]; then
+  remote=upstream
+else
+  remote=origin
+fi
 
-if [ -f rebase.local.sh ]; then
-  ./rebase.local.sh
+git fetch origin
+git fetch $remote
+git pull --rebase $remote master
+
+if [ -f .rebase.local.sh ]; then
+  ./.rebase.local.sh
 fi
 
