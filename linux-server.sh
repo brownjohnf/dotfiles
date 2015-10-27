@@ -24,6 +24,9 @@ ln -fs $HERE/bash/.bash_logout $HOME/.bash_logout
 ln -fs $HERE/bash/.bashrc $HOME/.bashrc
 touch $HOME/.bash_history
 
+# oh-my-zsh
+[[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # zsh
 for f in .zshrc; do
   ln -fs $HERE/zsh/$f $HOME/$f
@@ -114,9 +117,6 @@ if [ -f /etc/i3status.conf ]; then
     cp /etc/i3status.conf $HOME/.i3status.conf
   fi
 fi
-
-# oh-my-zsh
-[[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Docker Machine
 [[ -f /usr/local/bin/docker-machine-0.3.0 ]] || sudo sh -c "

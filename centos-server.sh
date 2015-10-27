@@ -5,7 +5,7 @@ set -x
 
 USER=$(whoami)
 GROUP=$(id -gn)
-HERE="$HOME/dotfiles"
+HERE=$(pwd)
 binpath=$HOME/.bin
 
 echo '--> Installing dependencies...'
@@ -21,8 +21,4 @@ sudo yum update -y && sudo yum install -y \
   wget \
   whois \
   zsh
-
-./linux.sh
-
-chsh -s /bin/zsh
 

@@ -21,14 +21,28 @@ wget -O - https://www.hipchat.com/keys/hipchat-linux.key | sudo apt-key add -
 
 # Go back and install everything
 sudo aptitude update > /dev/null  && sudo aptitude install -y \
-  vim curl htop wget screen git alsa-base unzip \
-  alsa-tools alsa-utils build-essential leafpad \
-  chromium-browser cryptsetup pcmanfm dkms ecryptfs-utils \
-  vlc libreadline-dev firefox nethogs iotop iftop xsel xfce4-terminal \
-  nmap whois network-manager-openvpn nfs-common \
-  i3 i3-wm i3lock i3status xinit x11-xserver-utils xfce4-terminal \
-  python-numpy python-opengl openscad python-wxgtk2.8 zsh tmux \
-  ipcalc spotify-client hipchat \
+  alsa-base \
+  alsa-tools \
+  alsa-utils \
+  chromium-browser \
+  firefox \
+  hipchat \
+  i3 \
+  i3lock \
+  i3status \
+  i3-wm \
+  leafpad \
+  libreadline-dev \
+  network-manager-openvpn \
+  openscad \
+  pcmanfm \
+  spotify-client \
+  vlc \
+  x11-xserver-utils \
+  xfce4-terminal \
+  xinit \
+  xfce4-terminal \
+  xsel \
   > /dev/null
 
 # Sublime & Cura
@@ -38,6 +52,4 @@ sudo dpkg -i /tmp/sublime.deb /tmp/cura.deb > /dev/null
 
 # Docker
 wget -qO- https://get.docker.com/ | sh
-
-./linux.sh
 

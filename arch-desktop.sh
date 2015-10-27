@@ -7,45 +7,21 @@ binpath=$HOME/.bin
 
 # install packages
 sudo pacman -Syy --needed \
-  btrfs-progs \
   chromium \
-  colordiff \
-  dnsutils \
   epiphany \
   firefox \
   gstreamer0.10-base \
   htop \
   i3-wm \
-  iotop \
-  ipcalc \
-  linux-headers \
-  lsof \
-  makepasswd \
-  nodejs \
-  nethogs \
-  net-tools \
-  openssh \
-  parted \
   qt4 \
-  readline \
-  redshift \
   rsync \
-  ruby \
-  sudo \
   terminator \
-  tmux \
-  traceroute \
-  unzip \
   uzbl-browser \
-  vagrant \
-  vim \
   virtualbox \
   vlc \
-  wget \
   xorg \
   xorg-xinit \
-  xsel \
-  zsh
+  xsel
 
 # grab AUR packages
 mkdir -p $HOME/builds
@@ -66,6 +42,4 @@ fi
 # set the default browser to firefox
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
-
-./linux.sh
 
