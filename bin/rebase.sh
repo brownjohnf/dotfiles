@@ -7,7 +7,6 @@ set -x
 if [ $(git remote | grep upstream | wc -l) -gt 0 ]; then
   remote=upstream
 else
-  git fetch origin
   remote=origin
 fi
 
