@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ps -efwww | grep --color $1
+ps -efwww | grep --color $* | grep -v grep
 

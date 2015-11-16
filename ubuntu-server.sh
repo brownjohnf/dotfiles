@@ -9,10 +9,11 @@ HERE="$HOME/dotfiles"
 binpath=$HOME/.bin
 
 echo '--> Installing dependencies...'
-sudo apt-get update -y > /dev/null && sudo apt-get install -y aptitude > /dev/null
+sudo apt-get update -y && sudo apt-get install -y aptitude
 
 # Go back and install everything
-sudo aptitude update > /dev/null  && sudo aptitude install -y \
+sudo aptitude update && sudo aptitude install \
+  apache2-bench \
   build-essential \
   cryptsetup \
   curl \
@@ -24,22 +25,28 @@ sudo aptitude update > /dev/null  && sudo aptitude install -y \
   ipcalc \
   htop \
   libreadline-dev \
+  libssl-dev \
   nethogs \
   nfs-common \
   nmap \
-  python-numpy \
-  python-opengl \
-  python-wxgtk2.8 \
+  libsqlite3-dev \
+  libxml2-dev \
+  terminator \
   tmux \
+  traceroute \
+  tree \
   unzip \
   vim \
   wget \
   whois \
-  zsh \
-  > /dev/null
+  zlib1g-dev \
+  zsh
 
 # Docker
 wget -qO- https://get.docker.com/ | sh
+
+# Heroku
+wget -O- https://toolbelt.heroku.com/install.sh | sh
 
 ./linux-server.sh
 

@@ -7,11 +7,11 @@ set -x
 if [ $(git remote | grep upstream | wc -l) -gt 0 ]; then
   remote=upstream
 else
+  git fetch origin
   remote=origin
 fi
 
-git fetch origin
-git fetch $remote
+git remote update
 git pull --rebase $remote master
 
 if [ -f .rebase.local.sh ]; then

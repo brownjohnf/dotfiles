@@ -9,7 +9,7 @@ HERE="$HOME/dotfiles"
 binpath=$HOME/.bin
 
 echo '--> Installing dependencies...'
-sudo apt-get update -y > /dev/null && sudo apt-get install -y aptitude > /dev/null
+[ -f "$(which aptitude)" ] || (sudo apt-get update -y > /dev/null && sudo apt-get install -y aptitude > /dev/null)
 
 # Spotify
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
@@ -20,12 +20,13 @@ echo deb http://downloads.hipchat.com/linux/apt stable main | sudo tee /etc/apt/
 wget -O - https://www.hipchat.com/keys/hipchat-linux.key | sudo apt-key add -
 
 # Go back and install everything
-sudo aptitude update > /dev/null  && sudo aptitude install -y \
+sudo aptitude update && sudo aptitude install -y \
   alsa-base \
   alsa-tools \
   alsa-utils \
   chromium-browser \
   firefox \
+  gparted \
   hipchat \
   i3 \
   i3lock \
@@ -36,14 +37,17 @@ sudo aptitude update > /dev/null  && sudo aptitude install -y \
   network-manager-openvpn \
   openscad \
   pcmanfm \
+  python-numpy \
+  python-opengl \
+  python-wxgtk2.8 \
+  redshift \
   spotify-client \
   vlc \
   x11-xserver-utils \
   xfce4-terminal \
   xinit \
   xfce4-terminal \
-  xsel \
-  > /dev/null
+  xsel
 
 # Sublime & Cura
 curl "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb" > /tmp/sublime.deb

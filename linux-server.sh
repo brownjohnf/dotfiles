@@ -106,10 +106,15 @@ for util in vault; do
   chmod +x $binpath/$util
 done
 
-# i3
-if [ -f /etc/i3status.conf ]; then
+if [ -f $HOME/.i3/config ]; then
+  echo "--> .i3 installed"
+else
   mkdir -p $HOME/.i3
   ln -fs $HERE/i3/.i3/config $HOME/.i3/config
+fi
+
+# i3
+if [ -f /etc/i3status.conf ]; then
   if [ -f $HOME/.i3status.conf ]; then
     echo "--> i3status config already in place; skipping."
   else
