@@ -23,7 +23,7 @@ if [ -d $HOME/.vim/bundle/nerdtree ]; then
   ( cd $HOME/.vim/bundle/nerdtree && git pull )
 else
   echo "--> Installing nerdtree..."
-  git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
+  git clone https://github.com/scrooloose/nerdtree $HOME/.vim/bundle/nerdtree
 fi
 
 # ctrlp
@@ -31,7 +31,7 @@ if [ -d $HOME/.vim/bundle/ctrlp.vim ]; then
   ( cd $HOME/.vim/bundle/ctrlp.vim && git pull )
 else
   echo "--> Installing nerdtree..."
-  git clone https://github.com/scrooloose/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
+  git clone https://github.com/ctrlpvim/ctrlp.vim $HOME/.vim/bundle/ctrlp.vim
 fi
 
 if [ -d $HOME/.vim/bundle/vim-go ]; then
