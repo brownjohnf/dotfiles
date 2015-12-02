@@ -1,13 +1,5 @@
+execute pathogen#infect()
 set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-call vundle#end()
-map <C-n> :NERDTreeToggle<CR>
 
 set t_Co=256
 set background=dark
@@ -36,12 +28,11 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
-syntax enable
-filetype on
-filetype plugin on
-filetype indent on
+" Set up custom mappings
+map <C-n> :NERDTreeToggle<CR>
 
-
+syntax on
+filetype plugin indent on
 
 " clean up trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e

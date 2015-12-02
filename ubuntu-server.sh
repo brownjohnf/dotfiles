@@ -13,12 +13,14 @@ sudo apt-get update -y && sudo apt-get install -y aptitude
 
 # Go back and install everything
 sudo aptitude update && sudo aptitude install \
+  ack-grep \
   apache2-bench \
   build-essential \
   cryptsetup \
   curl \
   dkms \
   ecryptfs-utils \
+  exuberant-ctags \
   git \
   iftop \
   iotop \

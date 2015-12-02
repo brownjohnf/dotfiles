@@ -8,7 +8,7 @@ export ZSH=/home/$(whoami)/.oh-my-zsh
 ZSH_THEME="jackb"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -97,6 +97,7 @@ alias dc=docker-compose
 alias dm=docker-machine
 alias rc=rancher-compose
 alias be="bundle exec"
+alias cdd="cd ~/Downloads"
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
@@ -121,6 +122,4 @@ func dm-devbox ()
   export DOCKER_CERT_PATH="/home/jackb/benjamin/.docker/certs/client/dev";
   export DOCKER_HOST="tcp://dp-jackb01-dev.sea1.office.priv:2376"
 }
-
-PATH="/usr/local/heroku/bin:$PATH"
 
