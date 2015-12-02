@@ -23,6 +23,7 @@ sudo pacman -Syy --needed \
   parted \
   readline \
   rsync \
+  sshpass \
   sudo \
   tmux \
   traceroute \

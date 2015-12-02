@@ -8,12 +8,30 @@ GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
 binpath=$HOME/bin
 
-if [ -d $HOME/.vim/bundle/Vundle.vim ]; then
-  echo "--> Updating vundle..."
-  (cd $HOME/.vim/bundle/Vundle.vim && git pull --rebase origin master)
+# Setup pathogen for vim plugin management
+mkdir -p $HOME/.vim/{autoload,bundle}
+if [ -d $HOME/.vim/autoload/pathogen.vim ]; then
+  echo "--> Pathogen.vim installed."
 else
-  echo "--> Installing Vundle..."
-  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+  echo "--> Installing pathogen.vim..."
+  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+fi
+
+# Install plugins
+# NerdTree
+if [ -d $HOME/.vim/bundle/nerdtree ]; then
+  ( cd $HOME/.vim/bundle/nerdtree && git pull )
+else
+  echo "--> Installing nerdtree..."
+  git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
+fi
+
+# ctrlp
+if [ -d $HOME/.vim/bundle/ctrlp.vim ]; then
+  ( cd $HOME/.vim/bundle/ctrlp.vim && git pull )
+else
+  echo "--> Installing nerdtree..."
+  git clone https://github.com/scrooloose/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
 fi
 
 if [ -d $HOME/.vim/bundle/vim-go ]; then
