@@ -123,7 +123,8 @@ func dm-devbox ()
   export DOCKER_HOST="tcp://dp-jackb01-dev.sea1.office.priv:2376"
 }
 
-export GOPATH=~/go
+PATH=/data/go/bin:$PATH
+export GOPATH=/data/go
 
 # added by travis gem
 [ -f /home/jackb/.travis/travis.sh ] && source /home/jackb/.travis/travis.sh
