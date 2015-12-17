@@ -7,6 +7,7 @@ binpath=$HOME/.bin
 
 # install packages
 sudo pacman -Syy --needed \
+  ack \
   btrfs-progs \
   colordiff \
   dnsutils \

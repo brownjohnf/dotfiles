@@ -136,11 +136,14 @@ for version in 0.3.0 0.4.0; do
   "
 done
 
-rm -f /tmp/docker-machine*
-curl -L https://github.com/docker/machine/releases/download/v0.5.0/docker-machine_linux-amd64.zip > /tmp/machine.zip && \
-unzip /tmp/machine.zip && \
-rm /tmp/machine.zip && \
-sudo mv docker-machine* /usr/local/bin
+if [ "$(docker-machine --version | grep '0.5.0' | wc -l)" != "1" ]; then
+  rm -f /tmp/docker-machine*
+  curl -L https://github.com/docker/machine/releases/download/v0.5.0/docker-machine_linux-amd64.zip > /tmp/machine.zip && \
+  unzip /tmp/machine.zip && \
+  rm /tmp/machine.zip && \
+  sudo mv docker-machine* /usr/local/bin
+  rm -f /tmp/docker-machine*
+fi
 
 # Docker Compose
 [[ -f /usr/local/bin/docker-compose-1.3.1 ]] || sudo sh -c "

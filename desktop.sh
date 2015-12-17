@@ -1,12 +1,15 @@
 #!/bin/bash
 
 set -e
+set -x
+
+./server.sh
 
 if [ $(uname -a | grep Ubuntu | wc -l) -gt 0 ]; then
   echo '--> Assuming Ubuntu... (5s)'
   sleep 5
   ./ubuntu-desktop.sh
-elif [ $(uname -a | grep Arch | wc -l) -gt 0 ]; then
+elif [ $(uname -a | grep ARCH | wc -l) -gt 0 ]; then
   echo '--> Assuming Arch... (5s)'
   sleep 5
   ./arch-desktop.sh
