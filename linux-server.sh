@@ -26,6 +26,10 @@ touch $HOME/.bash_history
 
 # oh-my-zsh
 [[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Install my custom profile(s)
+for f in jackb; do
+  ln -fs $HERE/zsh/$f.zsh-theme $HOME/.oh-my-zsh/themes/$f.zsh-theme
+done
 
 # zsh
 for f in .zshrc; do

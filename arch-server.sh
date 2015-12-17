@@ -15,7 +15,7 @@ sudo pacman -Syy --needed \
   ipcalc \
   linux-headers \
   lsof \
-  makepasswd \
+  #makepasswd \ need to install from AUR
   nethogs \
   net-tools \
   openssh \
