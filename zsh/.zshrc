@@ -125,6 +125,7 @@ func dm-devbox ()
 
 PATH=/data/go/bin:/usr/local/go/bin:$PATH
 export GOPATH=/data/go
+PATH=/data/go/bin:$PATH
 
 # added by travis gem
 [ -f /home/jackb/.travis/travis.sh ] && source /home/jackb/.travis/travis.sh
