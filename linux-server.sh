@@ -16,6 +16,30 @@ else
   git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 fi
 
+if [ -d $HOME/.vim/bundle/vim-go ]; then
+  echo "--> Updating vim-go"
+  (cd $HOME/.vim/bundle/vim-go && git pull --rebase origin master)
+else
+  echo "--> Installing vim-go"
+  git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+fi
+
+if [ -d $HOME/.vim/bundle/nerdtree ]; then
+  echo "--> Updating nerdtree"
+  (cd $HOME/.vim/bundle/nerdtree && git pull --rebase origin master)
+else
+  echo "--> Installing nerdtree"
+  git clone https://github.com/scrooloose/nerdtree.git ~/vim/bundle/nerdtree
+fi
+
+if [ -d $HOME/.vim/bundle/ctrlp.vim ]; then
+  echo "--> Updating ctrlp.vim"
+  (cd $HOME/.vim/bundle/ctrlp.vim && git pull --rebase origin master)
+else
+  echo "--> Installing ctrlp.vim"
+  git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/vim/bundle/ctrlp.vim
+fi
+
 # bash
 ln -fs $HERE/bash/.bash_aliases $HOME/.bash_aliases
 ln -fs $HERE/bash/.bash_profile $HOME/.bash_profile
