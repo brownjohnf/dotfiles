@@ -13,8 +13,6 @@ set history=100
 set wildmode=list:longest
 set smartcase
 set title
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set tabstop=2
 set shiftwidth=2
 set equalalways " always set window splits to equal heights
