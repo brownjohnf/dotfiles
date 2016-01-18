@@ -21,7 +21,7 @@ if [ -d $HOME/.vim/bundle/vim-go ]; then
   (cd $HOME/.vim/bundle/vim-go && git pull --rebase origin master)
 else
   echo "--> Installing vim-go"
-  git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+  git clone https://github.com/fatih/vim-go.git $HOME/.vim/bundle/vim-go
 fi
 
 if [ -d $HOME/.vim/bundle/nerdtree ]; then
@@ -29,7 +29,7 @@ if [ -d $HOME/.vim/bundle/nerdtree ]; then
   (cd $HOME/.vim/bundle/nerdtree && git pull --rebase origin master)
 else
   echo "--> Installing nerdtree"
-  git clone https://github.com/scrooloose/nerdtree.git ~/vim/bundle/nerdtree
+  git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
 fi
 
 if [ -d $HOME/.vim/bundle/ctrlp.vim ]; then
@@ -37,7 +37,7 @@ if [ -d $HOME/.vim/bundle/ctrlp.vim ]; then
   (cd $HOME/.vim/bundle/ctrlp.vim && git pull --rebase origin master)
 else
   echo "--> Installing ctrlp.vim"
-  git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/vim/bundle/ctrlp.vim
+  git clone https://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
 fi
 
 # bash
