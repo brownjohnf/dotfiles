@@ -43,3 +43,6 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
+autocmd FileType go set nolist
+autocmd FileType go set noexpandtab
+
