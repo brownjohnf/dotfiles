@@ -1,4 +1,4 @@
 #!/bin/bash
 
-tr -d '\n' | xsel --clipboard --input
+xsel --clipboard --input
 
