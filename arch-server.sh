@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 USER=$(whoami)
 GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
@@ -8,7 +11,6 @@ binpath=$HOME/.bin
 # install packages
 sudo pacman -Syy --needed \
   ack \
-  btrfs-progs \
   colordiff \
   dnsutils \
   htop \
@@ -16,7 +18,6 @@ sudo pacman -Syy --needed \
   ipcalc \
   linux-headers \
   lsof \
-  #makepasswd \ need to install from AUR
   nethogs \
   net-tools \
   openssh \

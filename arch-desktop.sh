@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 USER=$(whoami)
 GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
@@ -7,13 +10,23 @@ binpath=$HOME/.bin
 
 # install packages
 sudo pacman -Syy --needed \
+  alsa-utils \
+  android-tools \
   chromium \
+  cups \
+  cups-pdf \
+  docker \
   epiphany \
   firefox \
+  ghostscript \
+  go \
+  gsfonts \
   gstreamer0.10-base \
   htop \
-  i3-wm \
+  i3 \
+  openvpn \
   qt4 \
+  redshift \
   rsync \
   terminator \
   uzbl-browser \
@@ -26,7 +39,7 @@ sudo pacman -Syy --needed \
 # grab AUR packages
 mkdir -p $HOME/builds
 if ![ -f $HOME/builds/sublime-text-dev.tar.gz ]; then
-  curl https://aur.archlinux.org/packages/su/sublime-text-dev/sublime-text-dev.tar.gz > $HOME/builds/sublime-text-dev.tar.gz
+  echo "TODO: get makepasswd"
 fi
 echo "--> Downloaded suggested AUR archives to ~/builds."
 
@@ -40,6 +53,7 @@ else
 fi
 
 # set the default browser to firefox
+mkdir -p $HOME/.local/share/applications
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 

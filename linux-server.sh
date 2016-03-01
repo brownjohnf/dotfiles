@@ -169,54 +169,5 @@ if [ -f /etc/i3status.conf ]; then
   fi
 fi
 
-# Docker Machine
-for version in 0.3.0 0.4.0; do
-  [[ -f "/usr/local/bin/docker-machine-$version" ]] || sudo sh -c "
-  curl -L https://github.com/docker/machine/releases/download/v$version/docker-machine_linux-amd64 > \
-    /usr/local/bin/docker-machine-$version && \
-    chmod +x /usr/local/bin/docker-machine-$version
-  "
-done
-
-if [ "$(docker-machine --version | grep '0.5.0' | wc -l)" != "1" ]; then
-  rm -f /tmp/docker-machine*
-  curl -L https://github.com/docker/machine/releases/download/v0.5.0/docker-machine_linux-amd64.zip > /tmp/machine.zip && \
-  unzip /tmp/machine.zip && \
-  rm /tmp/machine.zip && \
-  sudo mv docker-machine* /usr/local/bin
-  rm -f /tmp/docker-machine*
-fi
-
-# Docker Compose
-[[ -f /usr/local/bin/docker-compose-1.3.1 ]] || sudo sh -c "
-curl -L https://github.com/docker/compose/releases/download/1.3.1/docker-compose-Linux-x86_64 \
-  > /usr/local/bin/docker-compose-1.3.1 && \
-  chmod +x /usr/local/bin/docker-compose-1.3.1
-"
-[[ -f /usr/local/bin/docker-compose-1.4.0 ]] || sudo sh -c "
-curl -L https://github.com/docker/compose/releases/download/1.4.0/docker-compose-Linux-x86_64 \
-  > /usr/local/bin/docker-compose-1.4.0 && \
-  chmod +x /usr/local/bin/docker-compose-1.4.0
-"
-sudo ln -fs /usr/local/bin/docker-compose-1.4.0 /usr/local/bin/docker-compose
-
-# Rancher Compose
-# sudo sh -c "
-# curl -L https://releases.rancher.com/compose/latest/rancher-compose-linux-amd64.tar.gz \
-#  > /tmp/rancher-compose.tar.gz && \
-#  cp /tmp/rancher-compose/rancher-compose /usr/local/bin/rancher-compose && \
-#  /usr/local/bin/rancher-compose && \
-#  chmod +x /usr/local/bin/rancher-compose
-#"
-
-# legacy docker versions for compatibility
-for binary in docker-1.6.2; do
-  [[ -f /usr/local/bin/$binary ]] || sudo sh -c "
-  curl -L https://get.docker.com/builds/Linux/x86_64/$binary \
-    > /usr/local/bin/$binary && \
-    chmod +x /usr/local/bin/$binary
-  "
-done
-
 echo "SUCCESS"
 
