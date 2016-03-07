@@ -12,7 +12,9 @@ binpath=$HOME/.bin
 sudo pacman -Syy --needed \
   ack \
   colordiff \
+  cronie \
   dnsutils \
+  gnupg \
   htop \
   iotop \
   ipcalc \
@@ -22,6 +24,7 @@ sudo pacman -Syy --needed \
   net-tools \
   openssh \
   parted \
+  pssh \
   readline \
   rsync \
   sshpass \
@@ -32,5 +35,6 @@ sudo pacman -Syy --needed \
   vagrant \
   vim \
   wget \
+  zip \
   zsh
 

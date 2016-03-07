@@ -169,5 +169,33 @@ if [ -f /etc/i3status.conf ]; then
   fi
 fi
 
+# Docker Machine
+for version in 0.3.0 0.4.0; do
+  [[ -f "/usr/local/bin/docker-machine-$version" ]] || sudo sh -c "
+  curl -L https://github.com/docker/machine/releases/download/v$version/docker-machine_linux-amd64 > \
+    /usr/local/bin/docker-machine-$version && \
+    chmod +x /usr/local/bin/docker-machine-$version
+  "
+done
+
+if [ "$(docker-machine --version | grep '0.5.0' | wc -l)" != "1" ]; then
+  rm -f /tmp/docker-machine*
+  curl -L https://github.com/docker/machine/releases/download/v0.5.0/docker-machine_linux-amd64.zip > /tmp/machine.zip && \
+  unzip /tmp/machine.zip && \
+  rm /tmp/machine.zip && \
+  sudo mv docker-machine* /usr/local/bin
+  rm -f /tmp/docker-machine*
+fi
+
+# Docker Compose
+for version in 1.3.1 1.4.0 1.6.2; do
+  [[ -f "/usr/local/bin/docker-compose-$version" ]] || sudo sh -c "
+  curl -L https://github.com/docker/compose/releases/download/$version/docker-compose-Linux-x86_64 \
+    > /usr/local/bin/docker-compose-$version && \
+    chmod +x /usr/local/bin/docker-compose-$version
+  "
+done
+sudo ln -fs /usr/local/bin/docker-compose-1.6.2 /usr/local/bin/docker-compose
+
 echo "SUCCESS"
 
