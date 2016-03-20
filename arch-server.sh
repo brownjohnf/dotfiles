@@ -13,6 +13,7 @@ sudo pacman -Syy --needed \
   ack \
   colordiff \
   cronie \
+  ctags \
   dnsutils \
   gnupg \
   htop \
