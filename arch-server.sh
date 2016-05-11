@@ -23,11 +23,13 @@ sudo pacman -Syy --needed \
   nethogs \
   net-tools \
   openssh \
+  openssl \
   parted \
   pssh \
   readline \
   rsync \
   sshpass \
+  sysdig \
   sudo \
   tmux \
   traceroute \

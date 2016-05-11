@@ -101,6 +101,7 @@ alias dm=docker-machine
 alias rc=rancher-compose
 alias be="bundle exec"
 alias cdd="cd ~/Downloads"
+alias fprint="ssh-keygen -l -E md5 -f"
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"

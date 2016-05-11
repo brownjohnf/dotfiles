@@ -57,3 +57,9 @@ mkdir -p $HOME/.local/share/applications
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
+echo "--> Setup complete. Consider installing the following from the AUR:
+* slack-desktop
+* spoty
+* wrk
+"
+
