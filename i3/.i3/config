@@ -196,6 +196,6 @@ workspace_auto_back_and_forth yes
 # exec --no-startup-id feh --bg-max -B white mdhq_by_tune_logo.png
 # exec --no-startup-id redshift -l 47.6400663:-122.3303218
 
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10%
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10%
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2%
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2%
 
