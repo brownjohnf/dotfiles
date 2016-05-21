@@ -2,7 +2,9 @@
 export ZSH=/home/$(whoami)/.oh-my-zsh
 
 # Disable bell in X
-xset -b
+if [ "$TERM" != "linux" ]; then
+  xset -b
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
