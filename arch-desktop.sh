@@ -9,7 +9,7 @@ HERE="$HOME/dotfiles"
 binpath=$HOME/.bin
 
 # install packages
-sudo pacman -Syy --needed \
+sudo pacman -S --needed \
   alsa-utils \
   android-tools \
   chromium \
@@ -28,6 +28,7 @@ sudo pacman -Syy --needed \
   qt4 \
   redshift \
   rsync \
+  sane \
   terminator \
   uzbl-browser \
   virtualbox \
@@ -62,4 +63,6 @@ echo "--> Setup complete. Consider installing the following from the AUR:
 * spoty
 * wrk
 "
+
+1>&2 echo "! Install brscan4 from AUR for scanning support with Brother DCP-L25400W"
 

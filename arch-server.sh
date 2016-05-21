@@ -9,7 +9,7 @@ HERE="$HOME/dotfiles"
 binpath=$HOME/.bin
 
 # install packages
-sudo pacman -Syy --needed \
+sudo pacman -S --needed \
   ack \
   colordiff \
   cronie \
