@@ -33,11 +33,14 @@ sudo pacman -S --needed \
   sysdig \
   sudo \
   tmux \
+  the_silver_searcher \
   traceroute \
+  tree \
   unzip \
   vagrant \
   vim \
   wget \
+  whois \
   zip \
   zsh
 

@@ -19,17 +19,21 @@ sudo pacman -S --needed \
   epiphany \
   firefox \
   ghostscript \
+  gnome-screenshot \
   go \
+  graphviz \
   gsfonts \
   gstreamer0.10-base \
   htop \
   i3 \
+  libreoffice \
   openvpn \
   qt4 \
   redshift \
   rsync \
   sane \
   terminator \
+  thunderbird \
   uzbl-browser \
   virtualbox \
   vlc \

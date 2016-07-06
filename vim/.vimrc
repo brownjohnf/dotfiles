@@ -46,3 +46,11 @@ nnoremap <silent> ]B :blast<CR>
 autocmd FileType go set nolist
 autocmd FileType go set noexpandtab
 
+autocmd FileType sh set nolist
+autocmd FileType sh set noexpandtab
+
+autocmd FileType dockerfile set nolist
+autocmd FileType dockerfile set noexpandtab
+autocmd FileType systemd set nolist
+autocmd FileType systemd set noexpandtab
+
