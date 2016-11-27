@@ -19,6 +19,8 @@ set equalalways " always set window splits to equal heights
 set list " Used for showing non-printing characters
 set listchars=tab:>✖,trail:✖ " limit non-printing chars to tab/trail
 set expandtab " use spaces in place of tabs
+set formatoptions+=w
+set tw=80
 
 " Disable the arrow keys
 noremap <Up> <Nop>

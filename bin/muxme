@@ -10,7 +10,7 @@ if [ "$1" == "" ]; then
 
     tmux has-session -t $session
     if [ $? != 0 ]; then
-      tmux new-session -s $session -d
+      tmux new-session -s $session -d -c $PWD
     fi
     tmux attach -t $session
   fi

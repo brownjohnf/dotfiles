@@ -104,6 +104,7 @@ alias rc=rancher-compose
 alias be="bundle exec"
 alias cdd="cd ~/Downloads"
 alias fprint="ssh-keygen -l -E md5 -f"
+alias s="subl3"
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
@@ -142,4 +143,8 @@ if (( $+commands[tag] )); then
 	tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
 	alias ag=tag
 fi
+
+[[ -f /tmp/.ssh-agent ]] || ssh-agent > /tmp/.ssh-agent 2>/dev/null
+chmod 0400 /tmp/.ssh-agent
+source /tmp/.ssh-agent > /dev/null
 

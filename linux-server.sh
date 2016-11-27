@@ -58,6 +58,15 @@ else
   git clone https://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
 fi
 
+# vim-coffeescript
+if [ -d $HOME/.vim/bundle/vim-coffee-script ]; then
+  echo "--> Updating vim-coffee-script"
+  (cd $HOME/.vim/bundle/vim-coffee-script && git pull --rebase origin master)
+else
+  echo "--> Installing vim-coffee-script"
+	git clone https://github.com/kchmck/vim-coffee-script.git $HOME/.vim/bundle/vim-coffee-script
+fi
+
 # bash
 ln -fs $HERE/bash/.bash_aliases $HOME/.bash_aliases
 ln -fs $HERE/bash/.bash_profile $HOME/.bash_profile
@@ -188,14 +197,14 @@ if [ "$(docker-machine --version | grep '0.5.0' | wc -l)" != "1" ]; then
 fi
 
 # Docker Compose
-for version in 1.3.1 1.4.0 1.6.2; do
+for version in 1.3.1 1.4.0 1.6.2 1.7.1 1.8.0-rc2; do
   [[ -f "/usr/local/bin/docker-compose-$version" ]] || sudo sh -c "
   curl -L https://github.com/docker/compose/releases/download/$version/docker-compose-Linux-x86_64 \
     > /usr/local/bin/docker-compose-$version && \
     chmod +x /usr/local/bin/docker-compose-$version
   "
 done
-sudo ln -fs /usr/local/bin/docker-compose-1.6.2 /usr/local/bin/docker-compose
+sudo ln -fs /usr/local/bin/docker-compose-1.7.1 /usr/local/bin/docker-compose
 
 echo "SUCCESS"
 
