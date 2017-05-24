@@ -240,6 +240,11 @@ for util in vault; do
   chmod +x $binpath/$util
 done
 
+# rclone
+(cd /tmp && wget http://downloads.rclone.org/rclone-current-linux-amd64.zip)
+(cd /tmp && unzip rclone-current-linux-amd64.zip)
+sudo mv /tmp/rclone-*/rclone /usr/local/bin
+
 if [ -f $HOME/.i3/config ]; then
   echo "--> .i3 installed"
 else
