@@ -105,6 +105,8 @@ alias be="bundle exec"
 alias cdd="cd ~/Downloads"
 alias fprint="ssh-keygen -l -E md5 -f"
 alias s="subl3"
+alias tf="terraform"
+alias k="kubectl"
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
@@ -137,7 +139,7 @@ PATH=/data/go/bin:$PATH
 # added by travis gem
 [ -f /home/jackb/.travis/travis.sh ] && source /home/jackb/.travis/travis.sh
 
-source ~/dotfiles/zsh/extensions/aws.zsh
+#source ~/dotfiles/zsh/extensions/aws.zsh
 
 if (( $+commands[tag] )); then
 	tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
@@ -148,3 +150,4 @@ fi
 chmod 0400 /tmp/.ssh-agent
 source /tmp/.ssh-agent > /dev/null
 
+source $HOME/.cargo/env

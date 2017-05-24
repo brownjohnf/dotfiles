@@ -30,8 +30,9 @@ sudo pacman -S --needed \
   readline \
   rsync \
   sshpass \
-  sysdig \
+	strace \
   sudo \
+  sysdig \
   tmux \
   the_silver_searcher \
   traceroute \

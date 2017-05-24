@@ -8,6 +8,15 @@ GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
 binpath=$HOME/bin
 
+# Setup tmux plugin manager for tmux plugin management
+mkdir -p $HOME/.tmux/plugins
+if [ -d $HOME/.tmux/plugins/tpm ]; then
+  echo "--> tpm installed."
+else
+  echo "--> Installing tpm..."
+	git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+fi
+
 # Setup pathogen for vim plugin management
 mkdir -p $HOME/.vim/{autoload,bundle}
 if [ -d $HOME/.vim/autoload/pathogen.vim ]; then
@@ -18,6 +27,47 @@ else
 fi
 
 # Install plugins
+
+# nim.vim
+if [ -d $HOME/.vim/bundle/nim.vim ]; then
+  ( cd $HOME/.vim/bundle/nim.vim && git pull )
+else
+  echo "--> Installing nim.vim..."
+  git clone git://github.com/zah/nim.vim.git $HOME/.vim/bundle/nim.vim
+fi
+
+# tabular
+if [ -d $HOME/.vim/bundle/tabular ]; then
+  ( cd $HOME/.vim/bundle/tabular && git pull )
+else
+  echo "--> Installing tabular..."
+  git clone https://github.com/godlygeek/tabular.git $HOME/.vim/bundle/tabular
+fi
+
+# tagbar
+if [ -d $HOME/.vim/bundle/tagbar ]; then
+  ( cd $HOME/.vim/bundle/tagbar && git pull )
+else
+  echo "--> Installing tagbar..."
+  git clone https://github.com/majutsushi/tagbar $HOME/.vim/bundle/tagbar
+fi
+
+# vim-gitgutter
+if [ -d $HOME/.vim/bundle/vim-gitgutter ]; then
+  ( cd $HOME/.vim/bundle/vim-gitgutter && git pull )
+else
+  echo "--> Installing vim-gitgutter..."
+  git clone https://github.com/airblade/vim-gitgutter.git $HOME/.vim/bundle/vim-gitgutter
+fi
+
+# Dracula theme
+if [ -d $HOME/.vim/bundle/dracula-theme ]; then
+  ( cd $HOME/.vim/bundle/dracula-theme && git pull )
+else
+  echo "--> Installing dracula-theme..."
+  git clone git@github.com:dracula/vim.git $HOME/.vim/bundle/dracula-theme
+fi
+
 # NerdTree
 if [ -d $HOME/.vim/bundle/nerdtree ]; then
   ( cd $HOME/.vim/bundle/nerdtree && git pull )
@@ -58,6 +108,15 @@ else
   git clone https://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
 fi
 
+# typescript-vim
+if [ -d $HOME/.vim/bundle/typescript-vim ]; then
+  echo "--> Updating typescript-vim"
+  (cd $HOME/.vim/bundle/typescript-vim && git pull --rebase origin master)
+else
+  echo "--> Installing typescript-vim"
+	git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
+fi
+
 # vim-coffeescript
 if [ -d $HOME/.vim/bundle/vim-coffee-script ]; then
   echo "--> Updating vim-coffee-script"
@@ -65,6 +124,26 @@ if [ -d $HOME/.vim/bundle/vim-coffee-script ]; then
 else
   echo "--> Installing vim-coffee-script"
 	git clone https://github.com/kchmck/vim-coffee-script.git $HOME/.vim/bundle/vim-coffee-script
+fi
+
+# vim-terraform
+if [ -d $HOME/.vim/bundle/vim-terraform ]; then
+  echo "--> Updating vim-terraform"
+  (cd $HOME/.vim/bundle/vim-terraform && git pull --rebase origin master)
+else
+  echo "--> Installing vim-terraform"
+	git clone https://github.com/hashivim/vim-terraform.git \
+		$HOME/.vim/bundle/vim-terraform
+fi
+
+# rust.vim
+if [ -d $HOME/.vim/bundle/rust.vim ]; then
+  echo "--> Updating rust.vim"
+  (cd $HOME/.vim/bundle/rust.vim && git pull --rebase origin master)
+else
+  echo "--> Installing rust.vim"
+	git clone https://github.com/rust-lang/rust.vim.git \
+		$HOME/.vim/bundle/rust.vim
 fi
 
 # bash
@@ -197,14 +276,14 @@ if [ "$(docker-machine --version | grep '0.5.0' | wc -l)" != "1" ]; then
 fi
 
 # Docker Compose
-for version in 1.3.1 1.4.0 1.6.2 1.7.1 1.8.0-rc2; do
+for version in 1.11.1; do
   [[ -f "/usr/local/bin/docker-compose-$version" ]] || sudo sh -c "
   curl -L https://github.com/docker/compose/releases/download/$version/docker-compose-Linux-x86_64 \
     > /usr/local/bin/docker-compose-$version && \
     chmod +x /usr/local/bin/docker-compose-$version
   "
 done
-sudo ln -fs /usr/local/bin/docker-compose-1.7.1 /usr/local/bin/docker-compose
+sudo ln -fs /usr/local/bin/docker-compose-1.11.1 /usr/local/bin/docker-compose
 
 echo "SUCCESS"
 

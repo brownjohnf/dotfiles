@@ -7,7 +7,6 @@ bash
 bind-tools
 binutils
 bison
-btrfs-progs
 bzip2
 chromium
 cmake

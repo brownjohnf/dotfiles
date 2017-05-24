@@ -1,7 +1,6 @@
 #!/bin/bash
 
-set -e
-set -x
+set -ex
 
 USER=$(whoami)
 GROUP=$(id -gn)
@@ -16,14 +15,13 @@ sudo pacman -S --needed \
   cups \
   cups-pdf \
   docker \
-  epiphany \
+  feh \
   firefox \
   ghostscript \
   gnome-screenshot \
   go \
   graphviz \
   gsfonts \
-  gstreamer0.10-base \
   htop \
   i3 \
   libreoffice \
@@ -33,20 +31,40 @@ sudo pacman -S --needed \
   rsync \
   sane \
   terminator \
+  thunar \
   thunderbird \
-  uzbl-browser \
+  tumbler \
   virtualbox \
   vlc \
   xorg \
   xorg-xinit \
   xsel
 
-# grab AUR packages
+# Install yaourt from repo
 mkdir -p $HOME/builds
-if ![ -f $HOME/builds/sublime-text-dev.tar.gz ]; then
-  echo "TODO: get makepasswd"
+if [ -d $HOME/builds/yaourt ]; then
+	(cd $HOME/builds/yaourt && git pull --rebase origin master)
+else
+  git clone https://aur.archlinux.org/yaourt.git $HOME/builds/yaourt
 fi
-echo "--> Downloaded suggested AUR archives to ~/builds."
+(cd $HOME/builds/yaourt && makepkg -sric)
+
+yaourt -Sau \
+	libcurl-compat \
+	gitter \
+  gstreamer0.10-base \
+	inox \
+	makepasswd \
+	networkmanager-dmenu-git \
+	package-query \
+	perl-bytes-random-secure \
+	perl-crypt-random-seed \
+	perl-crypt-random-tesha2 \
+	ripgrep \
+	rocketchat-client \
+	slack-desktop \
+	sublime-text-dev \
+	zoom
 
 # X
 ln -fs $HERE/x/.xmodmaprc $HOME/.xmodmaprc
@@ -62,11 +80,7 @@ mkdir -p $HOME/.local/share/applications
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
-echo "--> Setup complete. Consider installing the following from the AUR:
-* slack-desktop
-* spoty
-* wrk
-"
+echo "--> Setup complete. Consider installing the following from the AUR:"
 
 1>&2 echo "! Install brscan4 from AUR for scanning support with Brother DCP-L25400W"
 
