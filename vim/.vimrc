@@ -28,7 +28,6 @@ set colorcolumn=+1
 
 color dracula
 
-
 " make special characters almost black
 hi SpecialKey ctermfg=darkgray
 

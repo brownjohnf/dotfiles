@@ -24,11 +24,13 @@ sudo pacman -S --needed \
   gsfonts \
   htop \
   i3 \
+  keepassx \
   libreoffice \
   openvpn \
   qt4 \
   redshift \
   rsync \
+  rust \
   sane \
   terminator \
   thunar \
@@ -43,37 +45,31 @@ sudo pacman -S --needed \
 # Install yaourt from repo
 mkdir -p $HOME/builds
 if [ -d $HOME/builds/yaourt ]; then
-	(cd $HOME/builds/yaourt && git pull --rebase origin master)
+  (cd $HOME/builds/yaourt && git pull --rebase origin master)
 else
   git clone https://aur.archlinux.org/yaourt.git $HOME/builds/yaourt
 fi
-(cd $HOME/builds/yaourt && makepkg -sric)
+(cd $HOME/builds/yaourt && makepkg -sric --needed)
 
-yaourt -Sau \
-	libcurl-compat \
-	gitter \
+yaourt -S --needed \
+  libcurl-compat \
+  gitter \
   gstreamer0.10-base \
-	inox \
-	makepasswd \
-	networkmanager-dmenu-git \
-	package-query \
-	perl-bytes-random-secure \
-	perl-crypt-random-seed \
-	perl-crypt-random-tesha2 \
-	ripgrep \
-	rocketchat-client \
-	slack-desktop \
-	sublime-text-dev \
-	zoom
+  makepasswd \
+  networkmanager-dmenu-git \
+  package-query \
+  perl-bytes-random-secure \
+  perl-crypt-random-seed \
+  perl-crypt-random-tesha2 \
+  rocketchat-client \
+  slack-desktop \
+  sublime-text-dev \
+  zoom
 
 # X
 ln -fs $HERE/x/.xmodmaprc $HOME/.xmodmaprc
 ln -fs $HERE/x/.xinitrc $HOME/.xinitrc
-if [ -f $HOME/.displays ]; then
-  echo "--> displays config already in place; skipping."
-else
-  cp $HERE/x/.displays $HOME/.displays
-fi
+ln -fs $HERE/bin/displays $HOME/bin/displays
 
 # set the default browser to firefox
 mkdir -p $HOME/.local/share/applications

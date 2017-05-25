@@ -11,5 +11,8 @@ binpath=$HOME/bin
 # alacritty
 ln -fs $HERE/alacritty/.alacritty.yml   $HOME/.alacritty.yml
 
+# Terminator
+ln -fs $HERE/terminator/config   $HOME/.config/terminator/config
+
 echo "SUCCESS"
 

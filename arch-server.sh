@@ -26,11 +26,11 @@ sudo pacman -S --needed \
   openssh \
   openssl \
   parted \
-  pssh \
   readline \
+  ripgrep \
   rsync \
   sshpass \
-	strace \
+  strace \
   sudo \
   sysdig \
   tmux \

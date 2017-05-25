@@ -1,0 +1,3 @@
+autocmd FileType sh set list
+autocmd FileType sh set expandtab
+

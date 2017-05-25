@@ -14,7 +14,7 @@ if [ -d $HOME/.tmux/plugins/tpm ]; then
   echo "--> tpm installed."
 else
   echo "--> Installing tpm..."
-	git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
 # Setup pathogen for vim plugin management
@@ -114,7 +114,7 @@ if [ -d $HOME/.vim/bundle/typescript-vim ]; then
   (cd $HOME/.vim/bundle/typescript-vim && git pull --rebase origin master)
 else
   echo "--> Installing typescript-vim"
-	git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
+  git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
 fi
 
 # vim-coffeescript
@@ -123,7 +123,7 @@ if [ -d $HOME/.vim/bundle/vim-coffee-script ]; then
   (cd $HOME/.vim/bundle/vim-coffee-script && git pull --rebase origin master)
 else
   echo "--> Installing vim-coffee-script"
-	git clone https://github.com/kchmck/vim-coffee-script.git $HOME/.vim/bundle/vim-coffee-script
+  git clone https://github.com/kchmck/vim-coffee-script.git $HOME/.vim/bundle/vim-coffee-script
 fi
 
 # vim-terraform
@@ -132,8 +132,8 @@ if [ -d $HOME/.vim/bundle/vim-terraform ]; then
   (cd $HOME/.vim/bundle/vim-terraform && git pull --rebase origin master)
 else
   echo "--> Installing vim-terraform"
-	git clone https://github.com/hashivim/vim-terraform.git \
-		$HOME/.vim/bundle/vim-terraform
+  git clone https://github.com/hashivim/vim-terraform.git \
+    $HOME/.vim/bundle/vim-terraform
 fi
 
 # rust.vim
@@ -142,8 +142,8 @@ if [ -d $HOME/.vim/bundle/rust.vim ]; then
   (cd $HOME/.vim/bundle/rust.vim && git pull --rebase origin master)
 else
   echo "--> Installing rust.vim"
-	git clone https://github.com/rust-lang/rust.vim.git \
-		$HOME/.vim/bundle/rust.vim
+  git clone https://github.com/rust-lang/rust.vim.git \
+    $HOME/.vim/bundle/rust.vim
 fi
 
 # bash
