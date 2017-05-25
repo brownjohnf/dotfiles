@@ -30,7 +30,6 @@ sudo pacman -S --needed \
   qt4 \
   redshift \
   rsync \
-  rust \
   sane \
   terminator \
   thunar \
