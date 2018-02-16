@@ -1,4 +1,6 @@
 #!/bin/bash
 
-makepasswd --chars=128 --string '?%!#^$.@+=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' | tr -d '\n' | copy
+length=${1:-128}
+
+makepasswd --chars=${length} --string 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' | tr -d '\n' | copy
 

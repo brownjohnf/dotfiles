@@ -107,6 +107,9 @@ alias fprint="ssh-keygen -l -E md5 -f"
 alias s="subl3"
 alias tf="terraform"
 alias k="kubectl"
+alias tree="tree -I node_modules"
+alias kgp="kubectl get po -o wide"
+alias kgy="kubectl get po -o yaml"
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
@@ -120,11 +123,6 @@ eval "$(rbenv init -)"
 # nvm
 source $HOME/.nvm/nvm.sh
 
-# Heroku Toolbelt
-if [ -d "/usr/local/heroku/bin" ]; then
-  PATH="/usr/local/heroku/bin:$PATH"
-fi
-
 func dm-devbox ()
 {
   export DOCKER_TLS_VERIFY=1;
@@ -134,7 +132,6 @@ func dm-devbox ()
 
 PATH=/data/go/bin:/usr/local/go/bin:$PATH
 export GOPATH=/data/go
-PATH=/data/go/bin:$PATH
 
 # added by travis gem
 [ -f /home/jackb/.travis/travis.sh ] && source /home/jackb/.travis/travis.sh
@@ -151,3 +148,5 @@ chmod 0400 /tmp/.ssh-agent
 source /tmp/.ssh-agent > /dev/null
 
 source $HOME/.cargo/env
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -67,3 +67,5 @@ export PATH
 
 # added by travis gem
 [ -f /home/jackb/.travis/travis.sh ] && source /home/jackb/.travis/travis.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

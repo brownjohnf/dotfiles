@@ -10,7 +10,6 @@ binpath=$HOME/.bin
 
 # install packages
 sudo pacman -S --needed \
-  ack \
   colordiff \
   cronie \
   ctags \

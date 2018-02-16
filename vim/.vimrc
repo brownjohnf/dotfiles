@@ -1,4 +1,37 @@
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'dracula/vim'
+Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular'
+Plug 'hashivim/vim-terraform'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'kchmck/vim-coffee-script'
+Plug 'vim-syntastic/syntastic'
+Plug 'zah/nim.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
+call plug#end()
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+nmap <Leader>a :Ack!<Space>
+
+let g:jsx_ext_required = 0
+
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
 
 set nocompatible              " be iMproved, required
 
@@ -25,6 +58,9 @@ set tw=80
 set cursorline
 set cursorcolumn
 set colorcolumn=+1
+set wildignore+=node_modules
+
+let NERDTreeRespectWildIgnore=1
 
 color dracula
 
@@ -41,6 +77,12 @@ noremap <Right> <Nop>
 " Set up custom mappings
 map <C-n> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+nmap <C-p> :Files<CR>
+nmap <Leader>r :tags<CR>
+
+
+" Tell ack.vim to use ag (the Silver Searcher) instead
+let g:ackprg = 'ag --vimgrep'
 
 syntax on
 filetype plugin indent on
@@ -59,11 +101,6 @@ nnoremap <silent> ]B :blast<CR>
 autocmd FileType go set nolist
 autocmd FileType go set noexpandtab
 
-autocmd FileType sh set nolist
-autocmd FileType sh set noexpandtab
-
-autocmd FileType dockerfile set nolist
-autocmd FileType dockerfile set noexpandtab
 autocmd FileType systemd set nolist
 autocmd FileType systemd set noexpandtab
 

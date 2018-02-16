@@ -17,133 +17,15 @@ else
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
-# Setup pathogen for vim plugin management
-mkdir -p $HOME/.vim/{autoload,bundle}
-if [ -d $HOME/.vim/autoload/pathogen.vim ]; then
-  echo "--> Pathogen.vim installed."
-else
-  echo "--> Installing pathogen.vim..."
-  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-fi
+mkdir -p $HOME/.vim/autoload
 
-# Install plugins
-
-# nim.vim
-if [ -d $HOME/.vim/bundle/nim.vim ]; then
-  ( cd $HOME/.vim/bundle/nim.vim && git pull )
+# Setup vim-plug for plugin management
+if [ -d $HOME/.vim/autoload/plug.vim ]; then
+  echo "--> plug.vim installed."
 else
-  echo "--> Installing nim.vim..."
-  git clone git://github.com/zah/nim.vim.git $HOME/.vim/bundle/nim.vim
-fi
-
-# tabular
-if [ -d $HOME/.vim/bundle/tabular ]; then
-  ( cd $HOME/.vim/bundle/tabular && git pull )
-else
-  echo "--> Installing tabular..."
-  git clone https://github.com/godlygeek/tabular.git $HOME/.vim/bundle/tabular
-fi
-
-# tagbar
-if [ -d $HOME/.vim/bundle/tagbar ]; then
-  ( cd $HOME/.vim/bundle/tagbar && git pull )
-else
-  echo "--> Installing tagbar..."
-  git clone https://github.com/majutsushi/tagbar $HOME/.vim/bundle/tagbar
-fi
-
-# vim-gitgutter
-if [ -d $HOME/.vim/bundle/vim-gitgutter ]; then
-  ( cd $HOME/.vim/bundle/vim-gitgutter && git pull )
-else
-  echo "--> Installing vim-gitgutter..."
-  git clone https://github.com/airblade/vim-gitgutter.git $HOME/.vim/bundle/vim-gitgutter
-fi
-
-# Dracula theme
-if [ -d $HOME/.vim/bundle/dracula-theme ]; then
-  ( cd $HOME/.vim/bundle/dracula-theme && git pull )
-else
-  echo "--> Installing dracula-theme..."
-  git clone git@github.com:dracula/vim.git $HOME/.vim/bundle/dracula-theme
-fi
-
-# NerdTree
-if [ -d $HOME/.vim/bundle/nerdtree ]; then
-  ( cd $HOME/.vim/bundle/nerdtree && git pull )
-else
-  echo "--> Installing nerdtree..."
-  git clone https://github.com/scrooloose/nerdtree $HOME/.vim/bundle/nerdtree
-fi
-
-# ctrlp
-if [ -d $HOME/.vim/bundle/ctrlp.vim ]; then
-  ( cd $HOME/.vim/bundle/ctrlp.vim && git pull )
-else
-  echo "--> Installing nerdtree..."
-  git clone https://github.com/ctrlpvim/ctrlp.vim $HOME/.vim/bundle/ctrlp.vim
-fi
-
-if [ -d $HOME/.vim/bundle/vim-go ]; then
-  echo "--> Updating vim-go"
-  (cd $HOME/.vim/bundle/vim-go && git pull --rebase origin master)
-else
-  echo "--> Installing vim-go"
-  git clone https://github.com/fatih/vim-go.git $HOME/.vim/bundle/vim-go
-fi
-
-if [ -d $HOME/.vim/bundle/nerdtree ]; then
-  echo "--> Updating nerdtree"
-  (cd $HOME/.vim/bundle/nerdtree && git pull --rebase origin master)
-else
-  echo "--> Installing nerdtree"
-  git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
-fi
-
-if [ -d $HOME/.vim/bundle/ctrlp.vim ]; then
-  echo "--> Updating ctrlp.vim"
-  (cd $HOME/.vim/bundle/ctrlp.vim && git pull --rebase origin master)
-else
-  echo "--> Installing ctrlp.vim"
-  git clone https://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
-fi
-
-# typescript-vim
-if [ -d $HOME/.vim/bundle/typescript-vim ]; then
-  echo "--> Updating typescript-vim"
-  (cd $HOME/.vim/bundle/typescript-vim && git pull --rebase origin master)
-else
-  echo "--> Installing typescript-vim"
-  git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
-fi
-
-# vim-coffeescript
-if [ -d $HOME/.vim/bundle/vim-coffee-script ]; then
-  echo "--> Updating vim-coffee-script"
-  (cd $HOME/.vim/bundle/vim-coffee-script && git pull --rebase origin master)
-else
-  echo "--> Installing vim-coffee-script"
-  git clone https://github.com/kchmck/vim-coffee-script.git $HOME/.vim/bundle/vim-coffee-script
-fi
-
-# vim-terraform
-if [ -d $HOME/.vim/bundle/vim-terraform ]; then
-  echo "--> Updating vim-terraform"
-  (cd $HOME/.vim/bundle/vim-terraform && git pull --rebase origin master)
-else
-  echo "--> Installing vim-terraform"
-  git clone https://github.com/hashivim/vim-terraform.git \
-    $HOME/.vim/bundle/vim-terraform
-fi
-
-# rust.vim
-if [ -d $HOME/.vim/bundle/rust.vim ]; then
-  echo "--> Updating rust.vim"
-  (cd $HOME/.vim/bundle/rust.vim && git pull --rebase origin master)
-else
-  echo "--> Installing rust.vim"
-  git clone https://github.com/rust-lang/rust.vim.git \
-    $HOME/.vim/bundle/rust.vim
+  echo "--> Installing plug.vim..."
+  curl -fLo ~/.vim/autoload/plug.vim \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 # bash
