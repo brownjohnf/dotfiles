@@ -3,7 +3,7 @@
 # Uncomment and modify the lines below to configure monitors.
 # xrandr --current
 
-if [ "$(hostname)" == "layla" ]; then
+if [ "$(hostname -s)" == "layla" ]; then
   if [ "$1" == "office" ]; then
     xrandr --output HDMI1 --mode 1920x1200 # HDMI
     xrandr --output DP3 --mode 1920x1200 # VGA
@@ -31,7 +31,7 @@ if [ "$(hostname)" == "layla" ]; then
   else
     xrandr --current
   fi
-elif [ "$(hostname)" == "ingrid" ]; then
+elif [ "$(hostname -s)" == "ingrid" ]; then
   if [ "$1" == "home" ]; then
     xrandr --output HDMI1 --mode 1920x1080
     xrandr --output HDMI2 --mode 1920x1080
