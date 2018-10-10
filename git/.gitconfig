@@ -1,13 +1,21 @@
 [user]
-	name = John (Jack) Brown
-	email = jack@brownjohnf.com
+  name = John (Jack) Brown
+  email = jack@brownjohnf.com
+  signingkey = 6E0082093C897759
 [color]
-	ui = true
+  ui = true
 [github]
-	user = brownjohnf
+  user = brownjohnf
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%aN>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%aN>%Creset' --abbrev-commit
 [push]
-	default = current
+  default = current
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
+[commit]
+  template = ~/.gitmessage.txt
+  gpgsign = true
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+

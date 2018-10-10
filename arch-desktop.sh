@@ -61,6 +61,7 @@ yaourt -S --needed \
   perl-bytes-random-secure \
   perl-crypt-random-seed \
   perl-crypt-random-tesha2 \
+  prettyping \
   rocketchat-client \
   slack-desktop \
   sublime-text-dev \

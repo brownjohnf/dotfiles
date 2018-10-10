@@ -10,9 +10,11 @@ binpath=$HOME/.bin
 
 # install packages
 sudo pacman -S --needed \
+  bat \
   colordiff \
   cronie \
   ctags \
+  diff-so-fancy \
   dnsutils \
   gnupg \
   htop \
@@ -24,6 +26,7 @@ sudo pacman -S --needed \
   net-tools \
   openssh \
   openssl \
+  pacman-contrib \
   parted \
   readline \
   ripgrep \
@@ -32,8 +35,8 @@ sudo pacman -S --needed \
   strace \
   sudo \
   sysdig \
-  tmux \
   the_silver_searcher \
+  tmux \
   traceroute \
   tree \
   unzip \

@@ -4,19 +4,22 @@ Plug 'dracula/vim'
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'kchmck/vim-coffee-script'
 Plug 'leafgarland/typescript-vim'
 Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
+Plug 'mxw/vim-jsx'
+Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'kchmck/vim-coffee-script'
+Plug 'tomasiser/vim-code-dark'
 Plug 'vim-syntastic/syntastic'
+Plug 'w0ng/vim-hybrid'
 Plug 'zah/nim.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'mattn/emmet-vim'
 call plug#end()
 
 if executable('ag')
@@ -35,37 +38,35 @@ let g:user_emmet_settings = {
 
 set nocompatible              " be iMproved, required
 
-set t_Co=256
-set background=dark
 set autoindent
-set number
-set hlsearch
-set incsearch
-set ignorecase
-set hidden
-set history=100
-set wildmode=list:longest
-set smartcase
-set title
-set tabstop=2
-set shiftwidth=2
+set background=dark
+set colorcolumn=+1
+set cursorcolumn
+set cursorline
 set equalalways " always set window splits to equal heights
-set list " Used for showing non-printing characters
-set listchars=tab:>.,trail:✖ " limit non-printing chars to tab/trail
 set expandtab " use spaces in place of tabs
 set formatoptions+=w
+set hidden
+set history=100
+set hlsearch
+set ignorecase
+set incsearch
+set listchars=tab:>.,trail:✖ " limit non-printing chars to tab/trail
+set list " Used for showing non-printing characters
+set number
+set shiftwidth=2
+set smartcase
+set tabstop=2
+set t_Co=256
+set title
 set tw=80
-set cursorline
-set cursorcolumn
-set colorcolumn=+1
+set wildignore+=dist
 set wildignore+=node_modules
+set wildmode=list:longest
 
 let NERDTreeRespectWildIgnore=1
 
-color dracula
-
-" make special characters almost black
-hi SpecialKey ctermfg=darkgray
+color codedark
 
 " Disable the arrow keys
 noremap <Up> <Nop>
@@ -104,9 +105,19 @@ autocmd FileType go set noexpandtab
 autocmd FileType systemd set nolist
 autocmd FileType systemd set noexpandtab
 
+au BufReadPost Dockerfile* set syntax=dockerfile
+
 let b:thisdir=expand("%:p:h")
 let b:vimlocal=b:thisdir."/vimlocal"
 if (filereadable(b:vimlocal))
   execute "source ".b:vimlocal
 endif
 
+" Set some custom color overrides
+" make special characters almost black
+hi SpecialKey ctermfg=darkgray
+
+" highlight matches for searches in yellow
+hi Search ctermfg=Black ctermbg=Yellow cterm=bold,underline
+
+hi CursorColumn ctermbg=235 cterm=bold

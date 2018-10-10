@@ -94,22 +94,24 @@ PATH=$HOME/bin:$PATH
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+alias be="bundle exec"
+alias cat=bat
 alias c=clear
-alias ll="ls -lh"
-alias lla="ls -lah"
-alias ff=freight-forwarder
+alias cdd="cd ~/Downloads"
 alias dc=docker-compose
 alias dm=docker-machine
-alias rc=rancher-compose
-alias be="bundle exec"
-alias cdd="cd ~/Downloads"
+alias ff=freight-forwarder
 alias fprint="ssh-keygen -l -E md5 -f"
-alias s="subl3"
-alias tf="terraform"
-alias k="kubectl"
-alias tree="tree -I node_modules"
 alias kgp="kubectl get po -o wide"
 alias kgy="kubectl get po -o yaml"
+alias k="kubectl"
+alias lla="ls -lah"
+alias ll="ls -lh"
+alias ping=prettyping
+alias rc=rancher-compose
+alias s="subl3"
+alias tf="terraform"
+alias tree="tree -I node_modules"
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
