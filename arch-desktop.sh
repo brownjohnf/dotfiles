@@ -7,34 +7,42 @@ GROUP=$(id -gn)
 HERE="$HOME/dotfiles"
 binpath=$HOME/.bin
 
+sudo localectl --no-convert set-x11-keymap us pc104 dvorak
+
 # install packages
 sudo pacman -S --needed \
-  alsa-utils \
   android-tools \
   chromium \
+  code \
   cups \
   cups-pdf \
   docker \
   feh \
   firefox \
   ghostscript \
+  gnome-keyring \
   gnome-screenshot \
   go \
   graphviz \
   gsfonts \
   htop \
-  i3 \
+  i3blocks \
+  i3-gaps \
+  i3lock \
   keepassx \
   libreoffice \
+  lxdm \
   openvpn \
   qt4 \
   redshift \
+  remmina \
   rsync \
   rust \
   sane \
+  seahorse \
   terminator \
   thunar \
-  thunderbird \
+  ttf-dejavu \
   tumbler \
   virtualbox \
   vlc \
@@ -42,34 +50,19 @@ sudo pacman -S --needed \
   xorg-xinit \
   xsel
 
-# Install yaourt from repo
-mkdir -p $HOME/builds
-if [ -d $HOME/builds/yaourt ]; then
-  (cd $HOME/builds/yaourt && git pull --rebase origin master)
-else
-  git clone https://aur.archlinux.org/yaourt.git $HOME/builds/yaourt
-fi
-(cd $HOME/builds/yaourt && makepkg -sric --needed)
+function build_from_aur () {
+  name=$1
+  repo=$2
 
-yaourt -S --needed \
-  libcurl-compat \
-  gitter \
-  gstreamer0.10-base \
-  makepasswd \
-  networkmanager-dmenu-git \
-  package-query \
-  perl-bytes-random-secure \
-  perl-crypt-random-seed \
-  perl-crypt-random-tesha2 \
-  prettyping \
-  rocketchat-client \
-  slack-desktop \
-  sublime-text-dev \
-  zoom
+  build_root=/tmp/builds
+  build_path=$build_root/$name
 
-# X
-ln -fs $HERE/x/.xmodmaprc $HOME/.xmodmaprc
-ln -fs $HERE/x/.xinitrc $HOME/.xinitrc
+  rm -rf $build_path
+  mkdir -p $build_root
+  git clone $repo $build_path
+  (cd $build_path && makepkg -sric --needed)
+}
+
 ln -fs $HERE/bin/displays $HOME/bin/displays
 
 # set the default browser to firefox
@@ -77,7 +70,30 @@ mkdir -p $HOME/.local/share/applications
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
-echo "--> Setup complete. Consider installing the following from the AUR:"
+# Install package-query and yaourt from repo
+build_from_aur yaourt https://aur.archlinux.org/package-query.git
+build_from_aur yaourt https://aur.archlinux.org/yaourt.git
 
-1>&2 echo "! Install brscan4 from AUR for scanning support with Brother DCP-L25400W"
+yaourt -S --needed \
+  libcurl-compat \
+  gstreamer0.10-base \
+  makepasswd \
+  networkmanager-dmenu-git \
+  perl-bytes-random-secure \
+  perl-crypt-random-seed \
+  perl-crypt-random-tesha2 \
+  prettyping \
+  rocketchat-client \
+  slack-desktop \
+  zoom
+
+
+cat <<EOF
+
+
+
+arch-desktop setup complete.
+
+Install brscan4 from AUR for scanning support with Brother DCP-L25400W
+EOF
 

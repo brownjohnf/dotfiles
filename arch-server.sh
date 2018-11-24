@@ -10,6 +10,7 @@ binpath=$HOME/.bin
 
 # install packages
 sudo pacman -S --needed \
+  base-devel \
   bat \
   colordiff \
   cronie \
@@ -22,8 +23,11 @@ sudo pacman -S --needed \
   ipcalc \
   linux-headers \
   lsof \
+  neovim \
   nethogs \
   net-tools \
+  nfs-utils \
+  ngrep \
   openssh \
   openssl \
   pacman-contrib \
@@ -35,13 +39,14 @@ sudo pacman -S --needed \
   strace \
   sudo \
   sysdig \
+  sysstat \
   the_silver_searcher \
   tmux \
   traceroute \
   tree \
+  ufw \
   unzip \
   vagrant \
-  vim \
   wget \
   whois \
   zip \

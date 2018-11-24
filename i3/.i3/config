@@ -28,7 +28,8 @@ font pango:DejaVu Sans Mono 8
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
 hide_edge_borders vertical
-new_window 1pixel
+default_border pixel 1
+hide_edge_borders both
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -186,18 +187,37 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+show_marks yes
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#bar {
+#  status_command            i3status
+#  position                  bottom
+#  #binding_mode_indicator    yes
+#  tray_output               primary
+#}
+
 bar {
-  status_command            i3status
-  position                  bottom
-  #binding_mode_indicator    yes
-  tray_output               primary
+  output primary
+  position top
+  #mode hide
+  status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks -vvv | tee /tmp/i3blocks.txt
+  tray_padding 4px
+  workspace_buttons yes
+  binding_mode_indicator yes
+  font pango:DejaVu Sans Mono 10
+
+  colors {
+    background #060929
+  }
 }
 
 focus_follows_mouse           no
+focus_on_window_activation urgent
+mouse_warping output
 workspace_auto_back_and_forth yes
+workspace_layout tabbed
 
 # exec --no-startup-id feh --bg-max -B white mdhq_by_tune_logo.png
 # exec --no-startup-id redshift -l 47.6400663:-122.3303218

@@ -98,6 +98,10 @@ nnoremap <silent> [[ :bprevious<CR>
 nnoremap <silent> ]] :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+nnoremap <F9> :!%:p<Enter>
+nnoremap <F10> :! docker build -f % .<Enter>
+
+tnoremap <Esc> <C-\><C-n>
 
 autocmd FileType go set nolist
 autocmd FileType go set noexpandtab

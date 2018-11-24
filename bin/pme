@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Get a password from the personal vault
+
+set -eu
+set -o pipefail
+set -x
+
+PW_ROOT=${PW_ROOT:-/mnt/pw}
+
+slug=$1
+field=${2:-password}
+namespace=${3:-personal}
+
+if [ "${field}" == "_list" ]; then
+  yq r -j ${PW_ROOT}/${namespace}/${slug}.yml | jq ".credentials[0]|keys"
+fi
+
+yq r -j ${PW_ROOT}/${namespace}/${slug}.yml | jq ".credentials[0].${field}" -r | copy
+

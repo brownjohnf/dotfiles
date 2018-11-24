@@ -10,9 +10,7 @@ binpath=$HOME/bin
 
 # Setup tmux plugin manager for tmux plugin management
 mkdir -p $HOME/.tmux/plugins
-if [ -d $HOME/.tmux/plugins/tpm ]; then
-  echo "--> tpm installed."
-else
+if [ ! -d $HOME/.tmux/plugins/tpm ]; then
   echo "--> Installing tpm..."
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
@@ -20,9 +18,7 @@ fi
 mkdir -p $HOME/.vim/autoload
 
 # Setup vim-plug for plugin management
-if [ -d $HOME/.vim/autoload/plug.vim ]; then
-  echo "--> plug.vim installed."
-else
+if [ ! -d $HOME/.vim/autoload/plug.vim ]; then
   echo "--> Installing plug.vim..."
   curl -fLo ~/.vim/autoload/plug.vim \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -38,6 +34,7 @@ touch $HOME/.bash_history
 
 # oh-my-zsh
 [[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # Install my custom profile(s)
 for f in jackb; do
   ln -fs $HERE/zsh/$f.zsh-theme $HOME/.oh-my-zsh/themes/$f.zsh-theme
@@ -107,13 +104,8 @@ ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
 
 # custom binaries
 mkdir -p $binpath
-for binary in genpass zap copy curldiff docker.sh psgrep muxme set-ssh-perms rebase.sh; do
-  ln -fs $HERE/bin/$binary      $binpath/$binary
-done
-
-# Clean up legacy symlinks for new per-repo install
-for binary in vault; do
-  [ -h $binpath/$binary ] && rm $binpath/$binary
+for binary in $(ls bin); do
+  ln -fs $HERE/bin/$binary $binpath/$binary
 done
 
 # vault
@@ -127,39 +119,10 @@ done
 (cd /tmp && unzip rclone-current-linux-amd64.zip)
 sudo mv /tmp/rclone-*/rclone /usr/local/bin
 
-if [ -f $HOME/.i3/config ]; then
-  echo "--> .i3 installed"
-else
+# i3
+if [ ! -f $HOME/.i3/config ]; then
   mkdir -p $HOME/.i3
   ln -fs $HERE/i3/.i3/config $HOME/.i3/config
-fi
-
-# i3
-if [ -f /etc/i3status.conf ]; then
-  if [ -f $HOME/.i3status.conf ]; then
-    echo "--> i3status config already in place; skipping."
-  else
-    echo "--> Adding $HOME/.i3status config file"
-    cp /etc/i3status.conf $HOME/.i3status.conf
-  fi
-fi
-
-# Docker Machine
-for version in 0.3.0 0.4.0; do
-  [[ -f "/usr/local/bin/docker-machine-$version" ]] || sudo sh -c "
-  curl -L https://github.com/docker/machine/releases/download/v$version/docker-machine_linux-amd64 > \
-    /usr/local/bin/docker-machine-$version && \
-    chmod +x /usr/local/bin/docker-machine-$version
-  "
-done
-
-if [ "$(docker-machine --version | grep '0.5.0' | wc -l)" != "1" ]; then
-  rm -f /tmp/docker-machine*
-  curl -L https://github.com/docker/machine/releases/download/v0.5.0/docker-machine_linux-amd64.zip > /tmp/machine.zip && \
-  unzip /tmp/machine.zip && \
-  rm /tmp/machine.zip && \
-  sudo mv docker-machine* /usr/local/bin
-  rm -f /tmp/docker-machine*
 fi
 
 # Docker Compose

@@ -107,11 +107,12 @@ alias kgy="kubectl get po -o yaml"
 alias k="kubectl"
 alias lla="ls -lah"
 alias ll="ls -lh"
-alias ping=prettyping
+alias ping="prettyping --nolegend"
 alias rc=rancher-compose
 alias s="subl3"
 alias tf="terraform"
 alias tree="tree -I node_modules"
+alias vim=nvim
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
@@ -152,3 +153,10 @@ source /tmp/.ssh-agent > /dev/null
 source $HOME/.cargo/env
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
