@@ -37,7 +37,6 @@ sudo pacman -S --needed \
   redshift \
   remmina \
   rsync \
-  rust \
   sane \
   seahorse \
   terminator \
