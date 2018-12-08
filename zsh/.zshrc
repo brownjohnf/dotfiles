@@ -112,7 +112,6 @@ alias rc=rancher-compose
 alias s="subl3"
 alias tf="terraform"
 alias tree="tree -I node_modules"
-alias vim=nvim
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"

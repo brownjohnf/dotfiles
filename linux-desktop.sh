@@ -1,18 +1,38 @@
 #!/bin/bash
 
-set -x
-set -e
+source ./config.sh
 
-USER=$(whoami)
-GROUP=$(id -gn)
-HERE="$HOME/dotfiles"
-binpath=$HOME/bin
+function clone_or_update() {
+  repo=$1
+  dest=$2
+
+  if [ -d $dest ]; then
+    (cd $dest && git pull)
+  else
+    git clone $repo $dest
+  fi
+}
+
+# i3
+mkdir -p $HOME/.config/i3
+ln -fs $HERE/i3/config $HOME/.config/i3/config
+
+# i3blocks
+mkdir -p $HOME/.config/i3blocks
+ln -fs $HERE/i3blocks/config $HOME/.config/i3blocks/config
+
+# Add i3blocks-contrib
+clone_or_update \
+  https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks-contrib
 
 # alacritty
-ln -fs $HERE/alacritty/.alacritty.yml   $HOME/.alacritty.yml
-
-# Terminator
-ln -fs $HERE/terminator/config   $HOME/.config/terminator/config
+mkdir -p $HOME/.config/alacritty/alacritty.yml
+ln -fs $HERE/alacritty/.alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 echo "SUCCESS"
+
+# sublime
+mkdir -p $HOME/.config/sublime-text-3/Packages/User
+ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
+  $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 

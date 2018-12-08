@@ -1,6 +1,0 @@
----
-- copy:
-    src: "{{item}}"
-    dest: "/home/{{user}}/{{item}}"
-  with_items:
-    - .polipo

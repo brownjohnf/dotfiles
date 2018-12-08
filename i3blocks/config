@@ -1,0 +1,251 @@
+#
+#[/]
+#command=echo / $(df -h --output=avail / | tail -n 1)
+#interval=30
+#color=#aaaaaa
+#
+#[/home]
+#command=echo /h $(df -h --output=avail /home | tail -n 1)
+#interval=30
+#color=#aaaaaa
+#
+#[/var]
+#command=echo /v $(df -h --output=avail /var | tail -n 1)
+#interval=30
+#color=#aaaaaa
+#
+#[/data]
+#command=echo /d $(df -h --output=avail /data | tail -n 1)
+#interval=30
+#color=#aaaaaa
+#
+#[vpn]
+#command=[[ -d /proc/sys/net/ipv4/conf/tun0 ]] && echo VPN ON
+#interval=5
+#color=#00ff00
+#
+##[wifi]
+##command=if (ip addr show enp0s31f6 | grep 'state UP' > /dev/null); then echo "{\"full_text\": \"wlp2s0: $(ip addr list enp0s31f6 | grep 'inet ' | awk '{print $2}')\"}"; else echo "{\"full_text\": \"down\"}"; fi )
+##interval=5
+##format=json
+#
+##[ethernet]
+##command=ip addr show enp0s31f6 | grep 'state UP' && echo enp0s31f6: $(ip addr list enp0s31f6 | grep 'inet ' | awk '{print $2}')
+##interval=5
+#
+#[battery]
+#command=acpi | awk '{print $3 $4 $5}' | sed 's/,/ /g' | sed 's/Charging/CHG/' | sed 's/Discharging//'
+#interval=5
+#color=#00ff00
+#
+#[test]
+#command=echo '{"full_text": "testing text", "color": "#ff0000"}'
+#format=json
+#interval=once
+#
+#[lon]
+#command=echo [lon] $(TZ=:Europe/London date "+%H:%M")
+#interval=5
+#
+#[local]
+#command=date "+%Y-%m-%d %H:%M"
+#interval=5
+
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+command=/usr/lib/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[arch-update]
+command=$SCRIPT_DIR/arch-update/arch-update
+interval=300
+markup=pango
+separator=false
+
+[linux-update]
+command=/home/jackb/dotfiles/bin/check-linux-updates.sh
+interval=300
+format=json
+
+[utc]
+command=echo UTC $(date -u "+%H:%M:%S")
+interval=5
+
+[london]
+command=echo lon $(TZ=:Europe/London date "+%H:%M")
+color=#999999
+interval=5
+
+# Volume indicator
+#
+# The first parameter sets the step (and units to display)
+# The second parameter overrides the mixer selection
+# See the script for details.
+[volume]
+#label=VOL
+label=♪
+instance=Master
+#instance=PCM
+interval=once
+signal=10
+
+# Memory usage
+#
+# The type defaults to "mem" if the instance is not specified.
+[memory]
+label=mem
+separator=false
+interval=30
+color=#999999
+
+#[memory]
+#label=SWAP
+#instance=swap
+#separator=false
+#interval=30
+
+# Disk usage
+#
+# The directory defaults to $HOME if the instance is not specified.
+# The script may be called with a optional argument to set the alert
+# (defaults to 10 for 10%).
+[disk]
+label=/
+instance=/
+interval=30
+separator=false
+color=#999999
+
+[disk]
+label=/h
+instance=/home
+interval=30
+separator=false
+color=#999999
+
+[disk]
+label=/v
+instance=/var
+interval=30
+separator=false
+color=#999999
+
+[disk]
+label=/d
+instance=/data
+interval=30
+color=#999999
+
+# Network interface monitoring
+#
+# If the instance is not specified, use the interface used for default route.
+# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
+[iface]
+#instance=wlp2s0
+color=#00FF00
+interval=10
+separator=false
+
+[wifi]
+instance=wlp2s0
+interval=10
+separator=false
+
+[bandwidth]
+#instance=eth0
+interval=5
+color=#999999
+separator=false
+
+# OpenVPN support
+#
+# Support multiple VPN, with colors.
+[openvpn]
+interval=20
+
+# CPU usage
+#
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+[cpu_usage]
+label=CPU
+interval=10
+#min_width=CPU: 100.00%
+#separator=false
+
+#[load_average]
+#interval=10
+
+# Battery indicator
+#
+# The battery instance defaults to 0.
+[battery]
+#label=BAT
+label=⚡
+#instance=1
+interval=30
+
+# Date Time
+#
+[time]
+command=date '+%Y-%m-%d %H:%M'
+interval=5
+
+# Generic media player support
+#
+# This displays "ARTIST - SONG" if a music is playing.
+# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+#[mediaplayer]
+#instance=spotify
+#interval=5
+#signal=10
+
+# Temperature
+#
+# Support multiple chips, though lm-sensors.
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+#[temperature]
+#label=TEMP
+#interval=10
+
+# Key indicators
+#
+# Add the following bindings to i3 config file:
+#
+# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+# bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+#[keyindicator]
+#instance=CAPS
+#interval=once
+#signal=11
+
+#[keyindicator]
+#instance=NUM
+#interval=once
+#signal=11

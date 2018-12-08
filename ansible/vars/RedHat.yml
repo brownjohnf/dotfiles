@@ -1,9 +1,0 @@
----
-packager: yum
-alsa: ""
-build-tools:
-  - "\@Development tools"
-readline:
-  - readline-devel
-dmcrypt:
-  - cryptsetup

@@ -1,12 +1,6 @@
 #!/bin/bash
 
-set -e
-set -x
-
-USER=$(whoami)
-GROUP=$(id -gn)
-HERE="$HOME/dotfiles"
-binpath=$HOME/.bin
+source ./config.sh
 
 # install packages
 sudo pacman -S --needed \
@@ -17,6 +11,7 @@ sudo pacman -S --needed \
   ctags \
   diff-so-fancy \
   dnsutils \
+  docker \
   gnupg \
   htop \
   iotop \
@@ -29,7 +24,6 @@ sudo pacman -S --needed \
   nfs-utils \
   ngrep \
   openssh \
-  openssl \
   pacman-contrib \
   parted \
   readline \
@@ -38,17 +32,25 @@ sudo pacman -S --needed \
   sshpass \
   strace \
   sudo \
-  sysdig \
   sysstat \
   the_silver_searcher \
   tmux \
   traceroute \
   tree \
+  ttf-dejavu \
   ufw \
   unzip \
   vagrant \
   wget \
   whois \
-  zip \
-  zsh
+  zip
+
+sudo ln -fs $(which nvim) /usr/local/bin/vim
+
+sudo systemctl enable ufw
+sudo systemctl start ufw
+sudo ufw status
+sudo ufw default deny
+sudo ufw limit ssh
+sudo ufw status
 

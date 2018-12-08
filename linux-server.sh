@@ -1,12 +1,6 @@
 #!/bin/bash
 
-set -x
-set -e
-
-USER=$(whoami)
-GROUP=$(id -gn)
-HERE="$HOME/dotfiles"
-binpath=$HOME/bin
+source ./config.sh
 
 # Setup tmux plugin manager for tmux plugin management
 mkdir -p $HOME/.tmux/plugins
@@ -97,11 +91,6 @@ else
 fi
 (cd $HOME/.nvm && git checkout `git describe --abbrev=0 --tags`)
 
-# sublime
-mkdir -p $HOME/.config/sublime-text-3/Packages/User
-ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
-  $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
-
 # custom binaries
 mkdir -p $binpath
 for binary in $(ls bin); do
@@ -118,12 +107,6 @@ done
 (cd /tmp && wget http://downloads.rclone.org/rclone-current-linux-amd64.zip)
 (cd /tmp && unzip rclone-current-linux-amd64.zip)
 sudo mv /tmp/rclone-*/rclone /usr/local/bin
-
-# i3
-if [ ! -f $HOME/.i3/config ]; then
-  mkdir -p $HOME/.i3
-  ln -fs $HERE/i3/.i3/config $HOME/.i3/config
-fi
 
 # Docker Compose
 for version in 1.11.1; do

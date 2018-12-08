@@ -1,7 +1,0 @@
-#!/bin/bash
-
-printf "Your Daily Digest - %s" "`date`"
-
-cal -A 2
-calendar
-

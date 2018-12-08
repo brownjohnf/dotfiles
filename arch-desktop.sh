@@ -1,22 +1,15 @@
 #!/bin/bash
 
-set -ex
-
-USER=$(whoami)
-GROUP=$(id -gn)
-HERE="$HOME/dotfiles"
-binpath=$HOME/.bin
-
-sudo localectl --no-convert set-x11-keymap us pc104 dvorak
+source ./config.sh
 
 # install packages
 sudo pacman -S --needed \
+  alacritty \
   android-tools \
   chromium \
   code \
   cups \
   cups-pdf \
-  docker \
   feh \
   firefox \
   ghostscript \
@@ -33,21 +26,20 @@ sudo pacman -S --needed \
   libreoffice \
   lxdm \
   openvpn \
-  qt4 \
   redshift \
   remmina \
-  rsync \
   sane \
   seahorse \
-  terminator \
   thunar \
-  ttf-dejavu \
   tumbler \
   virtualbox \
   vlc \
   xorg \
   xorg-xinit \
   xsel
+
+sudo systemctl enable lxdm.service
+sudo localectl --no-convert set-x11-keymap us pc104 dvorak
 
 function build_from_aur () {
   name=$1
@@ -62,7 +54,8 @@ function build_from_aur () {
   (cd $build_path && makepkg -sric --needed)
 }
 
-ln -fs $HERE/bin/displays $HOME/bin/displays
+mkdir -p $binpath
+ln -fs $HERE/bin/displays $binpath/displays
 
 # set the default browser to firefox
 mkdir -p $HOME/.local/share/applications

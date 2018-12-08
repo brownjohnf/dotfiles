@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/jack/rails_projects/pcdic/app/views/word_histories'
-let g:netrw_dirhist_2='/mnt/shared/rails_projects/jack-app-base/app/views/statics'
-let g:netrw_dirhist_3='/mnt/shared/rails_projects/comfortable-mexican-sofa/config/environments'
-let g:netrw_dirhist_4='/Volumes/Microsoft Office 2011/Read Me.rtfd'
-let g:netrw_dirhist_5='/mnt/data/MobileDevHQ/mobile/.git'
-let g:netrw_dirhist_6='/home/jfbrown/.xchat2'
