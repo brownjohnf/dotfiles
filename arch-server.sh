@@ -27,6 +27,7 @@ sudo pacman -S --needed \
   openssh \
   pacman-contrib \
   parted \
+  prettyping \
   readline \
   ripgrep \
   rsync \
