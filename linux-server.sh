@@ -47,6 +47,9 @@ mkdir -p $HOME/.vim/colors
 ln -fs $HERE/vim/.vim/colors/molokai.vim    $HOME/.vim/colors/molokai.vim
 ln -fs $HERE/vim/.vim/colors/solarized.vim  $HOME/.vim/colors/solarized.vim
 
+# neovim
+ln -fs $HERE/neovim/init.vim $HOME/.config/nvim/init.vim
+
 # tmux
 ln -fs $HERE/tmux/.tmux.conf $HOME/.tmux.conf
 
@@ -91,32 +94,11 @@ else
 fi
 (cd $HOME/.nvm && git checkout `git describe --abbrev=0 --tags`)
 
-# custom binaries
-mkdir -p $binpath
-for binary in $(ls bin); do
-  ln -fs $HERE/bin/$binary $binpath/$binary
-done
-
-# vault
-for util in vault; do
-  wget https://raw.githubusercontent.com/brownjohnf/$util/master/bin/$util -O $binpath/$util
-  chmod +x $binpath/$util
-done
-
-# rclone
-(cd /tmp && wget http://downloads.rclone.org/rclone-current-linux-amd64.zip)
-(cd /tmp && unzip rclone-current-linux-amd64.zip)
-sudo mv /tmp/rclone-*/rclone /usr/local/bin
-
-# Docker Compose
-for version in 1.11.1; do
-  [[ -f "/usr/local/bin/docker-compose-$version" ]] || sudo sh -c "
-  curl -L https://github.com/docker/compose/releases/download/$version/docker-compose-Linux-x86_64 \
-    > /usr/local/bin/docker-compose-$version && \
-    chmod +x /usr/local/bin/docker-compose-$version
-  "
-done
-sudo ln -fs /usr/local/bin/docker-compose-1.11.1 /usr/local/bin/docker-compose
+# myvault
+sudo wget \
+  https://raw.githubusercontent.com/brownjohnf/vault/master/bin/vault \
+  -O /usr/local/bin/myvault
+sudo chmod +x /usr/local/bin/myvault
 
 echo "SUCCESS"
 

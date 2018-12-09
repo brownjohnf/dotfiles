@@ -88,7 +88,7 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=500000000
 SAVEHIST=500000000
 
-PATH=$HOME/bin:$PATH
+PATH=$HOME/.bin:$PATH
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

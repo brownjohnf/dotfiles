@@ -12,6 +12,7 @@ sudo pacman -S --needed \
   diff-so-fancy \
   dnsutils \
   docker \
+  docker-compose \
   gnupg \
   htop \
   iotop \
@@ -43,7 +44,8 @@ sudo pacman -S --needed \
   vagrant \
   wget \
   whois \
-  zip
+  zip \
+  zsh
 
 sudo ln -fs $(which nvim) /usr/local/bin/vim
 

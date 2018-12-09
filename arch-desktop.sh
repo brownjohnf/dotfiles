@@ -10,6 +10,7 @@ sudo pacman -S --needed \
   code \
   cups \
   cups-pdf \
+  dmenu \
   feh \
   firefox \
   ghostscript \
@@ -67,18 +68,9 @@ build_from_aur yaourt https://aur.archlinux.org/package-query.git
 build_from_aur yaourt https://aur.archlinux.org/yaourt.git
 
 yaourt -S --needed \
-  libcurl-compat \
-  gstreamer0.10-base \
-  makepasswd \
   networkmanager-dmenu-git \
-  perl-bytes-random-secure \
-  perl-crypt-random-seed \
-  perl-crypt-random-tesha2 \
-  prettyping \
-  rocketchat-client \
   slack-desktop \
   zoom
-
 
 cat <<EOF
 

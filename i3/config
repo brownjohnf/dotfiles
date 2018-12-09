@@ -199,7 +199,7 @@ bar {
   output primary
   position top
   #mode hide
-  status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks -vvv | tee /tmp/i3blocks.txt
+  status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks 
   tray_padding 4px
   workspace_buttons yes
   binding_mode_indicator yes
