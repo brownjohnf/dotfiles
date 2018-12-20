@@ -3,21 +3,27 @@
 set -eux
 set -o pipefail
 
-newVersion=$(curl -s https://www.archlinux.org/packages/search/json/?name=linux \
-  | jq -r ".results | map(select(.repo == \"core\")) | .[0] | .pkgver + \"-\" + .pkgrel")
-
-echo $?
-echo $newVersion
+while ! ping -c 1 google.com; do
+  sleep 10
+done
 
 if [ $? -eq 6 ]; then
   echo '{"full_text": "INT", "color": "#ffffff"}'
 fi
 
-currentVersion=$(pacman -Q linux | cut -f 2 -d ' ')
+for package in linux lvm2 device-mapper systemd; do
+  newVersion=$(curl -s https://www.archlinux.org/packages/search/json/?name=${package} \
+    | jq -r ".results | map(select(.repo == \"core\")) | .[0] | .pkgver + \"-\" + .pkgrel")
 
-if [ "${newVersion}" != "${currentVersion}" ]; then
-  echo '{"full_text": "NO", "color": "#ff0000"}'
-fi
+  currentVersion=$(pacman -Q ${package} | cut -f 2 -d ' ')
+
+  if [ "${newVersion}" != "${currentVersion}" ]; then
+    cat <<HEREDOC
+{"full_text": "NO - ${package}", "color": "#ff0000"}
+HEREDOC
+    exit
+  fi
+done
 
 echo '{"full_text": "OK", "color": "#00ff00"}'
 

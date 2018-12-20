@@ -27,6 +27,7 @@ sudo pacman -S --needed \
   libreoffice \
   lxdm \
   openvpn \
+  pavucontrol \
   redshift \
   remmina \
   sane \
