@@ -1,6 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env python
 
-length=${1:-128}
+import string
+import secrets
+import argparse
+import pyperclip
 
-makepasswd --chars=${length} --string 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' | tr -d '\n' | copy
+parser = argparse.ArgumentParser(description='Generate passwords')
+parser.add_argument('length', metavar='LENGTH', type=int, default=32, nargs='?',
+        help='Length of secret to generate')
+
+args = parser.parse_args()
+
+password = ''.join(secrets.choice(string.ascii_letters + string.digits) for i in range(args.length))
+
+pyperclip.copy(password)
 
