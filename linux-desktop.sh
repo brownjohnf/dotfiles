@@ -26,8 +26,8 @@ clone_or_update \
   https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks-contrib
 
 # alacritty
-mkdir -p $HOME/.config/alacritty/alacritty.yml
-ln -fs $HERE/alacritty/.alacritty.yml $HOME/.config/alacritty/alacritty.yml
+mkdir -p $HOME/.config/alacritty
+ln -fs $HERE/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 echo "SUCCESS"
 
@@ -36,3 +36,23 @@ mkdir -p $HOME/.config/sublime-text-3/Packages/User
 ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
   $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
+echo "
+
+Linux desktop setup complete. Add the following to the file
+
+~/.mozilla/firefox/<your profile>/chrome/userChrome.css
+
+to fix the horizontal tabs in FF
+
+You should also add the following to the Tab Center Redux in FF to fix useless
+features:
+
+#topmenu {
+  display: none;
+}
+
+#tablist-wrapper.shrinked .tab:not(.pinned) {
+  height: 29px !important;
+}
+
+"

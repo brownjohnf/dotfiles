@@ -28,6 +28,7 @@ sudo pacman -S --needed \
   lxdm \
   openvpn \
   pavucontrol \
+  powertop \
   redshift \
   remmina \
   sane \

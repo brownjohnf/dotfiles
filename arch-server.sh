@@ -24,10 +24,12 @@ sudo pacman -S --needed \
   net-tools \
   nfs-utils \
   ngrep \
+  nmap \
   openssh \
   pacman-contrib \
   parted \
   prettyping \
+  python-pip \
   readline \
   ripgrep \
   rsync \

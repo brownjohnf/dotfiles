@@ -119,7 +119,6 @@ signal=10
 # The type defaults to "mem" if the instance is not specified.
 [memory]
 label=mem
-separator=false
 interval=30
 color=#999999
 
@@ -134,30 +133,9 @@ color=#999999
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-[disk]
-label=/
-instance=/
-interval=30
-separator=false
-color=#999999
 
 [disk]
-label=/h
-instance=/home
-interval=30
-separator=false
-color=#999999
-
-[disk]
-label=/v
-instance=/var
-interval=30
-separator=false
-color=#999999
-
-[disk]
-label=/d
-instance=/data
+command=echo disk $(zpool list -o free -H)
 interval=30
 color=#999999
 
