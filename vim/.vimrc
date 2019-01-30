@@ -1,40 +1,48 @@
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
-Plug 'dracula/vim'
-Plug 'fatih/vim-go'
+"Plug 'Chiel92/vim-autoformat'
+Plug 'fatih/vim-go', { 'for': 'golang' }
 Plug 'godlygeek/tabular'
-Plug 'hashivim/vim-terraform'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'markdown' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+" This will install fzf for us
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'leafgarland/typescript-vim'
+Plug 'junegunn/fzf.vim' " This is the fzf plugin
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
-Plug 'mxw/vim-jsx'
-Plug 'posva/vim-vue'
-Plug 'rust-lang/rust.vim'
+"Plug 'nvie/vim-flake8'
+Plug 'mxw/vim-jsx', { 'for': 'jsx' }
+Plug 'posva/vim-vue', { 'for': 'vue' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree'
 Plug 'tomasiser/vim-code-dark'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
+Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
-Plug 'w0ng/vim-hybrid'
-Plug 'zah/nim.vim'
 call plug#end()
+
+" Set the leader key to spacebar
+let mapleader=' '
+" Unmap other functions from spacebar
+nnoremap <space> <nop>
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 nmap <Leader>a :Ack!<Space>
 
+let vim_markdown_preview_hotkey='<C-m>'
+
 let g:jsx_ext_required = 0
 
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
+      \  'javascript.jsx' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
 
 set nocompatible              " be iMproved, required
 
@@ -59,12 +67,15 @@ set smartcase
 set tabstop=2
 set t_Co=256
 set title
-set tw=80
+set tw=72
 set wildignore+=dist
 set wildignore+=node_modules
 set wildmode=list:longest
+set foldlevel=99
+set showcmd
 
 let NERDTreeRespectWildIgnore=1
+let python_highlight_all=1
 
 color codedark
 
@@ -77,10 +88,14 @@ noremap <Right> <Nop>
 
 " Set up custom mappings
 map <C-n> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
+map <C-l> :NERDTreeToggle<CR>
 nmap <C-p> :Files<CR>
 nmap <Leader>r :tags<CR>
+nmap <Leader>c :noh<CR>
 
+" Set up space to toggle folding (when enabled)
+nnoremap <Leader>f za
+nnoremap <Leader>t :TagbarToggle<CR>
 
 " Tell ack.vim to use ag (the Silver Searcher) instead
 let g:ackprg = 'ag --vimgrep'
@@ -89,7 +104,11 @@ syntax on
 filetype plugin indent on
 
 " clean up trailing whitespace
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWrite * let position = winsaveview() | :%s/\s\+$//e | call winrestview(position) | unlet! position
+"autocmd BufWrite *.py let savedview = winsaveview() | :norm gggqG<CR> | call winrestview(savedview) | unlet! savedview
+"autocmd BufWrite * :Autoformat
+"autocmd BufWritePre *.py let position = winsaveview() | :%!autopep8 --aggressive --aggressive - | call winrestview(position) | unlet! position
+"let g:formatterpath = ['/Users/jack/.pyenv/shims/']
 
 " set the tags search path to look in the .git folder (as configured via git
 " hooks
@@ -98,16 +117,25 @@ nnoremap <silent> [[ :bprevious<CR>
 nnoremap <silent> ]] :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+nnoremap <F8> gggqG
 nnoremap <F9> :!%:p<Enter>
 nnoremap <F10> :! docker build -f % .<Enter>
+nnoremap Q <Nop>
 
 tnoremap <Esc> <C-\><C-n>
 
-autocmd FileType go set nolist
-autocmd FileType go set noexpandtab
+autocmd FileType go,systemd set
+      \ nolist
+      \ noexpandtab
 
-autocmd FileType systemd set nolist
-autocmd FileType systemd set noexpandtab
+autocmd FileType python setlocal formatprg=autopep8\ -
+autocmd FileType python set
+      \ foldmethod=indent
+      \ tabstop=4
+      \ softtabstop=4
+      \ shiftwidth=4
+      \ textwidth=101
+
 
 au BufReadPost Dockerfile* set syntax=dockerfile
 

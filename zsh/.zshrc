@@ -1,9 +1,11 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/$(whoami)/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Disable bell in X
-if [ "$TERM" != "linux" ]; then
-  xset -b
+if [ "$(uname)" = "Linux" ]; then
+  if [ "$TERM" != "linux" ]; then
+    xset -b
+  fi
 fi
 
 # Set name of the theme to load.
@@ -69,9 +71,9 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 # Keep them the same for now
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -112,6 +114,8 @@ alias rc=rancher-compose
 alias s="subl3"
 alias tf="terraform"
 alias tree="tree -I node_modules"
+alias copy=pbcopy
+alias vim=nvim
 
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
@@ -132,7 +136,7 @@ func dm-devbox ()
   export DOCKER_HOST="tcp://dp-jackb01-dev.sea1.office.priv:2376"
 }
 
-PATH=/data/go/bin:/usr/local/go/bin:$PATH
+PATH=$HOME/dotfiles/bin:/data/go/bin:/usr/local/go/bin:$PATH
 export GOPATH=/data/go
 
 # added by travis gem
@@ -149,7 +153,7 @@ fi
 chmod 0400 /tmp/.ssh-agent
 source /tmp/.ssh-agent > /dev/null
 
-source $HOME/.cargo/env
+[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -12,9 +12,6 @@
   default = current
 [init]
   templatedir = ~/.git_template
-[commit]
-  template = ~/.gitmessage.txt
-  gpgsign = true
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
