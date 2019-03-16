@@ -4,7 +4,7 @@
 
 export TERM=xterm-color
 #export COLORTERM=gnome-256
-. ~/.bash_aliases
+. ~/.aliases
 . ~/.bash_prompts
 
 # ignore dup lines

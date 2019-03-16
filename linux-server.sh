@@ -19,7 +19,6 @@ if [ ! -d $HOME/.vim/autoload/plug.vim ]; then
 fi
 
 # bash
-ln -fs $HERE/bash/.bash_aliases $HOME/.bash_aliases
 ln -fs $HERE/bash/.bash_profile $HOME/.bash_profile
 ln -fs $HERE/bash/.bash_prompts $HOME/.bash_prompts
 ln -fs $HERE/bash/.bash_logout $HOME/.bash_logout
@@ -28,6 +27,9 @@ touch $HOME/.bash_history
 
 # oh-my-zsh
 [[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# aliases
+ln -fs $HERE/aliases.sh $HOME/.aliases
 
 # Install my custom profile(s)
 for f in jackb; do

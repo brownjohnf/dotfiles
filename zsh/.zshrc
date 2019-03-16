@@ -92,31 +92,6 @@ SAVEHIST=500000000
 
 PATH=$HOME/.bin:$PATH
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-alias be="bundle exec"
-alias cat=bat
-alias c=clear
-alias cdd="cd ~/Downloads"
-alias dc=docker-compose
-alias dm=docker-machine
-alias ff=freight-forwarder
-alias fprint="ssh-keygen -l -E md5 -f"
-alias kgp="kubectl get po -o wide"
-alias kgy="kubectl get po -o yaml"
-alias k="kubectl"
-alias lla="ls -lah"
-alias ll="ls -lh"
-alias ping="prettyping --nolegend"
-alias rc=rancher-compose
-alias s="subl3"
-alias tf="terraform"
-alias tree="tree -I node_modules"
-alias copy=pbcopy
-alias vim=nvim
-
 # Python nonsense
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
@@ -136,8 +111,7 @@ func dm-devbox ()
   export DOCKER_HOST="tcp://dp-jackb01-dev.sea1.office.priv:2376"
 }
 
-PATH=$HOME/dotfiles/bin:/data/go/bin:/usr/local/go/bin:$PATH
-export GOPATH=/data/go
+PATH=$HOME/dotfiles/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 # added by travis gem
 [ -f /home/jackb/.travis/travis.sh ] && source /home/jackb/.travis/travis.sh
@@ -163,3 +137,11 @@ source /tmp/.ssh-agent > /dev/null
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+export EMPIRE_API_URL=https://empire-dev.textio.tech
+
+. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+
+source $HOME/.aliases
+

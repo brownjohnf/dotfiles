@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -euo pipefail
+
+remote=origin
+remote_regex="git@([a-z\.-]+):([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)"
+
+if git remote | grep upstream; then
+  remote=upstream
+fi
+
+remote_url=$(git remote -v | grep ${remote} | awk '{print $2 }' | head -n 1)
+
+if [[ $remote_url =~ $remote_regex ]]
+then
+  echo "Found valid remote"
+
+  host="${BASH_REMATCH[1]}"
+  org="${BASH_REMATCH[2]}"
+  repo="${BASH_REMATCH[3]}"
+else
+  echo "Could not find valid remote:" 1>&2
+  git remote -v | grep ${remote} 1>&2
+  exit 1
+fi
+
+if [ "$host" != "github.com" ]; then
+  echo "Host is not github.com: ${host}. Don't know how to build PR url" 1>&2
+  exit 1
+fi
+
+url="https://${host}/${org}/${repo}"
+
+open $url
+
