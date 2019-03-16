@@ -22,7 +22,6 @@ if [ ! -d $HOME/.vim/autoload/plug.vim ]; then
 fi
 
 # bash
-ln -fs $HERE/bash/.bash_aliases $HOME/.bash_aliases
 ln -fs $HERE/bash/.bash_profile $HOME/.bash_profile
 ln -fs $HERE/bash/.bash_prompts $HOME/.bash_prompts
 ln -fs $HERE/bash/.bash_logout $HOME/.bash_logout
@@ -31,6 +30,9 @@ touch $HOME/.bash_history
 
 # oh-my-zsh
 [[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# aliases
+ln -fs $HERE/aliases.sh $HOME/.aliases
 
 # Install my custom profile(s)
 for f in jackb; do
@@ -64,32 +66,4 @@ ln -fs $HERE/git/.gitconfig           $HOME/.gitconfig
 # ruby
 ln -fs $HERE/ruby/.irbrc $HOME/.irbrc
 touch $HOME/.irb_history
-
-# rbenv
-if [ -d $HOME/.rbenv ]; then
-  echo '--> Upgrading rbenv...'
-  (cd $HOME/.rbenv && git pull --rebase origin master)
-else
-  echo '--> Installing rbenv...'
-  git clone https://github.com/sstephenson/rbenv.git $HOME/.rbenv
-fi
-
-# rbenv-install
-if [ -d $HOME/.rbenv/plugins/ruby-build ]; then
-  echo '--> Upgrading rbenv-install...'
-  (cd $HOME/.rbenv/plugins/ruby-build && git pull --rebase origin master)
-else
-  echo '--> Installing rbenv-install'
-  git clone https://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-fi
-
-# nvm
-if [ -d $HOME/.nvm ]; then
-  (cd $HOME/.nvm && git fetch)
-else
-  git clone https://github.com/creationix/nvm.git $HOME/.nvm
-fi
-(cd $HOME/.nvm && git checkout `git describe --abbrev=0 --tags`)
-
-echo "SUCCESS"
 

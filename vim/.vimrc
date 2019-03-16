@@ -17,10 +17,14 @@ Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree'
 Plug 'tomasiser/vim-code-dark'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
+Plug 'leafgarland/typescript-vim'
+Plug 'integralist/vim-mypy', { 'for': 'python' }
 call plug#end()
 
 " Set the leader key to spacebar
@@ -129,7 +133,7 @@ autocmd FileType go,systemd set
       \ noexpandtab
 
 autocmd FileType python setlocal formatprg=autopep8\ -
-autocmd FileType python set
+autocmd FileType python setlocal
       \ foldmethod=indent
       \ tabstop=4
       \ softtabstop=4
@@ -138,6 +142,8 @@ autocmd FileType python set
 
 
 au BufReadPost Dockerfile* set syntax=dockerfile
+au BufReadPost *.tpl set syntax=yaml
+au BufReadPost *.yml.template set syntax=yaml
 
 let b:thisdir=expand("%:p:h")
 let b:vimlocal=b:thisdir."/vimlocal"

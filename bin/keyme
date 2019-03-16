@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+set -x
+
+filename=/tmp/$$-key
+declare -A aliases=(
+  ["jeeves"]="4ca819cd-a863-4b5a-85e5-a9e300511e40"
+  ["layla"]="foobar"
+)
+
+function cleanup() {
+  rm -f ${filename}
+}
+
+trap cleanup EXIT
+
+function bw_login() {
+  [[ -f /tmp/jack-bw ]] && bw sync && return
+  touch /tmp/jack-bw
+  chmod 0600 /tmp/jack-bw
+  echo "export BW_SESSION=$(bw unlock --raw)" > /tmp/jack-bw
+  chmod 0400 /tmp/jack-bw
+  source /tmp/jack-bw
+  bw sync
+}
+
+[[ -f /tmp/jack-bw ]] && source /tmp/jack-bw
+
+bw sync || bw_login
+
+# Create a file that others can't read
+touch ${filename}
+chmod 0600 ${filename}
+
+# Write the key to the protected file
+bw get item ${aliases[$1]} | jq '.notes' -r > ${filename}
+chmod 0400 ${filename}
+
+# Add the key to the keychain
+ssh-add -c ${filename}
+
