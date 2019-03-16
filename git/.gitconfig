@@ -10,11 +10,6 @@
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%aN>%Creset' --abbrev-commit
 [push]
   default = current
-[init]
-  templatedir = ~/.git_template
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
-
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/

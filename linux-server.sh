@@ -63,38 +63,10 @@ ln -fs $HERE/git/.gitconfig           $HOME/.gitconfig
 ln -fs $HERE/ruby/.irbrc $HOME/.irbrc
 touch $HOME/.irb_history
 
-# rbenv
-if [ -d $HOME/.rbenv ]; then
-  echo '--> Upgrading rbenv...'
-  (cd $HOME/.rbenv && git pull --rebase origin master)
-else
-  echo '--> Installing rbenv...'
-  git clone https://github.com/sstephenson/rbenv.git $HOME/.rbenv
+if [ ! -d $HOME/.asdf ]; then
+  echo "--> Installing asdf..."
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.0
 fi
-
-# rbenv-install
-if [ -d $HOME/.rbenv/plugins/ruby-build ]; then
-  echo '--> Upgrading rbenv-install...'
-  (cd $HOME/.rbenv/plugins/ruby-build && git pull --rebase origin master)
-else
-  echo '--> Installing rbenv-install'
-  git clone https://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-fi
-
-# pyenv
-if [ -d $HOME/.pyenv ]; then
-  (cd $HOME/.pyenv && git pull)
-else
-  git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-fi
-
-# nvm
-if [ -d $HOME/.nvm ]; then
-  (cd $HOME/.nvm && git fetch)
-else
-  git clone https://github.com/creationix/nvm.git $HOME/.nvm
-fi
-(cd $HOME/.nvm && git checkout `git describe --abbrev=0 --tags`)
 
 # myvault
 sudo wget \

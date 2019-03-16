@@ -92,18 +92,6 @@ SAVEHIST=500000000
 
 PATH=$HOME/.bin:$PATH
 
-# Python nonsense
-export PYENV_ROOT="$HOME/.pyenv"
-PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# rbenv
-PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# nvm
-source $HOME/.nvm/nvm.sh
-
 func dm-devbox ()
 {
   export DOCKER_TLS_VERIFY=1;
@@ -140,8 +128,15 @@ source /tmp/.ssh-agent > /dev/null
 
 export EMPIRE_API_URL=https://empire-dev.textio.tech
 
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+if [ -d $HOME/.asdf ]; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
+
+if [ -d /usr/local/opt/asdf ]; then
+  . /usr/local/opt/asdf/asdf.sh
+  . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+fi
 
 source $HOME/.aliases
 
