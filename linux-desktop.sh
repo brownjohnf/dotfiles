@@ -38,11 +38,20 @@ ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
 
 echo "
 
-Linux desktop setup complete. Add the following to the file
+Linux desktop setup complete. Add the following to the file (you may
+need to create the file and the chrome directory):
 
 ~/.mozilla/firefox/<your profile>/chrome/userChrome.css
 
-to fix the horizontal tabs in FF
+@namespace url(\"http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul\");
+#TabsToolbar {
+  visibility: collapse !important;
+}
+
+to fix the horizontal tabs in FF.
+"
+
+echo "
 
 You should also add the following to the Tab Center Redux in FF to fix useless
 features:
