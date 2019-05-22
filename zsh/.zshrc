@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+export HOMEBREW_NO_ANALYTICS=1
+
 # Disable bell in X
 if [ "$(uname)" = "Linux" ]; then
   if [ "$TERM" != "linux" ]; then
@@ -108,7 +110,7 @@ PATH=$HOME/dotfiles/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 if (( $+commands[tag] )); then
 	tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
-	alias ag=tag
+	alias ag="tag --ignore 'terraform.tfstate*'"
 fi
 
 [[ -f /tmp/.ssh-agent ]] || ssh-agent > /tmp/.ssh-agent 2>/dev/null
@@ -140,3 +142,7 @@ fi
 
 source $HOME/.aliases
 
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/jack/workspace/textio-elastic-searchvice-upload/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/jack/workspace/textio-elastic-searchvice-upload/node_modules/tabtab/.completions/slss.zsh

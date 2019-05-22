@@ -1,7 +1,8 @@
 call plug#begin('~/.vim/plugged')
+
 Plug 'airblade/vim-gitgutter'
 "Plug 'Chiel92/vim-autoformat'
-Plug 'fatih/vim-go', { 'for': 'golang' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'markdown' }
@@ -21,11 +22,29 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
+" Provides autocomplete
 Plug 'Valloric/YouCompleteMe'
-Plug 'vim-syntastic/syntastic'
-Plug 'leafgarland/typescript-vim'
+"Plug 'vim-syntastic/syntastic'
+" Provides real-time syntax/compilation linting
+Plug 'w0rp/ale'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'integralist/vim-mypy', { 'for': 'python' }
 call plug#end()
+
+"let g:ale_fixers = {
+"\   'go': ['gofmt'],
+"\   'rust': ['rustfmt'],
+"\}
+
+" rls doesn't work; not sure why
+"let g:ale_linters = {
+"\ 'rust': ['rls'],
+"\}
+
+" Always show the ale gutter, so the buffer doesn't jump back and forth
+let g:ale_sign_column_always = 1
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
 
 " Set the leader key to spacebar
 let mapleader=' '
@@ -128,7 +147,7 @@ nnoremap Q <Nop>
 
 tnoremap <Esc> <C-\><C-n>
 
-autocmd FileType go,systemd set
+autocmd FileType go,systemd setlocal
       \ nolist
       \ noexpandtab
 
@@ -144,6 +163,7 @@ autocmd FileType python setlocal
 au BufReadPost Dockerfile* set syntax=dockerfile
 au BufReadPost *.tpl set syntax=yaml
 au BufReadPost *.yml.template set syntax=yaml
+au BufReadPost template.yaml set syntax=yaml.cloudformation
 
 let b:thisdir=expand("%:p:h")
 let b:vimlocal=b:thisdir."/vimlocal"

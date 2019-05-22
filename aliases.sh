@@ -19,8 +19,8 @@ alias lla="ls -lah"
 alias ll="ls -lFh"
 alias ping="prettyping --nolegend"
 alias tf="terraform"
-alias tree="tree -I node_modules -I venv"
-alias copy=pbcopy
+alias tree="tree -I node_modules -I venv -I target"
+alias copy=/usr/local/bin/copy
 
 alias emp-prod='EMPIRE_API_URL=https://empire.textio.tech emp'
 alias emp-staging='EMPIRE_API_URL=https://empire-staging.textio.tech emp'
