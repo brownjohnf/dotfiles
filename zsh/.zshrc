@@ -92,7 +92,7 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=500000000
 SAVEHIST=500000000
 
-PATH=$HOME/.bin:$PATH
+PATH=$HOME/.bin:$HOME/.local/bin:$PATH
 
 func dm-devbox ()
 {
