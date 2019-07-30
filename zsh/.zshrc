@@ -94,14 +94,8 @@ SAVEHIST=500000000
 
 PATH=$HOME/.bin:$HOME/.local/bin:$PATH
 
-func dm-devbox ()
-{
-  export DOCKER_TLS_VERIFY=1;
-  export DOCKER_CERT_PATH="/home/jackb/benjamin/.docker/certs/client/dev";
-  export DOCKER_HOST="tcp://dp-jackb01-dev.sea1.office.priv:2376"
-}
-
 PATH=$HOME/dotfiles/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
 # added by travis gem
 [ -f /home/jackb/.travis/travis.sh ] && source /home/jackb/.travis/travis.sh
@@ -110,7 +104,7 @@ PATH=$HOME/dotfiles/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 if (( $+commands[tag] )); then
 	tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
-	alias ag="tag --ignore 'terraform.tfstate*'"
+	alias ag="tag --ignore 'terraform.tfstate*' --ignore vendor"
 fi
 
 [[ -f /tmp/.ssh-agent ]] || ssh-agent > /tmp/.ssh-agent 2>/dev/null
@@ -130,19 +124,20 @@ source /tmp/.ssh-agent > /dev/null
 
 export EMPIRE_API_URL=https://empire-dev.textio.tech
 
-if [ -d $HOME/.asdf ]; then
+if [ -f $HOME/.asdf/asdf.sh ]; then
   . $HOME/.asdf/asdf.sh
   . $HOME/.asdf/completions/asdf.bash
 fi
 
-if [ -d /usr/local/opt/asdf ]; then
+if [ -f /usr/local/opt/asdf/asdf.sh ]; then
   . /usr/local/opt/asdf/asdf.sh
   . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 fi
 
 source $HOME/.aliases
 
-
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/jack/workspace/textio-elastic-searchvice-upload/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/jack/workspace/textio-elastic-searchvice-upload/node_modules/tabtab/.completions/slss.zsh
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+

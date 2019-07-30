@@ -1,8 +1,16 @@
+" Enable completion where available.
+" " This setting must be set before ALE is loaded.
+" let g:ale_completion_enabled = 1
 call plug#begin('~/.vim/plugged')
 
+" Try my task runner
+"Plug '/Users/jack/neovim-task-runner'
+
+" Show's updated lines in the gutter
 Plug 'airblade/vim-gitgutter'
 "Plug 'Chiel92/vim-autoformat'
 Plug 'fatih/vim-go', { 'for': 'go' }
+" Provides the /Tab alignment shortcut
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'markdown' }
@@ -11,7 +19,7 @@ Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim' " This is the fzf plugin
 Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 "Plug 'nvie/vim-flake8'
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'posva/vim-vue', { 'for': 'vue' }
@@ -25,6 +33,8 @@ Plug 'tpope/vim-surround'
 " Provides autocomplete
 Plug 'Valloric/YouCompleteMe'
 "Plug 'vim-syntastic/syntastic'
+" Provide commands to generate dot-based diagrams
+Plug 'wannesm/wmgraphviz.vim'
 " Provides real-time syntax/compilation linting
 Plug 'w0rp/ale'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
@@ -93,6 +103,7 @@ set title
 set tw=72
 set wildignore+=dist
 set wildignore+=node_modules
+set wildignore+=target
 set wildmode=list:longest
 set foldlevel=99
 set showcmd
@@ -113,12 +124,34 @@ noremap <Right> <Nop>
 map <C-n> :NERDTreeToggle<CR>
 map <C-l> :NERDTreeToggle<CR>
 nmap <C-p> :Files<CR>
+nmap <C-g> :Ag<CR>
 nmap <Leader>r :tags<CR>
-nmap <Leader>c :noh<CR>
+" clear search highligts (noh), quickfix list (ccl), location list (lcl)
+" and preview window (pclose)
+nmap <Leader>c :noh <bar> ccl <bar> lcl <bar> pclose<CR>
+" Map leader+n to go to the next location in the location list, and N to
+" go to previous
+nnoremap <Leader>n :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
+nnoremap <Leader>N :try<bar>lprev<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>llast<bar>endtry<cr>
 
 " Set up space to toggle folding (when enabled)
 nnoremap <Leader>f za
 nnoremap <Leader>t :TagbarToggle<CR>
+
+if has('nvim')
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " managing terminal in vim
+
+  " jump to terminal
+  nnoremap <M-1> :b term://<CR>
+
+  " enter normal mode from within terminal
+  tnoremap <Esc> <C-\><C-n>
+
+  " send a literal escape to a program in the terminal
+  tnoremap <M-0> <Esc>
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+endif
 
 " Tell ack.vim to use ag (the Silver Searcher) instead
 let g:ackprg = 'ag --vimgrep'
@@ -145,7 +178,6 @@ nnoremap <F9> :!%:p<Enter>
 nnoremap <F10> :! docker build -f % .<Enter>
 nnoremap Q <Nop>
 
-tnoremap <Esc> <C-\><C-n>
 
 autocmd FileType go,systemd setlocal
       \ nolist
@@ -159,11 +191,11 @@ autocmd FileType python setlocal
       \ shiftwidth=4
       \ textwidth=101
 
-
 au BufReadPost Dockerfile* set syntax=dockerfile
 au BufReadPost *.tpl set syntax=yaml
 au BufReadPost *.yml.template set syntax=yaml
 au BufReadPost template.yaml set syntax=yaml.cloudformation
+au BufWrite *.dot GraphvizCompile
 
 let b:thisdir=expand("%:p:h")
 let b:vimlocal=b:thisdir."/vimlocal"
