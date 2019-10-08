@@ -116,9 +116,5 @@ fi
 
 source $HOME/.aliases
 
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/jack/workspace/textio-elastic-searchvice-upload/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/jack/workspace/textio-elastic-searchvice-upload/node_modules/tabtab/.completions/slss.zsh
-
 # Use shared libraries when installing python
 export PYTHON_CONFIGURE_OPTS="--enable-framework"
