@@ -50,6 +50,7 @@ ln -fs $HERE/vim/.vim/colors/molokai.vim    $HOME/.vim/colors/molokai.vim
 ln -fs $HERE/vim/.vim/colors/solarized.vim  $HOME/.vim/colors/solarized.vim
 
 # neovim
+mkdir -p $HOME/.config/nvim
 ln -fs $HERE/neovim/init.vim $HOME/.config/nvim/init.vim
 
 # tmux

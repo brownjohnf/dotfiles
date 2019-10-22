@@ -1,7 +1,7 @@
 #!/bin/bash
 
-set -e
-set -x
+set -eu
+set -o pipefail
 
 USER=$(whoami)
 GROUP=$(id -gn)
@@ -14,7 +14,7 @@ sudo apt-get update -y && sudo apt-get install -y aptitude
 # Go back and install everything
 sudo aptitude update && sudo aptitude install \
   ack-grep \
-  apache2-bench \
+  apache2-utils \
   build-essential \
   cryptsetup \
   curl \
@@ -45,10 +45,17 @@ sudo aptitude update && sudo aptitude install \
   zsh
 
 # Docker
-wget -qO- https://get.docker.com/ | sh
+which docker || (wget -qO- https://get.docker.com/ | sh)
 
 # Heroku
 wget -O- https://toolbelt.heroku.com/install.sh | sh
+
+# diff-so-fancy
+
+sudo bash -c 'curl -sL \
+    https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy \
+  > /usr/local/bin/diff-so-fancy'
+sudo cdmod +x /usr/local/bin/diff-so-fancy
 
 ./linux-server.sh
 
