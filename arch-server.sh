@@ -13,6 +13,7 @@ sudo pacman -S --needed \
   dnsutils \
   docker \
   docker-compose \
+  emacs \
   gnupg \
   htop \
   iotop \

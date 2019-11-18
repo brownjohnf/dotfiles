@@ -53,6 +53,10 @@ ln -fs $HERE/vim/.vim/colors/solarized.vim  $HOME/.vim/colors/solarized.vim
 mkdir -p $HOME/.config/nvim
 ln -fs $HERE/neovim/init.vim $HOME/.config/nvim/init.vim
 
+# emacs
+mkdir -p $HOME/.emacs.d
+ln -fs $HERE/emacs/init.el $HOME/.emacs.d/init.el
+
 # tmux
 ln -fs $HERE/tmux/.tmux.conf $HOME/.tmux.conf
 
@@ -76,4 +80,3 @@ sudo wget \
 sudo chmod +x /usr/local/bin/myvault
 
 echo "SUCCESS"
-
