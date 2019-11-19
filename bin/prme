@@ -39,5 +39,5 @@ git push
 
 url="https://${host}/${org}/${repo}/compare/${branch}?expand=1"
 
-open $url
+xdg-open $url
 

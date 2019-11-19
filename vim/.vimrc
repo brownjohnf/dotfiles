@@ -8,12 +8,17 @@ call plug#begin('~/.vim/plugged')
 
 " Show's updated lines in the gutter
 Plug 'airblade/vim-gitgutter'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 "Plug 'Chiel92/vim-autoformat'
 Plug 'fatih/vim-go', { 'for': 'go' }
 " Provides the /Tab alignment shortcut
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'markdown' }
+Plug 'jceb/vim-orgmode'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 " This will install fzf for us
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -55,6 +60,8 @@ call plug#end()
 let g:ale_sign_column_always = 1
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
+
+let g:org_agenda_files=['~/notes.org']
 
 " Set the leader key to spacebar
 let mapleader=' '
@@ -156,6 +163,26 @@ endif
 " Tell ack.vim to use ag (the Silver Searcher) instead
 let g:ackprg = 'ag --vimgrep'
 
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+"let g:go_def_mapping_enabled = 0
+let g:go_def_reuse_buffer = 1
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'go': ['gopls'],
+    \ }
+let g:LanguageClient_loggingLevel = 'DEBUG'
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+"nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+"nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 syntax on
 filetype plugin indent on
 
@@ -178,6 +205,8 @@ nnoremap <F9> :!%:p<Enter>
 nnoremap <F10> :! docker build -f % .<Enter>
 nnoremap Q <Nop>
 
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+"nnoremap gd <Plug>(go-def-vertical)
 
 autocmd FileType go,systemd setlocal
       \ nolist

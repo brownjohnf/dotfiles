@@ -31,10 +31,10 @@ ln -fs $HERE/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 echo "SUCCESS"
 
-# sublime
-mkdir -p $HOME/.config/sublime-text-3/Packages/User
-ln -fs $HERE/sublime/.sublime/Preferences.sublime-settings \
-  $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+# YouCompleteMe
+# Source the zshrc so we pick up any env settings
+source $HOME/.zshrc
+(cd $HOME/.vim/plugged/YouCompleteMe && python3 install.py)
 
 echo "
 

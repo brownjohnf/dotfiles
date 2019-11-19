@@ -17,9 +17,11 @@ sudo aptitude update && sudo aptitude install -y \
   alsa-base \
   alsa-tools \
   alsa-utils \
+  awscli \
   firefox \
   gparted \
   i3 \
+  i3blocks \
   i3lock \
   i3status \
   i3-wm \
@@ -32,3 +34,5 @@ sudo aptitude update && sudo aptitude install -y \
   xsel
 
 sudo snap install spotify
+sudo snap install --classic slack
+

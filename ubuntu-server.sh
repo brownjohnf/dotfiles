@@ -38,11 +38,13 @@ sudo aptitude update && sudo aptitude install \
   traceroute \
   tree \
   unzip \
-  vim \
+  neovim \
   wget \
   whois \
   zlib1g-dev \
   zsh
+
+sudo ln -s $(which nvim) /usr/local/bin/vim
 
 # Docker
 which docker || (wget -qO- https://get.docker.com/ | sh)
