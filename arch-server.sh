@@ -34,6 +34,7 @@ sudo pacman -S --needed \
   readline \
   ripgrep \
   rsync \
+  sshfs \
   sshpass \
   strace \
   sudo \

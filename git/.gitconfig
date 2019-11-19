@@ -7,7 +7,7 @@
 [github]
   user = brownjohnf
 [alias]
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%aE>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%aE>%Creset' --abbrev-commit --abbrev=8
 [push]
   default = current
 	followTags = true
