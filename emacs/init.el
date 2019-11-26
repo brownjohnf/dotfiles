@@ -1,3 +1,9 @@
+;;; init.el --- An Emacs config file
+
+;;; Commentary: My config.
+
+;;; Code:
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
@@ -6,10 +12,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(global-company-mode t)
  '(helm-completion-style (quote emacs))
+ '(org-agenda-files (list org-directory))
+ '(org-directory "~/org")
  '(package-selected-packages
    (quote
-    (flycheck-inline flycheck-rust fill-column-indicator zenburn-theme helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
+    (magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator zenburn-theme helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -31,6 +40,7 @@
 (dolist (package package-selected-packages)
   (unless (package-installed-p package)
     (package-install package)))
+(package-autoremove)
 
 ;; If we hit an error, enable debug. This is useful for
 ;; debugging this file, and probably doesn't work for other langs
@@ -41,21 +51,38 @@
 ;; are working, at least
 (require 'evil)
 (evil-mode 1)
-(define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
-(define-key evil-normal-state-map (kbd "SPC n") 'jack-flycheck-next-error)
-(define-key evil-normal-state-map (kbd "SPC N") 'flycheck-list-errors)
-(define-key evil-normal-state-map (kbd "g e") 'flycheck-error-list-goto-error)
+;; Enable pasting from ctrl-c in X
+(setq-default x-select-enable-clipboard t)
+;; Enable pasting from highlighting text with the mouse in X
+(setq-default x-select-enable-primary t)
+;; Disable evil in term-mode
+(dolist (mode '(term-mode))
+  (add-to-list 'evil-emacs-state-modes mode))
 
 ;; Theme stuff
-(load-theme 'zenburn t)
+(load-theme 'spacemacs-dark t)
 
 ;; General, built-in settings and keybinding mods
+
+;; Disable gui cruft
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+
+;; Always show (line,col) position in status bar
+(column-number-mode 1)
 
 ;; Follow symlinks to source-controlled repos, but warn
 (setq-default vc-follow-symlinks nil)
 
 ;; Consider underscores part of a single word
 (modify-syntax-entry ?_ "w")
+
+;; Auto-scroll compilation buffer
+(setq-default compilation-scroll-output t)
+
+;; Jump to a terminal
+(global-set-key (kbd "C-c t") 'term)
 
 ;; Whitespace
 ;; Show trailing whitespace in files
@@ -78,37 +105,84 @@
 ;; Enable line numbers
 (global-display-line-numbers-mode)
 
+;; Auto-complete
+(add-hook 'after-init-hook 'global-company-mode)
+(setq-default company-idle-delay 10)
+(setq-default company-minimum-prefix-length 1)
+(setq-default company-tooltip-limit 50)
+(setq-default company-show-numbers t)
+
 ;; Projectile
-(setq projectile-project-search-path '("~/" "~/workspace/" "/data"))
-(projectile-global-mode)
+(setq-default projectile-project-search-path '("~/" "~/workspace/" "/data"))
+(projectile-mode)
 (projectile-mode +1)
 
 ;; Helm
 (require 'helm-config)
 (helm-mode 1)
-(setq projectile-completion-system 'helm)
+(setq-default projectile-completion-system 'helm)
 (helm-projectile-on)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
+(define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
+(define-key evil-normal-state-map (kbd "M-p") 'helm-projectile-switch-project)
+
+;; Enable keybinding hinting
+(which-key-mode)
 
 ;; Flycheck
-(add-hook 'after-init-hook 'global-flycheck-mode)
 (defun jack-flycheck-next-error(&optional n)
   (interactive)
   (evil-goto-first-line)
   (flycheck-next-error))
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
+(setq-default flycheck-display-errors-delay 0)
+(define-key evil-normal-state-map (kbd "SPC N") 'flycheck-list-errors)
+(define-key evil-normal-state-map (kbd "g e") 'flycheck-error-list-goto-error)
+(define-key evil-normal-state-map (kbd "SPC n") 'jack-flycheck-next-error)
+(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; Go
 (add-hook 'go-mode-hook 'lsp-deferred)
 (add-hook 'go-mode-hook 'gofmt-before-save)
-(add-hook 'go-mode-hook
-          (lambda
-            (define-key evil-normal-state-map (kbd "g d") 'godef-jump)
-            (define-key evil-normal-state-map (kbd "g D") 'godef-jump-other-window)))
+(evil-define-key 'normal go-mode-map
+  (kbd "g d") 'godef-jump
+  (kbd "g D") 'godef-jump-other-window)
 
 ;; Rust
 (add-hook 'rust-mode-hook 'rust-enable-format-on-save)
+(add-hook 'rust-mode-hook 'lsp-deferred)
+(evil-define-key 'normal rust-mode-map
+  (kbd "g d") 'lsp-find-definition
+  (kbd "g D") 'lsp-find-references)
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+;; Org-mode configs
+(eval-after-load "org"
+  '(require 'ox-gfm nil t))
+
+(setq-default org-export-initial-scope 'buffer)
+(setq-default org-M-RET-may-split-line nil)
+(require 'evil-org-agenda)
+(with-eval-after-load 'evil
+    (evil-define-key 'normal outline-mode-map (kbd "<tab>") #'org-cycle)
+    (evil-define-key 'normal outline-mode-map (kbd "TAB") #'org-cycle))
+(evil-org-agenda-set-keys)
+(add-hook 'org-mode-hook 'evil-org-mode)
+(add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'evil-org-mode-hook
+        (lambda ()
+            (evil-org-set-key-theme)))
+(setq-default org-default-notes-file (concat org-directory "/notes.org"))
+(global-set-key (kbd "C-c c") 'org-capture)
+
+;; Custom functions for common tasks
+(defun tio-ship-predev ()
+  (interactive)
+  (compile "cd /home/jackb/workspace/tio/api && make ship && cd ../cli && make ship"))
+
+(defun tio-ship-prod ()
+  (interactive)
+  (compile "cd /home/jackb/workspace/tio/api && make ship && cd ../cli && make ship"))
