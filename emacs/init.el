@@ -18,7 +18,7 @@
  '(org-directory "~/org")
  '(package-selected-packages
    (quote
-    (magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator zenburn-theme helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
+    (cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator zenburn-theme helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -63,6 +63,12 @@
 (load-theme 'spacemacs-dark t)
 
 ;; General, built-in settings and keybinding mods
+
+;; Update PATH to find tools that we use
+(setenv "PATH" (concat (getenv "PATH") ":~/dotfiles/bin"))
+(setenv "PATH" (concat (getenv "PATH") ":~/.asdf/shims"))
+(dolist (dir '("~/.asdf/shims/" "~/dotfiles/bin/"))
+  (add-to-list 'exec-path dir))
 
 ;; Disable gui cruft
 (menu-bar-mode -1)
@@ -152,6 +158,7 @@
 
 ;; Rust
 (add-hook 'rust-mode-hook 'rust-enable-format-on-save)
+(add-hook 'rust-mode-hook 'cargo-minor-mode)
 (add-hook 'rust-mode-hook 'lsp-deferred)
 (evil-define-key 'normal rust-mode-map
   (kbd "g d") 'lsp-find-definition
@@ -162,6 +169,20 @@
 ;; Org-mode configs
 (eval-after-load "org"
   '(require 'ox-gfm nil t))
+
+;; Active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)))
+;; Don't prompt prior to running code blocks
+(setq-default org-confirm-babel-evaluate nil)
+(add-hook 'org-mode-hook #'toggle-word-wrap)
+(defun org-config-fill-prefix ()
+  "Set `fill-prefix' to the empty string."
+  (setq fill-prefix ""))
+(add-hook 'org-mode-hook #'org-config-fill-prefix)
+
+
 
 (setq-default org-export-initial-scope 'buffer)
 (setq-default org-M-RET-may-split-line nil)

@@ -63,6 +63,7 @@ ln -fs $HERE/tmux/.tmux.conf $HOME/.tmux.conf
 # git
 ln -fs $HERE/git/.git-completion.bash $HOME/.git-completion.bash
 ln -fs $HERE/git/.gitconfig           $HOME/.gitconfig
+ln -fs $HERE/git/.gitignore           $HOME/.gitignore
 
 # ruby
 ln -fs $HERE/ruby/.irbrc $HOME/.irbrc

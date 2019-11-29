@@ -16,3 +16,5 @@
   show = diff-so-fancy | less --tabs=1,5 -RFX
 [url "ssh://git@github.com/textioHQ"]
   insteadOf = https://github.com/textioHQ
+[core]
+	excludesfile = ~/.gitignore
