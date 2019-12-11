@@ -12,13 +12,33 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("cdb4ffdecc682978da78700a461cdc77456c3a6df1c1803ae2dd55c59fa703e3" "947190b4f17f78c39b0ab1ea95b1e6097cc9202d55c73a702395fc817f899393" default)))
  '(global-company-mode t)
  '(helm-completion-style (quote emacs))
+ '(hl-todo-keyword-faces
+   (quote
+    (("TODO" . "#dc752f")
+     ("NEXT" . "#dc752f")
+     ("THEM" . "#2d9574")
+     ("PROG" . "#4f97d7")
+     ("OKAY" . "#4f97d7")
+     ("DONT" . "#f2241f")
+     ("FAIL" . "#f2241f")
+     ("DONE" . "#86dc2f")
+     ("NOTE" . "#b1951d")
+     ("KLUDGE" . "#b1951d")
+     ("HACK" . "#b1951d")
+     ("TEMP" . "#b1951d")
+     ("FIXME" . "#dc752f")
+     ("XXX+" . "#dc752f")
+     ("\\?\\?\\?+" . "#dc752f"))))
  '(org-agenda-files (list org-directory))
  '(org-directory "~/org")
  '(package-selected-packages
    (quote
-    (cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator zenburn-theme helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
+    (ace-window cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator helm-projectile projectile flycheck go-mode rust-mode helm evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -132,6 +152,9 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
 (define-key evil-normal-state-map (kbd "M-p") 'helm-projectile-switch-project)
+
+;; Ace-window
+(define-key evil-normal-state-map (kbd "C-w C-w") 'ace-window)
 
 ;; Enable keybinding hinting
 (which-key-mode)
