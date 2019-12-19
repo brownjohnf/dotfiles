@@ -38,7 +38,7 @@
  '(org-directory "~/org")
  '(package-selected-packages
    (quote
-    (ace-window dockerfile-mode cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator zenburn-theme helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
+    (git-gutter protobuf-mode ace-window dockerfile-mode cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator zenburn-theme helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -155,37 +155,40 @@
 
 ;; Ace-window
 (define-key evil-normal-state-map (kbd "C-w C-w") 'ace-window)
+(define-key evil-normal-state-map (kbd "C-w d") 'ace-delete-window)
 
 ;; Enable keybinding hinting
 (which-key-mode)
 
 ;; Flycheck
-(defun jack-flycheck-next-error(&optional n)
-  (interactive)
-  (evil-goto-first-line)
-  (flycheck-next-error))
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
 (setq-default flycheck-display-errors-delay 0)
-(define-key evil-normal-state-map (kbd "SPC N") 'flycheck-list-errors)
-(define-key evil-normal-state-map (kbd "g e") 'flycheck-error-list-goto-error)
-(define-key evil-normal-state-map (kbd "SPC n") 'jack-flycheck-next-error)
+(define-key evil-normal-state-map (kbd "SPC n") 'flycheck-next-error)
+(define-key evil-normal-state-map (kbd "SPC N") 'flycheck-previous-error)
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
+;; LSP
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+(setq lsp-ui-sideline-enable t)
+(setq lsp-ui-doc-enable t)
+(setq lsp-ui-peek-enable t)
+(setq lsp-ui-peek-always-show t)
+(define-key evil-normal-state-map (kbd "g d") 'lsp-ui-peek-find-definitions)
+(define-key evil-normal-state-map (kbd "g D") 'lsp-ui-peek-find-references)
+
 ;; Go
+(setq gofmt-command "goimports")
 (add-hook 'go-mode-hook 'lsp-deferred)
-(add-hook 'go-mode-hook 'gofmt-before-save)
-(evil-define-key 'normal go-mode-map
-  (kbd "g d") 'godef-jump
-  (kbd "g D") 'godef-jump-other-window)
+(with-eval-after-load 'go-mode
+  (add-hook 'before-save-hook #'gofmt-before-save))
 
 ;; Rust
 (add-hook 'rust-mode-hook 'rust-enable-format-on-save)
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
 (add-hook 'rust-mode-hook 'lsp-deferred)
-(evil-define-key 'normal rust-mode-map
-  (kbd "g d") 'lsp-find-definition
-  (kbd "g D") 'lsp-find-references)
+;; This adds some integration via flycheck-rust with cargo and project
+;; layouts, etc.
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
@@ -232,3 +235,6 @@
 (defun tio-ship-prod ()
   (interactive)
   (compile "cd /home/jackb/workspace/tio/api && make ship && cd ../cli && make ship"))
+
+;; git-gutter
+(global-git-gutter-mode +1)

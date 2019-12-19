@@ -94,7 +94,7 @@ SAVEHIST=500000000
 
 PATH=$HOME/.bin:$HOME/.local/bin:$PATH
 
-PATH=$HOME/dotfiles/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+PATH=$HOME/dotfiles/bin:$HOME/go/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
 # added by travis gem

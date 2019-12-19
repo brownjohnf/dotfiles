@@ -12,3 +12,5 @@ date >> ~/.bash_history
 . ~/.bashrc
 
 if [ -e /home/jackb/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jackb/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export PATH="$HOME/.cargo/bin:$PATH"

@@ -12,6 +12,7 @@ fi
 
 git remote update
 git pull --rebase $remote master
+git fetch --tags $remote master
 
 if [ -f .rebase.local.sh ]; then
   ./.rebase.local.sh
