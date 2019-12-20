@@ -38,7 +38,7 @@
  '(org-directory "~/org")
  '(package-selected-packages
    (quote
-    (dracula-theme git-gutter protobuf-mode ace-window dockerfile-mode cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator zenburn-theme helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
+    (dracula-theme git-gutter protobuf-mode ace-window dockerfile-mode cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
