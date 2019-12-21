@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -euo pipefail
+set -x
+
 source ./config.sh
 
 # Setup tmux plugin manager for tmux plugin management
@@ -37,7 +40,7 @@ for f in jackb; do
 done
 
 # zsh
-for f in .zshrc; do
+for f in .zshrc .zshenv; do
   ln -fs $HERE/zsh/$f $HOME/$f
 done
 touch $HOME/.zsh_history

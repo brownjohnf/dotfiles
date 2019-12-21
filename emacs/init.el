@@ -38,7 +38,7 @@
  '(org-directory "~/org")
  '(package-selected-packages
    (quote
-    (dracula-theme git-gutter protobuf-mode ace-window dockerfile-mode cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
+    (treemacs-projectile treemacs-evil dracula-theme git-gutter protobuf-mode ace-window dockerfile-mode cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -78,17 +78,19 @@
 ;; Disable evil in term-mode
 (dolist (mode '(term-mode))
   (add-to-list 'evil-emacs-state-modes mode))
+(define-key evil-normal-state-map (kbd "C-s") 'shell)
 
 ;; Theme stuff
 (load-theme 'spacemacs-dark t)
 
 ;; General, built-in settings and keybinding mods
 
-;; Update PATH to find tools that we use
-(setenv "PATH" (concat (getenv "PATH") ":~/dotfiles/bin"))
-(setenv "PATH" (concat (getenv "PATH") ":~/.asdf/shims"))
-(dolist (dir '("~/.asdf/shims/" "~/dotfiles/bin/"))
-  (add-to-list 'exec-path dir))
+;; Update PATH to find tools that we use. This was fixed by putting the right
+;;paths in ~/.zshenv. Leaving this here in case I need to add something in the
+;; future.
+;;(setenv "PATH" (concat (getenv "PATH") ":~/dotfiles/bin"))
+;;(dolist (dir '("~/.asdf/shims/" "~/dotfiles/bin/", "~/go/bin"))
+;;  (add-to-list 'exec-path dir))
 
 ;; Disable gui cruft
 (menu-bar-mode -1)
@@ -131,6 +133,9 @@
 ;; Enable line numbers
 (global-display-line-numbers-mode)
 
+;; Treemacs
+(define-key evil-normal-state-map (kbd "C-n") 'treemacs)
+
 ;; Auto-complete
 (add-hook 'after-init-hook 'global-company-mode)
 (setq-default company-idle-delay 10)
@@ -171,6 +176,7 @@
 ;; LSP
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (setq lsp-ui-sideline-enable t)
+(setq lsp-ui-sideline-show-hover t)
 (setq lsp-ui-doc-enable t)
 (setq lsp-ui-peek-enable t)
 (setq lsp-ui-peek-always-show t)

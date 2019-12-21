@@ -61,10 +61,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git battery)
 
 # User configuration
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -72,17 +68,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # Keep them the same for now
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
+if which nvim; then
+  export EDITOR=nvim
+elif which vim; then
+  export EDITOR=vim
 else
-  export EDITOR='nvim'
+  export EDITOR=vi
 fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 setopt HIST_IGNORE_DUPS
 setopt interactivecomments
@@ -92,15 +84,10 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=500000000
 SAVEHIST=500000000
 
-PATH=$HOME/.bin:$HOME/.local/bin:$PATH
 
-PATH=$HOME/dotfiles/bin:$HOME/go/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
-MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
 # added by travis gem
 [ -f /home/jackb/.travis/travis.sh ] && source /home/jackb/.travis/travis.sh
-
-#source ~/dotfiles/zsh/extensions/aws.zsh
 
 if (( $+commands[tag] )); then
 	tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
@@ -111,18 +98,11 @@ fi
 chmod 0400 /tmp/.ssh-agent
 source /tmp/.ssh-agent > /dev/null
 
-[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
+#[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/jackb/.nvm/versions/node/v10.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
-export EMPIRE_API_URL=https://empire-dev.textio.tech
+[ -f ~/.local.sh ] && source ~/.local.sh
 
 if [ -f $HOME/.asdf/asdf.sh ]; then
   . $HOME/.asdf/asdf.sh
@@ -139,7 +119,6 @@ source $HOME/.aliases
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/jack/workspace/textio-elastic-searchvice-upload/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/jack/workspace/textio-elastic-searchvice-upload/node_modules/tabtab/.completions/slss.zsh
-export PATH="/snap/bin:/usr/local/opt/gettext/bin:$PATH"
 
 # Use shared libraries when installing python
 export PYTHON_CONFIGURE_OPTS="--enable-framework"

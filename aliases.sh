@@ -21,10 +21,4 @@ alias ping="prettyping --nolegend"
 alias tf="terraform"
 alias tree="tree -I node_modules -I venv -I target"
 
-alias emp-prod='EMPIRE_API_URL=https://empire.textio.tech emp'
-alias emp-staging='EMPIRE_API_URL=https://empire-staging.textio.tech emp'
-alias emp-data-staging='EMPIRE_API_URL=https://empire-data-staging.textio.tech emp'
-alias emp-data-prod='EMPIRE_API_URL=https://empire-data-prod.textio.tech emp'
-alias emp-predev='EMPIRE_API_URL=https://empire-predev.textio.tech emp'
-
 # vi:syntax=sh
