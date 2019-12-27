@@ -143,8 +143,8 @@
 
 ;; Auto-complete
 (add-hook 'after-init-hook 'global-company-mode)
-(setq-default company-idle-delay 10)
-(setq-default company-minimum-prefix-length 1)
+(setq-default company-idle-delay 1)
+(setq-default company-minimum-prefix-length 0)
 (setq-default company-tooltip-limit 50)
 (setq-default company-show-numbers t)
 
