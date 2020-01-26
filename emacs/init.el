@@ -38,7 +38,7 @@
  '(org-directory "~/org")
  '(package-selected-packages
    (quote
-    (treemacs-projectile treemacs-evil dracula-theme git-gutter protobuf-mode ace-window dockerfile-mode cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
+    (helm-ag vimrc-mode ox-pandoc treemacs-projectile treemacs-evil dracula-theme git-gutter protobuf-mode ace-window dockerfile-mode cargo magit taskrunner company-lsp company ox-slack yaml-mode htmlize spacemacs-theme helm-spotify ox-gfm evil-org lsp-ui yasnippet lsp-mode which-key flycheck-inline flycheck-rust fill-column-indicator helm-projectile projectile flycheck go-mode rust-mode helm dracula-theme evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -130,6 +130,11 @@
 (require 'fill-column-indicator)
 (turn-on-fci-mode)
 
+;; Search customization
+(setq lazy-highlight-cleanup nil)
+(setq lazy-highlight-max-at-a-time nil)
+(setq lazy-highlight-initial-delay 0)
+
 ;; Enable line numbers
 (global-display-line-numbers-mode)
 
@@ -157,6 +162,7 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
 (define-key evil-normal-state-map (kbd "M-p") 'helm-projectile-switch-project)
+(define-key evil-normal-state-map (kbd "?") 'helm-projectile-ag)
 
 ;; Ace-window
 (define-key evil-normal-state-map (kbd "C-w C-w") 'ace-window)

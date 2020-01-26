@@ -14,6 +14,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 "Plug 'Chiel92/vim-autoformat'
 Plug 'fatih/vim-go', { 'for': 'go' }
+" Provides vim text editing in firefox
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Provides the /Tab alignment shortcut
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
@@ -55,6 +57,13 @@ call plug#end()
 "let g:ale_linters = {
 "\ 'rust': ['rls'],
 "\}
+
+" firenvim settings
+let g:firenvim_config = {
+      \ 'localSettings': {
+        \ '.*': { 'takeover': 'never' },
+      \ }
+    \ }
 
 " Always show the ale gutter, so the buffer doesn't jump back and forth
 let g:ale_sign_column_always = 1
