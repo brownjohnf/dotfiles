@@ -222,8 +222,6 @@
   (setq fill-prefix ""))
 (add-hook 'org-mode-hook #'org-config-fill-prefix)
 
-
-
 (setq-default org-export-initial-scope 'buffer)
 (setq-default org-M-RET-may-split-line nil)
 (require 'evil-org-agenda)
