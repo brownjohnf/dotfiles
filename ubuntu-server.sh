@@ -5,17 +5,17 @@ set -o pipefail
 
 USER=$(whoami)
 
-echo '--> Installing dependencies...'
-sudo apt-get update -y && sudo apt-get install -y aptitude
+sudo add-apt-repository -y ppa:kelleyk/emacs
 
 # Go back and install everything
-sudo aptitude update && sudo aptitude install \
+sudo aptitude update && sudo aptitude install -y \
   apache2-utils \
   build-essential \
   cryptsetup \
   curl \
   dkms \
   ecryptfs-utils \
+  emacs26 \
   exuberant-ctags \
   git \
   iftop \
@@ -40,7 +40,7 @@ sudo aptitude update && sudo aptitude install \
   zlib1g-dev \
   zsh
 
-sudo ln -s $(which nvim) /usr/local/bin/vim
+sudo ln -fs $(which nvim) /usr/local/bin/vim
 
 # Docker
 which docker || (wget -qO- https://get.docker.com/ | sh)
@@ -53,7 +53,7 @@ wget -O- https://toolbelt.heroku.com/install.sh | sh
 sudo bash -c 'curl -sL \
     https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy \
   > /usr/local/bin/diff-so-fancy'
-sudo cdmod +x /usr/local/bin/diff-so-fancy
+sudo chmod +x /usr/local/bin/diff-so-fancy
 
 ./linux-server.sh
 
