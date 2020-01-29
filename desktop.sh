@@ -9,7 +9,7 @@ if [ $(uname -a | grep Ubuntu | wc -l) -gt 0 ]; then
   echo '--> Assuming Ubuntu... (5s)'
   sleep 5
   ./ubuntu-desktop.sh
-elif [ $(uname -a | grep ARCH | wc -l) -gt 0 ]; then
+elif grep 'Arch Linux' /etc/os-release; then
   echo '--> Assuming Arch... (5s)'
   sleep 5
   ./arch-desktop.sh

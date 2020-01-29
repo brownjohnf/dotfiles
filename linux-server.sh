@@ -57,8 +57,12 @@ mkdir -p $HOME/.config/nvim
 ln -fs $HERE/neovim/init.vim $HOME/.config/nvim/init.vim
 
 # emacs
-mkdir -p $HOME/.emacs.d
-ln -fs $HERE/emacs/init.el $HOME/.emacs.d/init.el
+#mkdir -p $HOME/.emacs.d
+#ln -fs $HERE/emacs/init.el $HOME/.emacs.d/init.el
+[[ -d $HOME/.emacs.d ]] || (
+  git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d && \
+    $HOME/.emacs.d/bin/doom install)
+ln -fs $HERE/doom $HOME/.doom.d
 
 # tmux
 ln -fs $HERE/tmux/.tmux.conf $HOME/.tmux.conf

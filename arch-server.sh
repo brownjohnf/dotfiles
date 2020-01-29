@@ -6,6 +6,7 @@ source ./config.sh
 sudo pacman -S --needed \
   base-devel \
   bat \
+  clang \
   colordiff \
   cronie \
   ctags \
@@ -14,6 +15,8 @@ sudo pacman -S --needed \
   docker \
   docker-compose \
   emacs \
+  fd \
+  git \
   gnupg \
   htop \
   iotop \
@@ -39,7 +42,7 @@ sudo pacman -S --needed \
   strace \
   sudo \
   sysstat \
-  the_silver_searcher \
+  tar \
   tmux \
   traceroute \
   tree \

@@ -101,6 +101,11 @@ command=echo lon $(TZ=:Europe/London date "+%H:%M")
 color=#999999
 interval=5
 
+[london]
+command=echo seo $(TZ=:Asia/Seoul date "+%H:%M")
+color=#999999
+interval=5
+
 # Volume indicator
 #
 # The first parameter sets the step (and units to display)
