@@ -29,6 +29,9 @@ fi
 # Add the go bin path
 [[ -d "$HOME/go/bin" ]] && export PATH="$HOME/go/bin:$PATH"
 
+# Add custom binpath
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 export EDITOR=/usr/bin/vim
 
 # set vim command line editing
