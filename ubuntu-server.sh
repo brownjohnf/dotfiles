@@ -4,16 +4,12 @@ set -eu
 set -o pipefail
 
 USER=$(whoami)
-GROUP=$(id -gn)
-HERE="$HOME/dotfiles"
-binpath=$HOME/.bin
 
 echo '--> Installing dependencies...'
 sudo apt-get update -y && sudo apt-get install -y aptitude
 
 # Go back and install everything
 sudo aptitude update && sudo aptitude install \
-  ack-grep \
   apache2-utils \
   build-essential \
   cryptsetup \

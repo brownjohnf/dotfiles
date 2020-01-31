@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # Keep them the same for now
-if which nvim; then
+if which nvim > /dev/null; then
   export EDITOR=nvim
 elif which vim; then
   export EDITOR=vim

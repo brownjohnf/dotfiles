@@ -4,9 +4,6 @@ set -e
 set -x
 
 USER=$(whoami)
-GROUP=$(id -gn)
-HERE="$HOME/dotfiles"
-binpath=$HOME/.bin
 
 echo '--> Installing dependencies...'
 [ -f "$(which aptitude)" ] || (sudo apt-get update -y > /dev/null && sudo apt-get install -y aptitude > /dev/null)
@@ -14,9 +11,6 @@ echo '--> Installing dependencies...'
 
 # Go back and install everything
 sudo aptitude update && sudo aptitude install -y \
-  alsa-base \
-  alsa-tools \
-  alsa-utils \
   awscli \
   firefox \
   gparted \
