@@ -1,4 +1,3 @@
-alias ag=rg
 alias cat=bat
 alias c=clear
 alias cdd="cd ~/Downloads"

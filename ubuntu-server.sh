@@ -40,6 +40,8 @@ sudo aptitude update && sudo aptitude install -y \
   zlib1g-dev \
   zsh
 
+sudo snap install --classic ripgrep
+
 sudo ln -fs $(which nvim) /usr/local/bin/vim
 
 # Docker
