@@ -30,10 +30,12 @@ sudo pacman -S --needed \
   ngrep \
   nmap \
   openssh \
+  ovmf \
   pacman-contrib \
   parted \
   prettyping \
   python-pip \
+  qemu \
   readline \
   ripgrep \
   rsync \
