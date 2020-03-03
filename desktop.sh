@@ -23,6 +23,6 @@ else
   exit 1
 fi
 
-echo '--> Running generic linux-server bootstrap...'
+echo '--> Running generic linux-desktop bootstrap...'
 ./linux-desktop.sh
 

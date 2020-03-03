@@ -23,7 +23,6 @@ sudo pacman -S --needed \
   i3blocks \
   i3-gaps \
   i3lock \
-  keepassx \
   libreoffice \
   lxdm \
   openvpn \

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -eo pipefail
 
 HERE="$HOME/dotfiles"
 binpath=$HOME/.bin

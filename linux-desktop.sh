@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 source ./config.sh
 
 function clone_or_update() {
@@ -33,7 +35,7 @@ echo "SUCCESS"
 
 # YouCompleteMe
 # Source the zshrc so we pick up any env settings
-source $HOME/.zshrc
+#source $HOME/.zshrc
 (cd $HOME/.vim/plugged/YouCompleteMe && python3 install.py)
 
 echo "
