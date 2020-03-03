@@ -68,6 +68,9 @@
 (setq-default auto-fill-function 'do-auto-fill)
 (setq-default fill-column 80)
 
+;; Disable smartparens
+(turn-off-smartparens-mode)
+
 (+global-word-wrap-mode)
 
 (use-package! fill-column-indicator
