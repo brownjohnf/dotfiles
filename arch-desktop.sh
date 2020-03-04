@@ -65,15 +65,15 @@ mkdir -p $HOME/.local/share/applications
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
-# Install package-query and yaourt from repo
-#build_from_aur yaourt https://aur.archlinux.org/package-query.git
-build_from_aur yaourt https://aur.archlinux.org/yay.git
+# Install yay for managing AUR packages
+build_from_aur yay https://aur.archlinux.org/yay-bin.git
 
 yay -S --needed \
   networkmanager-dmenu-git \
   slack-desktop \
   zoom
 
+# Print any helpful output
 cat <<EOF
 
 

@@ -89,5 +89,8 @@ sudo chmod +x /usr/local/bin/myvault
 
 # Rust
 rustup default stable
+cargo install cargo-edit cargo-clippy cargo-udeps
+cargo install --git https://gitlab.com/jack/verto
+cargo install --git https://gitlab.com/jack/copy-rs
 
 echo "SUCCESS"
