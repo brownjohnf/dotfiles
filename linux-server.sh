@@ -87,7 +87,7 @@ sudo wget \
   -O /usr/local/bin/myvault
 sudo chmod +x /usr/local/bin/myvault
 
-# Rustup
-command -v rustup || (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)
+# Rust
+rustup default stable
 
 echo "SUCCESS"

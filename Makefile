@@ -12,11 +12,11 @@ test_arch: check test/arch.img
 		-drive file=/tmp/dotfiles-test_arch.img,format=raw
 
 test/arch.img:
-	(cd /data/archiso && make clean && make && make test)
+	[[ -f /tmp/test.img ]] || (cd /data/archiso && make clean && make && make test)
 	cp /tmp/test.img test/arch.img
 
 check:
 	pacman -Q qemu ovmf
 
 clean:
-	rm test/*.img
+	rm -f test/*.img
