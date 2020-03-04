@@ -27,11 +27,12 @@ sudo pacman -S --needed \
   lxdm \
   openvpn \
   pavucontrol \
-  powertop \
   redshift \
   remmina \
+  riot-desktop \
   sane \
   seahorse \
+  signal-desktop \
   thunar \
   tumbler \
   virtualbox \
@@ -65,10 +66,10 @@ xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
 # Install package-query and yaourt from repo
-build_from_aur yaourt https://aur.archlinux.org/package-query.git
-build_from_aur yaourt https://aur.archlinux.org/yaourt.git
+#build_from_aur yaourt https://aur.archlinux.org/package-query.git
+build_from_aur yaourt https://aur.archlinux.org/yay.git
 
-yaourt -S --needed \
+yay -S --needed \
   networkmanager-dmenu-git \
   slack-desktop \
   zoom
