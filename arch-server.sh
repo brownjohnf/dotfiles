@@ -7,6 +7,7 @@ sudo pacman -S --needed \
   base-devel \
   bat \
   clang \
+  cmake \
   colordiff \
   cronie \
   ctags \
@@ -58,7 +59,7 @@ sudo pacman -S --needed \
   zip \
   zsh
 
-sudo ln -fs $(which nvim) /usr/local/bin/vim
+sudo ln -fs "$(command -v nvim)" /usr/local/bin/vim
 
 sudo systemctl enable ufw
 sudo systemctl start ufw
@@ -67,3 +68,7 @@ sudo ufw default deny
 sudo ufw limit ssh
 sudo ufw status
 
+# Install the neovim python3 interface
+python -m pip install --user --upgrade pynvim
+
+sudo usermod -aG docker "$(whoami)"

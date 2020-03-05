@@ -56,6 +56,9 @@ ln -fs $HERE/vim/.vim/colors/solarized.vim  $HOME/.vim/colors/solarized.vim
 mkdir -p $HOME/.config/nvim
 ln -fs $HERE/neovim/init.vim $HOME/.config/nvim/init.vim
 
+# Install neovim plugins
+nvim --headless +PlugInst
+
 # emacs
 #mkdir -p $HOME/.emacs.d
 #ln -fs $HERE/emacs/init.el $HOME/.emacs.d/init.el
@@ -89,7 +92,7 @@ sudo chmod +x /usr/local/bin/myvault
 
 # Rust
 rustup default stable
-cargo install cargo-edit cargo-clippy cargo-udeps
+cargo install cargo-edit cargo-udeps
 cargo install --git https://gitlab.com/jack/verto
 cargo install --git https://gitlab.com/jack/copy-rs
 
