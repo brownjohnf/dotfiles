@@ -12,9 +12,14 @@ if [ ! -d $HOME/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
-mkdir -p $HOME/.vim/autoload
+# Put the tmux config file in place
+ln -fs $HERE/tmux/.tmux.conf $HOME/.tmux.conf
+
+# Install the plugins
+$HOME/.tmux/plugins/tpm/bin/install_plugins
 
 # Setup vim-plug for plugin management
+mkdir -p $HOME/.vim/autoload
 if [ ! -d $HOME/.vim/autoload/plug.vim ]; then
   echo "--> Installing plug.vim..."
   curl -fLo ~/.vim/autoload/plug.vim \
@@ -67,9 +72,6 @@ ln -fs $HERE/doom $HOME/.doom.d
 [[ -d $HOME/.emacs.d ]] || (
   git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d && \
     $HOME/.emacs.d/bin/doom --yes install)
-
-# tmux
-ln -fs $HERE/tmux/.tmux.conf $HOME/.tmux.conf
 
 # git
 ln -fs $HERE/git/.git-completion.bash $HOME/.git-completion.bash
