@@ -56,8 +56,9 @@ ln -fs $HERE/vim/.vim/colors/solarized.vim  $HOME/.vim/colors/solarized.vim
 mkdir -p $HOME/.config/nvim
 ln -fs $HERE/neovim/init.vim $HOME/.config/nvim/init.vim
 
-# Install neovim plugins
-nvim --headless +PlugInst
+# Install neovim plugins. This will run the plugin install, quit that
+# buffer, then quit the empty buffer opened by default.
+nvim --headless +PlugInst +q +q
 
 # emacs
 #mkdir -p $HOME/.emacs.d
