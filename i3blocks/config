@@ -77,7 +77,7 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=$SCRIPT_DIR/$BLOCK_NAME
+command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -107,17 +107,9 @@ color=#999999
 interval=5
 
 # Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-[volume]
-#label=VOL
-label=♪
-instance=Master
-#instance=PCM
+[volume-pulseaudio]
 interval=once
-signal=10
+signal=1
 
 # Memory usage
 #
@@ -168,30 +160,30 @@ separator=false
 # OpenVPN support
 #
 # Support multiple VPN, with colors.
-[openvpn]
-interval=20
+#[openvpn]
+#interval=20
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-label=CPU
+label=CPU-
 interval=10
 #min_width=CPU: 100.00%
 #separator=false
 
-#[load_average]
-#interval=10
+[load_average]
+interval=10
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
 [batterybar]
-#label=BAT
 label=⚡
-instance=1
-interval=30
+interval=5
+markup=pango
+min_width=⚡■■■■■
 
 # Date Time
 #

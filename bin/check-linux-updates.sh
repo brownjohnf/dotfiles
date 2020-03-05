@@ -1,29 +1,32 @@
 #!/bin/bash
 
-set -eux
+set -u
 set -o pipefail
 
-while ! ping -c 1 google.com; do
-  sleep 10
-done
+# It's important that this script not write anything to stdout except the JSON
+# output
 
-if [ $? -eq 6 ]; then
-  echo '{"full_text": "INT", "color": "#ffffff"}'
+# Make sure we have an internet connection.
+if ! ping -c 1 www.fsf.org > /dev/null; then
+  echo '{"full_text": "OFFLINE", "color": "#000000"}'
+  exit 0
 fi
 
-for package in linux lvm2 device-mapper systemd; do
-  newVersion=$(curl -s https://www.archlinux.org/packages/search/json/?name=${package} \
-    | jq -r ".results | map(select(.repo == \"core\")) | .[0] | .pkgver + \"-\" + .pkgrel")
+# Check to see if there are any updates
+checkupdates > /dev/null
+if [ $? -eq 2 ]; then
+  echo '{"full_text": "NO UPDATES", "color": "#000000"}'
+  exit 0
+fi
 
-  currentVersion=$(pacman -Q ${package} | cut -f 2 -d ' ')
-
-  if [ "${newVersion}" != "${currentVersion}" ]; then
-    cat <<HEREDOC
-{"full_text": "NO - ${package}", "color": "#ff0000"}
+# If there are updates, check to see whether any of them will require a reboot
+if checkupdates | grep -E '(linux|lvm|device\-mapper|systemd|zfs)' > /dev/null; then
+  cat <<HEREDOC
+{"full_text": "NO", "color": "#ff0000"}
 HEREDOC
-    exit
-  fi
-done
+  exit 0
+fi
 
+# We're good to do an update any time!
 echo '{"full_text": "OK", "color": "#00ff00"}'
 

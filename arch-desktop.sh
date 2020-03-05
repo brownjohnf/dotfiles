@@ -26,6 +26,7 @@ sudo pacman -S --needed \
   libreoffice \
   lxdm \
   openvpn \
+  pamixer \
   pavucontrol \
   redshift \
   remmina \
@@ -43,22 +44,6 @@ sudo pacman -S --needed \
 
 sudo systemctl enable lxdm.service
 sudo localectl --no-convert set-x11-keymap us pc104 dvorak
-
-function build_from_aur () {
-  name=$1
-  repo=$2
-
-  build_root=/tmp/builds
-  build_path=$build_root/$name
-
-  rm -rf $build_path
-  mkdir -p $build_root
-  git clone $repo $build_path
-  (cd $build_path && makepkg -sric --needed)
-}
-
-mkdir -p $binpath
-ln -fs $HERE/bin/displays $binpath/displays
 
 # set the default browser to firefox
 mkdir -p $HOME/.local/share/applications

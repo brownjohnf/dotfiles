@@ -20,6 +20,7 @@ sudo pacman -S --needed \
   git \
   gnupg \
   htop \
+  jq \
   iotop \
   ipcalc \
   linux-headers \
@@ -72,3 +73,14 @@ sudo ufw status
 python -m pip install --user --upgrade pynvim
 
 sudo usermod -aG docker "$(whoami)"
+
+# Install yay for managing AUR packages
+rm -rf /tmp/yay-bin
+git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
+(cd /tmp/yay-bin && makepkg -sric --needed)
+
+yay -S --needed \
+  --answerdiff None \
+  --answeredit None \
+  --answerclean NotInstalled \
+  yq2-bin

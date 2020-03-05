@@ -139,7 +139,7 @@ noremap <Right> <Nop>
 " Set up custom mappings
 map <C-n> :NERDTreeToggle<CR>
 map <C-l> :NERDTreeToggle<CR>
-nmap <C-p> :Files<CR>
+nmap <Leader><Leader> :Files<CR>
 nmap <C-g> :Ag<CR>
 nmap <Leader>r :tags<CR>
 " clear search highligts (noh), quickfix list (ccl), location list (lcl)

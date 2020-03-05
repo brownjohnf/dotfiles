@@ -52,3 +52,4 @@
 ;(package! builtin-package :recipe (:branch "develop"))
 
 (package! fill-column-indicator)
+(package! vimrc-mode)
