@@ -7,7 +7,6 @@ sudo pacman -S --needed \
   alacritty \
   android-tools \
   chromium \
-  code \
   cups \
   cups-pdf \
   dmenu \
@@ -25,7 +24,6 @@ sudo pacman -S --needed \
   i3lock \
   libreoffice \
   lxdm \
-  openvpn \
   pamixer \
   pavucontrol \
   redshift \
@@ -50,9 +48,7 @@ mkdir -p $HOME/.local/share/applications
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
-# Install yay for managing AUR packages
-build_from_aur yay https://aur.archlinux.org/yay-bin.git
-
+# Install AUR packages with yay
 yay -S --needed \
   --answerdiff None \
   --answeredit None \

@@ -66,7 +66,7 @@ nvim --headless +PlugInst +q +q
 ln -fs $HERE/doom $HOME/.doom.d
 [[ -d $HOME/.emacs.d ]] || (
   git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d && \
-    $HOME/.emacs.d/bin/doom install --yes)
+    $HOME/.emacs.d/bin/doom --yes install)
 
 # tmux
 ln -fs $HERE/tmux/.tmux.conf $HOME/.tmux.conf

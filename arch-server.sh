@@ -56,6 +56,8 @@ sudo pacman -S --needed \
   unzip \
   vagrant \
   wget \
+  wireguard-arch \
+  wireguard-lts \
   whois \
   zip \
   zsh
