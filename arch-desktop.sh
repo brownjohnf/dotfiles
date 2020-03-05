@@ -68,9 +68,13 @@ xdg-mime default firefox.desktop x-scheme-handler/https
 # Install yay for managing AUR packages
 build_from_aur yay https://aur.archlinux.org/yay-bin.git
 
-yay -S --needed --answerdiff None --answeredit None --answerclean All \
+yay -S --needed \
+  --answerdiff None \
+  --answeredit None \
+  --answerclean NotInstalled \
   networkmanager-dmenu-git \
   slack-desktop \
+  spotify \
   zoom
 
 # Print any helpful output
