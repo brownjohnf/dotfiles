@@ -184,6 +184,10 @@ label=⚡
 interval=5
 markup=pango
 min_width=⚡■■■■■
+separator=false
+
+[battery]
+interval=5
 
 # Date Time
 #

@@ -4,6 +4,7 @@ source ./config.sh
 
 # install packages
 sudo pacman -S --needed \
+  arp-scan \
   base-devel \
   bat \
   clang \
@@ -42,6 +43,7 @@ sudo pacman -S --needed \
   ripgrep \
   rsync \
   rustup \
+  smartmontools \
   sshfs \
   sshpass \
   strace \
@@ -74,6 +76,8 @@ sudo ufw status
 # Install the neovim python3 interface
 python -m pip install --user --upgrade pynvim
 
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
 sudo usermod -aG docker "$(whoami)"
 
 # Install yay for managing AUR packages
@@ -86,3 +90,4 @@ yay -S --needed \
   --answeredit None \
   --answerclean NotInstalled \
   yq2-bin
+

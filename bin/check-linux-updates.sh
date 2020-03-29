@@ -8,14 +8,14 @@ set -o pipefail
 
 # Make sure we have an internet connection.
 if ! ping -c 1 www.fsf.org > /dev/null; then
-  echo '{"full_text": "OFFLINE", "color": "#000000"}'
+  echo '{"full_text": "OFFLINE", "color": "#ffffff"}'
   exit 0
 fi
 
 # Check to see if there are any updates
 checkupdates > /dev/null
 if [ $? -eq 2 ]; then
-  echo '{"full_text": "NO UPDATES", "color": "#000000"}'
+  echo '{"full_text": "NA, "color": "#ffffff"}'
   exit 0
 fi
 

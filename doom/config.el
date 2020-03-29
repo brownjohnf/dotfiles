@@ -56,9 +56,9 @@
 ;; Show trailing whitespace in files
 (setq-default show-trailing-whitespace t)
 ;; Delete any trailing whitespace prior to save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;;(add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; Show trailing whitespace and tabs
-(setq-default whitespace-style '(trailing tabs tab-mark))
+;;(setq-default whitespace-style '(trailing tabs tab-mark))
 ;; make indentation commands use space only (never tab character)
 (setq-default indent-tabs-mode nil)
 ;; Display tab width of 2 spaces by default
@@ -67,9 +67,6 @@
 ;; Column width
 (setq-default auto-fill-function 'do-auto-fill)
 (setq-default fill-column 80)
-
-;; Disable smartparens
-(turn-off-smartparens-mode)
 
 (+global-word-wrap-mode)
 
@@ -83,15 +80,26 @@
 
 (add-hook! lsp-ui-mode
   (setq lsp-ui-doc-enable t)
-  (setq lsp-ui-peek-mode t)
   (setq lsp-ui-sideline-enable t)
   (setq lsp-ui-sideline-show-hover t)
+  ;;(setq lsp-ui-peek-mode t)
+  ;;(setq lsp-ui-peek-enable t)
+  ;;(setq lsp-ui-peek-always-show t)
   (setq lsp-ui-doc-enable t)
-  (setq lsp-ui-peek-enable t)
-  (setq lsp-ui-peek-always-show t))
+(define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+(define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+)
 
 (add-hook! org-mode
   :config
   (setq-default org-todo-keywords
     '((sequence "TODO(t)" "STARTED(s!)" "BLOCKED(b@/!)" "|" "DONE(d!)"))))
 
+;; Add keybindings to run rust tasks
+;;(add-hook! rustic-mode
+  ;;(map! :leader
+        ;;:desc "Test project" "T" #'rustic-cargo-test))
+
+;; Disable smartparens because it's very irritating
+(after! smartparens
+  (smartparens-global-mode -1))

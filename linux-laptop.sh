@@ -40,22 +40,31 @@ echo "SUCCESS"
 
 echo "
 
-Linux desktop setup complete. Add the following to the file (you may
-need to create the file and the chrome directory):
+Linux desktop setup complete.
+
+To remove the horizontal tabs in Firefox, create the following file (you may
+need to create the file/directory):
 
 ~/.mozilla/firefox/<your profile>/chrome/userChrome.css
 
-@namespace url(\"http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul\");
+Put in the following contents:
+
 #TabsToolbar {
-  visibility: collapse !important;
+  visibility: collapse;
 }
 
-to fix the horizontal tabs in FF.
-"
+#titlebar {
+  display: none;
+}
 
-echo "
+Open about:config and search for the
+'toolkit.legacyUserProfileCustomizations.stylesheets' setting. Set it to true.
+This will cause Firefox to read the userChrome.css file.
 
-You should also add the following to the Tab Center Redux in FF to fix useless
+Restart Firefox and you should be good to go. Details can be found at
+https://www.userchrome.org/how-create-userchrome-css.html.
+
+You should also add the following to the Tab Center Redux config in FF to fix useless
 features:
 
 #topmenu {

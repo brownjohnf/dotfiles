@@ -218,3 +218,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec pamixer -d 5 && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec pamixer --get-mute && pamixer --unmute || pamixer -m && pkill -RTMIN+1 i3blocks
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous

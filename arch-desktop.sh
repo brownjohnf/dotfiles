@@ -26,6 +26,7 @@ sudo pacman -S --needed \
   lxdm \
   pamixer \
   pavucontrol \
+  playerctl \
   redshift \
   remmina \
   riot-desktop \
