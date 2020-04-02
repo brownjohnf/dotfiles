@@ -82,8 +82,11 @@ sudo usermod -aG docker "$(whoami)"
 
 # Install yay for managing AUR packages
 if ! which yay; then
+  rm -rf /tmp/yay-bin
   git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
   (cd /tmp/yay-bin && makepkg -sric --needed)
+else
+  yay -Sua
 fi
 
 yay -S --needed \
