@@ -58,7 +58,6 @@ sudo pacman -S --needed \
   unzip \
   vagrant \
   wget \
-  wireguard-arch \
   wireguard-lts \
   whois \
   zip \
@@ -72,6 +71,7 @@ sudo ufw status
 sudo ufw default deny
 sudo ufw limit ssh
 sudo ufw status
+sudo ufw enable
 
 # Install the neovim python3 interface
 python -m pip install --user --upgrade pynvim
@@ -81,13 +81,15 @@ sudo systemctl start docker.service
 sudo usermod -aG docker "$(whoami)"
 
 # Install yay for managing AUR packages
-rm -rf /tmp/yay-bin
-git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
-(cd /tmp/yay-bin && makepkg -sric --needed)
+if ! which yay; then
+  git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
+  (cd /tmp/yay-bin && makepkg -sric --needed)
+fi
 
 yay -S --needed \
   --answerdiff None \
   --answeredit None \
   --answerclean NotInstalled \
+  ngrok \
   yq2-bin
 

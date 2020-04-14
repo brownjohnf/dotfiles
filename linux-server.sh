@@ -96,8 +96,9 @@ sudo chmod +x /usr/local/bin/myvault
 # Rust
 rustup default stable
 rustup component add rls
-cargo install cargo-edit cargo-udeps
-cargo install --git https://gitlab.com/jack/verto
-cargo install --git https://gitlab.com/jack/copy-rs
+which cargo-add || cargo install cargo-edit
+which cargo-udeps || cargo-udeps
+which verto || cargo install --git https://gitlab.com/jack/verto
+which copy || cargo install --git https://gitlab.com/jack/copy-rs
 
 echo "SUCCESS"

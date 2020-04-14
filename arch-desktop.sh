@@ -49,10 +49,7 @@ mkdir -p $HOME/.local/share/applications
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
-# Install yay from repo
-build_from_aur yay https://aur.archlinux.org/yay.git
-
-# Install AUR packages with yay
+# Install AUR packages with yay (yay gets installed in arch-server)
 yay -S --needed \
   --answerdiff None \
   --answeredit None \
