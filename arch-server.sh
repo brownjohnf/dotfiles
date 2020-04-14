@@ -2,6 +2,11 @@
 
 source ./config.sh
 
+# Configure pacman as we prefer
+for s in 's/.*Color$/Color/' 's/.*VerbosePkgLists$/VerbosePkgLists/'; do
+  sudo sed -i $s /etc/pacman.conf
+done
+
 # install packages
 sudo pacman -S --needed \
   arp-scan \
@@ -86,13 +91,18 @@ if ! which yay; then
   git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
   (cd /tmp/yay-bin && makepkg -sric --needed)
 else
-  yay -Sua
+  yay -Sua \
+    --answerdiff None \
+    --answeredit None \
+    --answerclean NotInstalled \
+    --answerupgrade None
 fi
 
 yay -S --needed \
   --answerdiff None \
   --answeredit None \
   --answerclean NotInstalled \
+  --answerupgrade None \
   ngrok \
   yq2-bin
 

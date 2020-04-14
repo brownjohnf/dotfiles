@@ -82,7 +82,6 @@ separator_block_width=15
 markup=none
 
 [arch-update]
-command=$SCRIPT_DIR/arch-update/arch-update
 interval=300
 markup=pango
 separator=false

@@ -12,21 +12,31 @@ if ! ping -c 1 www.fsf.org > /dev/null; then
   exit 0
 fi
 
+trap "rm -f /tmp/clu-$$.txt > /dev/null" EXIT
+
 # Check to see if there are any updates
-checkupdates > /dev/null
+checkupdates > /tmp/clu-$$.txt
 if [ $? -eq 2 ]; then
   echo '{"full_text": "NA, "color": "#ffffff"}'
   exit 0
 fi
 
 # If there are updates, check to see whether any of them will require a reboot
-if checkupdates | grep -E '(linux|lvm|device\-mapper|systemd|zfs)' > /dev/null; then
-  cat <<HEREDOC
-{"full_text": "NO", "color": "#ff0000"}
-HEREDOC
+# Grab a list of matching hits
+hits=$(cat /tmp/clu-$$.txt \
+  | grep -oE '(linux|[^l]lvm|device\-mapper|systemd|zfs)' \
+  | tr '\n' ' ' \
+  | slit)
+
+if [ "$hits" != "" ]; then
+  cat <<EOF
+{"full_text": "$hits", "color": "#ff0000"}
+EOF
   exit 0
 fi
 
 # We're good to do an update any time!
-echo '{"full_text": "OK", "color": "#00ff00"}'
+cat <<EOF
+{"full_text": "OK", "color": "#00ff00"}
+EOF
 
