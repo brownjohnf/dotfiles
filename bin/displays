@@ -3,33 +3,14 @@
 # Uncomment and modify the lines below to configure monitors.
 # xrandr --current
 
-if [ "$(hostname -s)" == "layla" ]; then
-  if [ "$1" == "office" ]; then
-    xrandr --output HDMI1 --mode 1920x1200 # HDMI
-    xrandr --output DP3 --mode 1920x1200 # VGA
-    xrandr --output HDMI1 --right-of eDP1 # HDMI
-    xrandr --output HDMI1 --primary
-    xrandr --output DP3 --right-of HDMI1 # VGA
-    #xrandr --output DP3 --rotate left # VGA
-  elif [ "$1" == "home" ]; then
-    #xrandr --output DP2 --mode 2560x1440 # USB-C mini-displayport
-    xrandr --output HDMI1 --mode 1920x1080 # HDMI
-    xrandr --output DP3 --mode 1920x1080 # VGA
-    #xrandr --output DP2 --right-of eDP1 # USB-C mini-displayport
-    xrandr --output HDMI1 --right-of eDP1 # HDMI
-    xrandr --output HDMI1 --primary
-    xrandr --output DP3 --right-of HDMI1 # HDMI
-  elif [ "$1" == "big" ]; then
-    xrandr --output DP2 --mode 2560x1440 # USB-C mini-displayport
-    xrandr --output DP2 --right-of eDP1 # USB-C mini-displayport
-    xrandr --output DP2 --primary
+if [ "$(hostname -s)" == "quixote" ]; then
+  if [ "$1" == "garage" ]; then
+    xrandr --output DP-1-1 --mode 1920x1080
+    xrandr --output DP-1-1 --right-of eDP-1 # HDMI
+    xrandr --output DP-1-1 --primary
   elif [ "$1" == "off" ]; then
-    xrandr --output DP2 --off
-    xrandr --output DP3 --off
-    xrandr --output HDMI1 --off
-    xrandr --output eDP1 --primary
-  else
-    xrandr --current
+    xrandr --output DP-1-1 --off
+    xrandr --output eDP-1 --primary
   fi
 elif [ "$(hostname -s)" == "ingrid" ]; then
   if [ "$1" == "home" ]; then

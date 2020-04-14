@@ -190,7 +190,8 @@ show_marks yes
 #}
 
 bar {
-  output primary
+  #output primary
+  tray_output primary
   position top
   #mode hide
   status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks
