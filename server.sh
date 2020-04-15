@@ -1,7 +1,8 @@
 #!/bin/bash
 
 set -e
-set -x
+
+mkdir -p $HOME/workspace
 
 if [ $(uname -a | grep Ubuntu | wc -l) -gt 0 ]; then
   echo '--> Assuming Ubuntu... (5s)'

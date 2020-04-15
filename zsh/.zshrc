@@ -120,4 +120,4 @@ source $HOME/.aliases
 export PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 # Set the minimum backlight to 1%
-light -N 1
+which light > /dev/null && light -N 1 || true
