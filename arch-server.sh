@@ -10,6 +10,7 @@ done
 # install packages
 sudo pacman -S --needed \
   arp-scan \
+  aws-cli \
   base-devel \
   bat \
   clang \

@@ -14,17 +14,18 @@ fi
 
 trap "rm -f /tmp/clu-$$.txt > /dev/null" EXIT
 
-# Check to see if there are any updates
-checkupdates > /tmp/clu-$$.txt
-if [ $? -eq 2 ]; then
-  echo '{"full_text": "NA, "color": "#ffffff"}'
-  exit 0
-fi
+# Check to see if there are any updates. For some weird reason the checkupdates
+# script fails a lot, so we run it until it succeeds. This will run a lot with
+# no internet available... TODO: Figure that out.
+while ! checkupdates > /tmp/clu-$$.txt; do
+  sleep 1
+done
 
 # If there are updates, check to see whether any of them will require a reboot
 # Grab a list of matching hits
 hits=$(cat /tmp/clu-$$.txt \
   | grep -oE '(linux|[^l]lvm|device\-mapper|systemd|zfs)' \
+  | uniq \
   | tr '\n' ' ' \
   | slit)
 
