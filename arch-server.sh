@@ -105,5 +105,6 @@ yay -S --needed \
   --answerclean NotInstalled \
   --answerupgrade None \
   ngrok \
+  wrk \
   yq2-bin
 

@@ -24,7 +24,7 @@ done
 # If there are updates, check to see whether any of them will require a reboot
 # Grab a list of matching hits
 hits=$(cat /tmp/clu-$$.txt \
-  | grep -oE '(linux|[^l]lvm|device\-mapper|systemd|zfs)' \
+  | grep -oE '(^linux|[^l]lvm|device\-mapper|systemd|zfs|wireguard)\S{0,4}' \
   | uniq \
   | tr '\n' ' ' \
   | slit)
