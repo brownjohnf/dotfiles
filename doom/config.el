@@ -95,11 +95,10 @@
   (setq-default org-todo-keywords
     '((sequence "TODO(t)" "STARTED(s!)" "BLOCKED(b@/!)" "|" "DONE(d!)"))))
 
-;; Add keybindings to run rust tasks
-;;(add-hook! rustic-mode
-  ;;(map! :leader
-        ;;:desc "Test project" "T" #'rustic-cargo-test))
-
 ;; Disable smartparens because it's very irritating
 (after! smartparens
   (smartparens-global-mode -1))
+
+;; Use rust-analyzer instead of rls
+;; This isn't ready yet; it locks up the editor all the time
+;;(setq rustic-lsp-server 'rust-analyzer)
