@@ -22,6 +22,7 @@ sudo pacman -S --needed \
   dnsutils \
   docker \
   docker-compose \
+  edk2-ovmf \
   emacs \
   fd \
   git \
@@ -39,7 +40,6 @@ sudo pacman -S --needed \
   ngrep \
   nmap \
   openssh \
-  ovmf \
   pacman-contrib \
   parted \
   prettyping \

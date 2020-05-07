@@ -24,6 +24,7 @@ sudo pacman -S --needed \
   i3lock \
   libreoffice \
   lxdm \
+  mesa-demos \
   pamixer \
   pavucontrol \
   playerctl \
@@ -55,6 +56,7 @@ yay -S --needed \
   --answeredit None \
   --answerclean NotInstalled \
   networkmanager-dmenu-git \
+  rust-analyzer-bin \
   slack-desktop \
   spotify \
   zoom
