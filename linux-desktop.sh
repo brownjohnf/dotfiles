@@ -38,6 +38,9 @@ echo "SUCCESS"
 #source $HOME/.zshrc
 (cd $HOME/.vim/plugged/YouCompleteMe && python3 install.py)
 
+# Install some rust binaries that are nice
+which exa || cargo install exa
+
 echo "
 
 Linux desktop setup complete. Add the following to the file (you may

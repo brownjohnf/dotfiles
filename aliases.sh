@@ -13,7 +13,7 @@ alias grep='grep --color=auto'
 alias k="kubectl"
 alias la='ls -A'
 alias lla="ls -lah"
-alias ll="ls -lFh"
+alias ll="exa -l"
 alias ls='ls --color=auto'
 alias ping="prettyping --nolegend"
 alias tf="terraform"

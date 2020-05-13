@@ -37,6 +37,7 @@ sudo pacman -S --needed \
   thunar \
   tumbler \
   virtualbox \
+  virtualbox-host-modules-arch \
   vlc \
   xorg \
   xorg-xinit \

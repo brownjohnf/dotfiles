@@ -61,6 +61,7 @@ sudo pacman -S --needed \
   tree \
   ttf-dejavu \
   ufw \
+  units \
   unzip \
   vagrant \
   wget \
