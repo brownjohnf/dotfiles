@@ -95,6 +95,9 @@
   (setq-default org-todo-keywords
     '((sequence "TODO(t)" "STARTED(s!)" "BLOCKED(b@/!)" "|" "DONE(d!)"))))
 
+(add-hook! rustic-mode
+  (setq syntax-propertize-function nil))
+
 ;; Disable smartparens because it's very irritating
 (after! smartparens
   (smartparens-global-mode -1))
