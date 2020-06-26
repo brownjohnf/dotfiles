@@ -23,6 +23,7 @@ sudo pacman -S --needed \
   i3-gaps \
   i3lock \
   libreoffice \
+  libvncserver \
   lxdm \
   mesa-demos \
   pamixer \
@@ -44,7 +45,14 @@ sudo pacman -S --needed \
   xsel
 
 sudo systemctl enable lxdm.service
-sudo localectl --no-convert set-x11-keymap us pc104 dvorak
+
+# If the device has bluetooth, install the tools we need to manage it.
+if dmesg | grep Bluetooth; then
+  sudo pacman -S --needed bluez bluez-utils pulseaudio-bluetooth
+  sudo modprobe btusb
+  sudo systemctl enable bluetooth.service
+  sudo systemctl start bluetooth.service
+fi
 
 # set the default browser to firefox
 mkdir -p $HOME/.local/share/applications
