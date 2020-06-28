@@ -27,6 +27,10 @@ ln -fs $HERE/i3blocks/config $HOME/.config/i3blocks/config
 clone_or_update \
   https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks-contrib
 
+# LeftWM
+mkdir -p $HOME/.config/leftwm/themes
+ln -fs $HERE/leftwm/config.toml $HOME/.config/leftwm/config.toml
+
 # alacritty
 mkdir -p $HOME/.config/alacritty
 ln -fs $HERE/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml

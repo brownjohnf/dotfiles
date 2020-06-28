@@ -26,6 +26,7 @@ sudo pacman -S --needed \
   emacs \
   fd \
   git \
+  gnu-netcat \
   gnupg \
   htop \
   jq \
@@ -50,6 +51,7 @@ sudo pacman -S --needed \
   rsync \
   rustup \
   smartmontools \
+  socat \
   sshfs \
   sshpass \
   strace \
@@ -105,6 +107,7 @@ yay -S --needed \
   --answeredit None \
   --answerclean NotInstalled \
   --answerupgrade None \
+  leftwm \
   ngrok \
   wrk \
   yq2-bin

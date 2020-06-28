@@ -6,6 +6,7 @@ source ./config.sh
 sudo pacman -S --needed \
   alacritty \
   android-tools \
+  archiso \
   chromium \
   cups \
   cups-pdf \
@@ -26,9 +27,11 @@ sudo pacman -S --needed \
   libvncserver \
   lxdm \
   mesa-demos \
+  nodejs \
   pamixer \
   pavucontrol \
   playerctl \
+  postgresql-libs \
   redshift \
   remmina \
   riot-desktop \
@@ -36,6 +39,7 @@ sudo pacman -S --needed \
   seahorse \
   signal-desktop \
   thunar \
+  transmission-cli \
   tumbler \
   virtualbox \
   virtualbox-host-modules-arch \
