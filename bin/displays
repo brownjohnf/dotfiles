@@ -3,6 +3,22 @@
 # Uncomment and modify the lines below to configure monitors.
 # xrandr --current
 
+function split_screen() {
+  output=$1
+
+  xrandr --setmonitor $output~1 960/238x1080/134+0+0 HDMI-1
+  xrandr --setmonitor $output~2 960/238x1080/134+960+0 none
+  i3-msg restart > /dev/null
+}
+
+function unsplit_screen() {
+  output=$1
+
+  xrandr --delmonitor $1~2
+  xrandr --delmonitor $1~1
+  i3-msg restart > /dev/null
+}
+
 if [ "$(hostname -s)" == "quixote" ]; then
   if [ "$1" == "garage" ]; then
     xrandr --output DP-1-1 --mode 1920x1080
@@ -18,8 +34,13 @@ elif [ "$(hostname -s)" == "ingrid" ]; then
     xrandr --output HDMI2 --mode 1920x1080
     xrandr --output HDMI1 --right-of HDMI2
     xrandr --output HDMI2 --primary
+  elif [ "$1" == "split" ]; then
+    split_screen "HDMI-1"
+  elif [ "$1" == "unsplit" ]; then
+    unsplit_screen "HDMI-1"
   else
     xrandr --current
   fi
 fi
+
 
