@@ -224,3 +224,24 @@ bindsym XF86AudioMute exec pamixer --get-mute && pamixer --unmute || pamixer -m 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# Marks
+bindsym $mod+Shift+F1 mark F1
+bindsym $mod+Shift+F2 mark F2
+bindsym $mod+Shift+F3 mark F3
+bindsym $mod+Shift+F4 mark F4
+bindsym $mod+Shift+F5 mark F5
+bindsym $mod+Shift+F6 mark F6
+bindsym $mod+Shift+F7 mark F7
+bindsym $mod+Shift+F8 mark F8
+bindsym $mod+Shift+F9 mark F9
+
+bindsym $mod+F1 [con_mark="F1"] focus
+bindsym $mod+F2 [con_mark="F2"] focus
+bindsym $mod+F3 [con_mark="F3"] focus
+bindsym $mod+F4 [con_mark="F4"] focus
+bindsym $mod+F5 [con_mark="F5"] focus
+bindsym $mod+F6 [con_mark="F6"] focus
+bindsym $mod+F7 [con_mark="F7"] focus
+bindsym $mod+F8 [con_mark="F8"] focus
+bindsym $mod+F9 [con_mark="F9"] focus
