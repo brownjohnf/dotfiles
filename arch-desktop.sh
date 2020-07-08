@@ -35,6 +35,7 @@ sudo pacman -S --needed \
   redshift \
   remmina \
   riot-desktop \
+  rust-analyzer \
   sane \
   seahorse \
   signal-desktop \

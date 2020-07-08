@@ -69,6 +69,7 @@ sudo pacman -S --needed \
   wget \
   wireguard-lts \
   whois \
+  yq \
   zip \
   zsh
 
@@ -109,6 +110,5 @@ yay -S --needed \
   --answerupgrade None \
   leftwm \
   ngrok \
-  wrk \
-  yq2-bin
+  wrk
 
