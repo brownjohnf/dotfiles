@@ -73,6 +73,9 @@ sudo pacman -S --needed \
   zip \
   zsh
 
+# Install the stable toolchain so that we can run builds.
+rustup default stable
+
 sudo ln -fs "$(command -v nvim)" /usr/local/bin/vim
 
 sudo systemctl enable ufw

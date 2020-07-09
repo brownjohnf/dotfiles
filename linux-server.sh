@@ -93,11 +93,10 @@ fi
 #   -O /usr/local/bin/myvault
 # sudo chmod +x /usr/local/bin/myvault
 
-# Rust
-rustup default stable
+# Add some customization to the rust installation.
 rustup component add rls
-which cargo-add || cargo install cargo-edit
-which cargo-udeps || cargo-udeps
+which cargo-add || cargo install cargo-edit 
+which cargo-udeps || cargo install cargo-udeps
 which verto || cargo install --git https://gitlab.com/jack/verto
 which copy || cargo install --git https://gitlab.com/jack/copy-rs
 
