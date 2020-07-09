@@ -10,9 +10,6 @@
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%aE>%Creset' --abbrev-commit --abbrev=8
 [push]
   default = current
-	followTags = true
-[pager]
-  diff = diff-so-fancy | less --tabs=1,5 -RFX
-  show = diff-so-fancy | less --tabs=1,5 -RFX
+  followTags = true
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore

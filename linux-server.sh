@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -euo pipefail
 set -x
@@ -88,10 +88,10 @@ if [ ! -d $HOME/.asdf ]; then
 fi
 
 # myvault
-sudo wget \
-  https://raw.githubusercontent.com/brownjohnf/vault/master/bin/vault \
-  -O /usr/local/bin/myvault
-sudo chmod +x /usr/local/bin/myvault
+# sudo wget \
+#   https://raw.githubusercontent.com/brownjohnf/vault/master/bin/vault \
+#   -O /usr/local/bin/myvault
+# sudo chmod +x /usr/local/bin/myvault
 
 # Rust
 rustup default stable

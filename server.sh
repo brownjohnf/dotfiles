@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -16,6 +16,10 @@ elif [ $(uname -a | grep CentOS | wc -l) -gt 0 ]; then
   echo '--> Assuming CentOS... (5s)'
   sleep 2
   ./centos-server.sh
+elif [ $(uname -a | grep NixOS | wc -l) -gt 0 ]; then
+  echo '--> Assuming NixOS... (5s)'
+  sleep 2
+  ./nixos-server.sh
 else
   echo '! OS not recognized:'
   echo $(uname -a)
