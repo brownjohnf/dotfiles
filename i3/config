@@ -212,8 +212,8 @@ workspace_auto_back_and_forth yes
 workspace_layout tabbed
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Audio control
 bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pkill -RTMIN+1 i3blocks
@@ -235,6 +235,9 @@ bindsym $mod+Shift+F6 mark F6
 bindsym $mod+Shift+F7 mark F7
 bindsym $mod+Shift+F8 mark F8
 bindsym $mod+Shift+F9 mark F9
+bindsym $mod+Shift+F10 mark F10
+bindsym $mod+Shift+F11 mark F11
+bindsym $mod+Shift+F12 mark F12
 
 bindsym $mod+F1 [con_mark="F1"] focus
 bindsym $mod+F2 [con_mark="F2"] focus
@@ -245,3 +248,6 @@ bindsym $mod+F6 [con_mark="F6"] focus
 bindsym $mod+F7 [con_mark="F7"] focus
 bindsym $mod+F8 [con_mark="F8"] focus
 bindsym $mod+F9 [con_mark="F9"] focus
+bindsym $mod+F10 [con_mark="F10"] focus
+bindsym $mod+F11 [con_mark="F11"] focus
+bindsym $mod+F12 [con_mark="F12"] focus

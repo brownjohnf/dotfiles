@@ -53,7 +53,11 @@ sudo systemctl enable lxdm.service
 
 # If the device has bluetooth, install the tools we need to manage it.
 if dmesg | grep Bluetooth; then
-  sudo pacman -S --needed bluez bluez-utils pulseaudio-bluetooth
+  sudo pacman -S --needed \
+    blueman \
+    bluez \
+    bluez-utils \
+    pulseaudio-bluetooth
   sudo modprobe btusb
   sudo systemctl enable bluetooth.service
   sudo systemctl start bluetooth.service
@@ -70,7 +74,6 @@ yay -S --needed \
   --answeredit None \
   --answerclean NotInstalled \
   networkmanager-dmenu-git \
-  rust-analyzer-bin \
   slack-desktop \
   spotify \
   zoom
