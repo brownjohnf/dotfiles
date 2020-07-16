@@ -33,8 +33,13 @@ elif [ "$(hostname -s)" == "remind" ]; then
     xrandr --output DP-2-1 --auto
     xrandr --output DP-2-1 --right-of eDP-1 # HDMI
     xrandr --output DP-2-1 --primary
+  elif [ "$1" == "hp" ]; then
+    xrandr --output HDMI-2 --auto
+    xrandr --output HDMI-2 --right-of eDP-1 # HDMI
+    xrandr --output HDMI-2 --primary
   elif [ "$1" == "off" ]; then
     xrandr --output eDP-1 --primary
+    xrandr --output HDMI-2 --off
     xrandr --output DP-2-1 --off
   fi
 elif [ "$(hostname -s)" == "ingrid" ]; then

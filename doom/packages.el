@@ -53,3 +53,4 @@
 
 (package! fill-column-indicator)
 (package! vimrc-mode)
+(package! yaml-mode)

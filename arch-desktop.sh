@@ -27,6 +27,7 @@ sudo pacman -S --needed \
   libvncserver \
   lxdm \
   mesa-demos \
+  network-manager-applet \
   nodejs \
   pamixer \
   pavucontrol \

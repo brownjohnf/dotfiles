@@ -11,10 +11,11 @@
 
 # tune blue: 007AFF
 # tune gray: F0F0F0
+# remind blue: 2f75c1
 
-#                 border  backgr    text    indicator
-client.focused    #F0F0F0 #F0F0F0   #007AFF #04859d
-client.unfocused  #000000 #000000   #F0F0F0 #04859d
+#                 border  backgr  text    indicat child_border
+client.focused    #f0f0f0 #F0F0F0 #007AFF #04859d #2f75c1
+client.unfocused  #000000 #000000 #F0F0F0 #04859d #000000
 
 set $mod Mod4
 
@@ -90,7 +91,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # close all windows and exit
-# bindsym $mod+Shift+comma workspace $w2; focus parent; kill; workspace $w3; focus parent; kill; workspace $w9; focus parent; kill; workspace $w0; focus parent; kill
+# bindsym $mod+Shift+comma workspace $w2; focus parent; kill; workspace $w3; focus parent; kill; workspace $w9; focus parent; kill; workspace $w10; focus parent; kill
 
 # focus the child container
 # bindsym $mod+d focus child
@@ -110,7 +111,13 @@ set $w6 6
 set $w7 7
 set $w8 8
 set $w9 9
-set $w0 10
+set $w10 10
+set $w11 11
+set $w12 12
+
+workspace $w1 output primary
+workspace $w2 output primary
+workspace $w10 output primary
 
 # switch to workspace
 bindsym $mod+1 workspace $w1
@@ -122,7 +129,7 @@ bindsym $mod+6 workspace $w6
 bindsym $mod+7 workspace $w7
 bindsym $mod+8 workspace $w8
 bindsym $mod+9 workspace $w9
-bindsym $mod+0 workspace $w0
+bindsym $mod+0 workspace $w10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $w1
@@ -134,7 +141,7 @@ bindsym $mod+Shift+6 move container to workspace $w6
 bindsym $mod+Shift+7 move container to workspace $w7
 bindsym $mod+Shift+8 move container to workspace $w8
 bindsym $mod+Shift+9 move container to workspace $w9
-bindsym $mod+Shift+0 move container to workspace $w0
+bindsym $mod+Shift+0 move container to workspace $w10
 
 bindsym $mod+Shift+x move workspace to output right
 bindsym $mod+Shift+b move workspace to output up
@@ -251,3 +258,6 @@ bindsym $mod+F9 [con_mark="F9"] focus
 bindsym $mod+F10 [con_mark="F10"] focus
 bindsym $mod+F11 [con_mark="F11"] focus
 bindsym $mod+F12 [con_mark="F12"] focus
+
+for_window [class="(?i)slack"] floating enable, move scratchpad, border pixel 5
+assign [class="(?i)zoom"] $w10
