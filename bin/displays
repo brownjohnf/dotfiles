@@ -20,10 +20,10 @@ function unsplit_screen() {
 }
 
 if [ "$(hostname -s)" == "quixote" ]; then
-  if [ "$1" == "dock-hp" ]; then
-    xrandr --output DP-2-1 --auto
-    xrandr --output DP-2-1 --right-of eDP-1 # HDMI
-    xrandr --output DP-2-1 --primary
+  if [ "$1" == "dock-hdmi" ]; then
+    xrandr --output DP-1-1 --mode 1920x1080
+    xrandr --output DP-1-1 --right-of eDP-1
+    xrandr --output DP-1-1 --primary
   elif [ "$1" == "off" ]; then
     xrandr --output eDP-1 --primary
     xrandr --output DP-2-1 --off
