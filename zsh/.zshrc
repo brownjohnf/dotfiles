@@ -68,7 +68,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # Keep them the same for now
-if which nvim > /dev/null; then
+if command -v emacsclient > /dev/null; then
+  export EDITOR="emacsclient -c"
+elif which nvim > /dev/null; then
   export EDITOR=nvim
 elif which vim; then
   export EDITOR=vim
@@ -94,9 +96,14 @@ if (( $+commands[tag] )); then
 	alias ag="tag --ignore 'terraform.tfstate*' --ignore vendor"
 fi
 
-[[ -f /tmp/.ssh-agent ]] || ssh-agent > /tmp/.ssh-agent 2>/dev/null
-chmod 0400 /tmp/.ssh-agent
-source /tmp/.ssh-agent > /dev/null
+# Start the agent if it isn't already running
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+# Grab the auth sock if it's not already set
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
 
 #[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
 
@@ -109,11 +116,6 @@ if [ -f $HOME/.asdf/asdf.sh ]; then
   . $HOME/.asdf/completions/asdf.bash
 fi
 
-if [ -f /usr/local/opt/asdf/asdf.sh ]; then
-  . /usr/local/opt/asdf/asdf.sh
-  . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
-fi
-
 source $HOME/.aliases
 
 # Use shared libraries when installing python
@@ -121,3 +123,6 @@ export PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 # Set the minimum backlight to 1%
 which light > /dev/null && light -N 1 || true
+
+# Use docker buildkit if available
+export DOCKER_BUILDKIT=1

@@ -28,9 +28,8 @@ font pango:DejaVu Sans Mono 8
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
-hide_edge_borders vertical
 default_border pixel 1
-hide_edge_borders both
+hide_edge_borders horizontal
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -197,18 +196,18 @@ show_marks yes
 #}
 
 bar {
-  #output primary
-  tray_output primary
+  #tray_output primary
   position top
   #mode hide
-  status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks
+  #status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks
+  status_command i3status-rs ~/.config/i3status-rs/config.toml
   tray_padding 4px
   workspace_buttons yes
   binding_mode_indicator yes
-  font pango:DejaVu Sans Mono 10
+  font pango:DejaVu Sans Mono 10, FontAwesome 12
 
   colors {
-    background #060929
+    #background #060929
   }
 }
 
@@ -259,5 +258,7 @@ bindsym $mod+F10 [con_mark="F10"] focus
 bindsym $mod+F11 [con_mark="F11"] focus
 bindsym $mod+F12 [con_mark="F12"] focus
 
-for_window [class="(?i)slack"] floating enable, move scratchpad, border pixel 5
+# Automatically apply transforms to slack and ripcord. You can find classes by
+# using `xdotool search --class <class>`
+for_window [class="(?i)slack|ripcord"] floating enable, border pixel 5, resize set 1800 1012, move position 50 50, move scratchpad
 assign [class="(?i)zoom"] $w10

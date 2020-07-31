@@ -1,3 +1,5 @@
+#!/bin/sh
+
 alias cat=bat
 alias c=clear
 alias cdd="cd ~/Downloads"
@@ -11,14 +13,11 @@ alias gg='git lg'
 alias gis='git status'
 alias grep='grep --color=auto'
 alias k="kubectl"
-alias la='ls -A'
-alias lla="ls -lah"
+alias lla="exa -lah"
 alias ll="exa -l"
-alias ls='ls --color=auto'
+alias ls=exa
 alias ping="prettyping --nolegend"
 alias tf="terraform"
 alias tree="tree -I node_modules -I venv -I target"
 alias vdir='vdir --color=auto'
 alias vi='vim'
-
-# vi:syntax=sh

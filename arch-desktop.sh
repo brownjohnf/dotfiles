@@ -20,9 +20,10 @@ sudo pacman -S --needed \
   graphviz \
   gsfonts \
   htop \
-  i3blocks \
+  i3status-rust \
   i3-gaps \
   i3lock \
+  libpng \
   libreoffice \
   libvncserver \
   lxdm \
@@ -32,23 +33,26 @@ sudo pacman -S --needed \
   pamixer \
   pavucontrol \
   playerctl \
+  poppler-glib \
   postgresql-libs \
   redshift \
   remmina \
-  riot-desktop \
+  element-desktop \
   rust-analyzer \
   sane \
   seahorse \
   signal-desktop \
   thunar \
   transmission-cli \
+  ttf-font-awesome \
   tumbler \
   virtualbox \
   virtualbox-host-modules-arch \
   vlc \
   xorg \
   xorg-xinit \
-  xsel
+  xsel \
+  zlib
 
 sudo systemctl enable lxdm.service
 
@@ -74,6 +78,7 @@ yay -S --needed \
   --answerdiff None \
   --answeredit None \
   --answerclean NotInstalled \
+  heroku-cli \
   networkmanager-dmenu-git \
   slack-desktop \
   spotify \

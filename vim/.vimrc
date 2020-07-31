@@ -40,6 +40,8 @@ Plug 'tpope/vim-surround'
 " Provides autocomplete
 Plug 'Valloric/YouCompleteMe'
 "Plug 'vim-syntastic/syntastic'
+" Provide ion shell syntax highlighting
+Plug 'vmchale/ion-vim'
 " Provide commands to generate dot-based diagrams
 Plug 'wannesm/wmgraphviz.vim'
 " Provides real-time syntax/compilation linting

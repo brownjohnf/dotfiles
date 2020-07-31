@@ -11,6 +11,7 @@ done
 sudo pacman -S --needed \
   arp-scan \
   aws-cli \
+  bandwhich \
   base-devel \
   bat \
   clang \
@@ -24,6 +25,7 @@ sudo pacman -S --needed \
   docker-compose \
   edk2-ovmf \
   emacs \
+  exa \
   fd \
   git \
   gnu-netcat \
