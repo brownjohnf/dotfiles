@@ -1,6 +1,19 @@
 theme = "solarized-dark"
 icons = "awesome5"
 
+# [[block]]
+# block = "pacman"
+# interval = 600
+# format = "{pacman} + {aur} = {both} updates available"
+# format_singular = "{both} update available"
+# format_up_to_date = "system up to date"
+# critical_updates_regex = "(linux |linux-lts|linux-zen)"
+# aur_command should output available updates to stdout (ie behave as echo -ne "update\n")
+# aur_command = "pikaur -Qua"
+[[block]]
+block = "pacman"
+critical_updates_regex = "zfs"
+
 [[block]]
 block = "time"
 interval = 60
@@ -57,7 +70,7 @@ smart_trim = true
 
 [[block]]
 block = "battery"
-interval = 10
+driver = "upower"
 format = "{percentage}% {time}"
 
 [[block]]

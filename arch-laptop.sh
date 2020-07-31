@@ -9,7 +9,8 @@ sudo pacman -S --needed \
   acpi \
   ethtool \
   light \
-  powertop
+  powertop \
+  upower
 
 # Create a unit file so we can always run powertop to improve battery life
 cat <<EOF | sudo tee /etc/systemd/system/powertop.service
@@ -25,8 +26,7 @@ RemainAfterExit=true
 WantedBy=multi-user.target
 EOF
 
-# Enable powertop on system boot
-sudo systemctl enable powertop.service
-# Start it now so we get it immediately
-sudo systemctl start powertop.service
+# Enable services on system boot, and start them now
+sudo systemctl enable --now powertop.service
+sudo systemctl enable --now upower.service
 
