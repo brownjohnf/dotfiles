@@ -5,6 +5,9 @@ set -x
 
 source ./config.sh
 
+# Enable the emacs server
+systemctl --user enable --now emacs
+
 # Setup tmux plugin manager for tmux plugin management
 mkdir -p $HOME/.tmux/plugins
 if [ ! -d $HOME/.tmux/plugins/tpm ]; then

@@ -5,19 +5,29 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+set $mod Mod4
+
+# Remind blue
+set $active 2f75c1
+set $inactive 696969
+set $unfocused 000000
+
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # tune blue: 007AFF
 # tune gray: F0F0F0
-# remind blue: 2f75c1
 
-#                 border  backgr  text    indicat child_border
-client.focused    #f0f0f0 #F0F0F0 #007AFF #04859d #2f75c1
-client.unfocused  #000000 #000000 #F0F0F0 #04859d #000000
-
-set $mod Mod4
+#                         border      backgr        text    indicat child_border
+# This is the actively focused window
+client.focused            #$active    #$active      #ffffff #04859d #2f75c1
+# This is the focused window within a tree, but when the tree itself is not focused
+client.focused_inactive   #$inactive  #$inactive    #ffffff #04859d #$inactive
+client.unfocused          #$unfocused #$unfocused   #ffffff #04859d #$unfocused
+client.urgent             #000000     #000000       #F0F0F0 #04859d #000000
+client.placeholder        #000000     #000000       #F0F0F0 #04859d #000000
+client.background         #000000     #000000       #F0F0F0 #04859d #000000
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -28,8 +38,9 @@ font pango:DejaVu Sans Mono 8
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
-default_border pixel 1
-hide_edge_borders horizontal
+default_border normal
+default_floating_border pixel 5
+hide_edge_borders smart
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -64,7 +75,7 @@ bindsym $mod+s focus right
 bindsym $mod+Shift+h  move left
 bindsym $mod+Shift+t  move down
 bindsym $mod+Shift+n  move up
-bindsym $mod+Shift+s   move right
+bindsym $mod+Shift+s  move right
 
 # split in horizontal orientation
 bindsym $mod+p split h
@@ -93,7 +104,7 @@ bindsym $mod+a focus parent
 # bindsym $mod+Shift+comma workspace $w2; focus parent; kill; workspace $w3; focus parent; kill; workspace $w9; focus parent; kill; workspace $w10; focus parent; kill
 
 # focus the child container
-# bindsym $mod+d focus child
+ bindsym $mod+o focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -196,22 +207,16 @@ show_marks yes
 #}
 
 bar {
-  #tray_output primary
+  tray_output primary
   position top
-  #mode hide
-  #status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks
   status_command i3status-rs ~/.config/i3status-rs/config.toml
   tray_padding 4px
   workspace_buttons yes
   binding_mode_indicator yes
   font pango:DejaVu Sans Mono 10, FontAwesome 12
-
-  colors {
-    #background #060929
-  }
 }
 
-focus_follows_mouse           no
+focus_follows_mouse no
 focus_on_window_activation urgent
 mouse_warping output
 workspace_auto_back_and_forth yes
@@ -260,5 +265,6 @@ bindsym $mod+F12 [con_mark="F12"] focus
 
 # Automatically apply transforms to slack and ripcord. You can find classes by
 # using `xdotool search --class <class>`
-for_window [class="(?i)slack|ripcord"] floating enable, border pixel 5, resize set 1800 1012, move position 50 50, move scratchpad
+#for_window [class="(?i)slack|ripcord"] floating enable, move scratchpad
+#resize set 1800 1012, move position 50 50,
 assign [class="(?i)zoom"] $w10

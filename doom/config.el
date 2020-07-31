@@ -99,8 +99,9 @@
   (setq syntax-propertize-function nil))
 
 ;; Disable smartparens because it's very irritating
-(after! smartparens
-  (smartparens-global-mode -1))
+;;(after! smartparens
+;;  (smartparens-global-mode -1))
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 ;; Use rust-analyzer instead of rls
 ;; This isn't ready yet; it locks up the editor all the time
