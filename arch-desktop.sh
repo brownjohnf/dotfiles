@@ -16,7 +16,6 @@ sudo pacman -S --needed \
   ghostscript \
   gnome-keyring \
   gnome-screenshot \
-  go \
   graphviz \
   gsfonts \
   htop \

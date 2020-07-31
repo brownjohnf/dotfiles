@@ -30,6 +30,7 @@ sudo pacman -S --needed \
   git \
   gnu-netcat \
   gnupg \
+  go \
   htop \
   jq \
   iotop \
