@@ -126,3 +126,6 @@ which light > /dev/null && light -N 1 || true
 
 # Use docker buildkit if available
 export DOCKER_BUILDKIT=1
+
+# Disable google's hoovering of go data via their checksum service
+export GOSUMDB=off

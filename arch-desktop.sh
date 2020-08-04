@@ -37,6 +37,7 @@ sudo pacman -S --needed \
   redshift \
   remmina \
   element-desktop \
+  rofi \
   rust-analyzer \
   sane \
   seahorse \
