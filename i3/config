@@ -208,7 +208,6 @@ show_marks yes
 #}
 
 bar {
-  tray_output primary
   position top
   status_command i3status-rs ~/.config/i3status-rs/config.toml
   tray_padding 4px
