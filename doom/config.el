@@ -105,4 +105,10 @@
 
 ;; Use rust-analyzer instead of rls
 ;; This isn't ready yet; it locks up the editor all the time
-;;(setq rustic-lsp-server 'rust-analyzer)
+(setq rustic-lsp-server 'rust-analyzer)
+
+;; Keybindings
+(map! :leader
+  :desc "New journal entry"
+  "m" #'+make/run)
+
