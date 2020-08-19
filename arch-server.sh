@@ -20,6 +20,7 @@ sudo pacman -S --needed \
   cronie \
   ctags \
   diff-so-fancy \
+  dmidecode \
   dnsutils \
   docker \
   docker-compose \
@@ -61,6 +62,7 @@ sudo pacman -S --needed \
   sudo \
   sysstat \
   tar \
+  tcpdump \
   tmux \
   traceroute \
   tree \
