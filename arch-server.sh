@@ -73,6 +73,7 @@ sudo pacman -S --needed \
   vagrant \
   wget \
   wireguard-lts \
+  wireguard-tools \
   whois \
   zip \
   zsh
