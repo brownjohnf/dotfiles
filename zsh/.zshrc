@@ -100,10 +100,9 @@ fi
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
-# Grab the auth sock if it's not already set
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
+
+# Grab the auth sock 
+source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 
 #[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
 

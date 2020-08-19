@@ -95,6 +95,7 @@
   (setq-default org-todo-keywords
     '((sequence "TODO(t)" "STARTED(s!)" "BLOCKED(b@/!)" "|" "DONE(d!)"))))
 
+;; This is fix for poor performance in rustic
 (add-hook! rustic-mode
   (setq syntax-propertize-function nil))
 
@@ -104,11 +105,10 @@
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 ;; Use rust-analyzer instead of rls
-;; This isn't ready yet; it locks up the editor all the time
 (setq rustic-lsp-server 'rust-analyzer)
 
 ;; Keybindings
 (map! :leader
-  :desc "New journal entry"
+  :desc "Run recipes from Makefile"
   "m" #'+make/run)
 
