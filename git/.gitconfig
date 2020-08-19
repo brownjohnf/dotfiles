@@ -3,19 +3,21 @@
   email = jack@brownjohnf.com
   signingkey = 6E0082093C897759
 [color]
-  ui = true
+	ui = true
 [github]
   user = brownjohnf
 [alias]
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%aE>%Creset' --abbrev-commit --abbrev=8
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%aE>%Creset' --abbrev-commit --abbrev=8
 [push]
-  default = current
-  followTags = true
+	default = current
+	followTags = true
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
+	commentChar = auto
 [pull]
 	rebase = true
 	followTags = true
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
+	default = current

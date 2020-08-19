@@ -1,5 +1,6 @@
 #!/bin/sh
 
+alias cb='cargo build'
 alias cat=bat
 alias c=clear
 alias cdd="cd ~/Downloads"

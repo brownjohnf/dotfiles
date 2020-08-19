@@ -7,6 +7,7 @@ sudo pacman -S --needed \
   alacritty \
   android-tools \
   archiso \
+  cargo-edit \
   chromium \
   cups \
   cups-pdf \
@@ -16,6 +17,7 @@ sudo pacman -S --needed \
   ghostscript \
   gnome-keyring \
   gnome-screenshot \
+  go-tools \
   graphviz \
   gsfonts \
   htop \
@@ -37,7 +39,6 @@ sudo pacman -S --needed \
   redshift \
   remmina \
   element-desktop \
-  rofi \
   rust-analyzer \
   sane \
   seahorse \
@@ -49,7 +50,9 @@ sudo pacman -S --needed \
   virtualbox \
   virtualbox-host-modules-arch \
   vlc \
+  wireshark \
   xorg \
+  xorg-server-xephyr \
   xorg-xinit \
   xsel \
   zlib

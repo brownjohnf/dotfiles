@@ -5,9 +5,6 @@ set -x
 
 source ./config.sh
 
-# Enable the emacs server
-systemctl --user enable --now emacs
-
 # Setup tmux plugin manager for tmux plugin management
 mkdir -p $HOME/.tmux/plugins
 if [ ! -d $HOME/.tmux/plugins/tpm ]; then
@@ -37,7 +34,9 @@ ln -fs $HERE/bash/.bashrc $HOME/.bashrc
 touch $HOME/.bash_history
 
 # oh-my-zsh
-[[ -d $HOME/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+[[ -d $HOME/.oh-my-zsh ]] \
+  || sh \
+    -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # aliases
 ln -fs $HERE/aliases.sh $HOME/.aliases
@@ -73,8 +72,8 @@ nvim --headless +PlugInst +q +q
 #ln -fs $HERE/emacs/init.el $HOME/.emacs.d/init.el
 ln -fs $HERE/doom $HOME/.doom.d
 [[ -d $HOME/.emacs.d ]] || (
-  git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d && \
-    $HOME/.emacs.d/bin/doom --yes install)
+  git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d \
+    && $HOME/.emacs.d/bin/doom --yes install)
 $HOME/.emacs.d/bin/doom sync && $HOME/.emacs.d/bin/doom update
 
 # git
@@ -90,6 +89,7 @@ if [ ! -d $HOME/.asdf ]; then
   echo "--> Installing asdf..."
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.0
 fi
+asdf plugin-add ruby python nodejs
 
 # myvault
 sudo wget \
@@ -98,13 +98,14 @@ sudo wget \
 sudo chmod +x /usr/local/bin/myvault
 
 # Add some customization to the rust installation.
-rustup component add rls
-which cargo-add || cargo install cargo-edit
 which cargo-udeps || cargo install cargo-udeps
 which verto || cargo install --git https://gitlab.com/jack/verto
 which copy || cargo install --git https://gitlab.com/jack/copy-rs
 
 # Install some tools with Go
 go get github.com/brownjohnf/slit
+
+# Enable the emacs server
+systemctl --user enable --now emacs
 
 echo "SUCCESS"

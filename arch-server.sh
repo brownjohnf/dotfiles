@@ -20,6 +20,7 @@ sudo pacman -S --needed \
   cronie \
   ctags \
   diff-so-fancy \
+  dmidecode \
   dnsutils \
   docker \
   docker-compose \
@@ -61,6 +62,7 @@ sudo pacman -S --needed \
   sudo \
   sysstat \
   tar \
+  tcpdump \
   tmux \
   traceroute \
   tree \
@@ -71,6 +73,7 @@ sudo pacman -S --needed \
   vagrant \
   wget \
   wireguard-lts \
+  wireguard-tools \
   whois \
   zip \
   zsh
