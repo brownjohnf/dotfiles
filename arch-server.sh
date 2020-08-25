@@ -32,6 +32,7 @@ sudo pacman -S --needed \
   gnu-netcat \
   gnupg \
   go \
+  hdparm \
   htop \
   jq \
   iotop \
@@ -47,6 +48,7 @@ sudo pacman -S --needed \
   openssh \
   pacman-contrib \
   parted \
+  perf \
   prettyping \
   python-pip \
   qemu \
@@ -60,9 +62,12 @@ sudo pacman -S --needed \
   sshpass \
   strace \
   sudo \
+  sysbench \
+  sysdig \
   sysstat \
   tar \
   tcpdump \
+  tiptop \
   tmux \
   traceroute \
   tree \
@@ -70,6 +75,7 @@ sudo pacman -S --needed \
   ufw \
   units \
   unzip \
+  usbutils \
   vagrant \
   wget \
   wireguard-lts \
@@ -99,16 +105,16 @@ sudo systemctl start docker.service
 sudo usermod -aG docker "$(whoami)"
 
 # Install yay for managing AUR packages
-if ! which yay; then
-  rm -rf /tmp/yay-bin
-  git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
-  (cd /tmp/yay-bin && makepkg -sric --needed)
-else
+if which yay; then
   yay -Sua \
     --answerdiff None \
     --answeredit None \
     --answerclean NotInstalled \
     --answerupgrade None
+else
+  rm -rf /tmp/yay-bin
+  git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
+  (cd /tmp/yay-bin && makepkg -sric --needed)
 fi
 
 yay -S --needed \
@@ -116,7 +122,7 @@ yay -S --needed \
   --answeredit None \
   --answerclean NotInstalled \
   --answerupgrade None \
-  leftwm \
+  aws-vault \
   ngrok \
   wrk \
   yq2-bin

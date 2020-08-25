@@ -82,9 +82,11 @@ yay -S --needed \
   --answeredit None \
   --answerclean NotInstalled \
   heroku-cli \
+  leftwm \
   networkmanager-dmenu-git \
   slack-desktop \
   spotify \
+  sysdig-inspect \
   zoom
 
 # Print any helpful output
