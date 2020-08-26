@@ -74,7 +74,7 @@ ln -fs $HERE/doom $HOME/.doom.d
 [[ -d $HOME/.emacs.d ]] || (
   git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d \
     && $HOME/.emacs.d/bin/doom --yes install)
-$HOME/.emacs.d/bin/doom sync && $HOME/.emacs.d/bin/doom update
+$HOME/.emacs.d/bin/doom sync && $HOME/.emacs.d/bin/doom upgrade
 
 # git
 ln -fs $HERE/git/.git-completion.bash $HOME/.git-completion.bash
@@ -89,7 +89,9 @@ if [ ! -d $HOME/.asdf ]; then
   echo "--> Installing asdf..."
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.0
 fi
-asdf plugin-add ruby python nodejs
+asdf plugin-add ruby
+asdf plugin-add nodejs
+asdf plugin-add python
 
 # myvault
 sudo wget \
