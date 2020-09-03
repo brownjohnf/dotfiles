@@ -1,17 +1,13 @@
 theme = "solarized-dark"
 icons = "awesome5"
 
-# [[block]]
-# block = "pacman"
-# interval = 600
-# format = "{pacman} + {aur} = {both} updates available"
-# format_singular = "{both} update available"
-# format_up_to_date = "system up to date"
-# critical_updates_regex = "(linux |linux-lts|linux-zen)"
-# aur_command should output available updates to stdout (ie behave as echo -ne "update\n")
-# aur_command = "pikaur -Qua"
+[[block]]
+block = "custom"
+command = ''' bash -c 'curl "https://api.kexp.org/v2/plays/?format=json&limit=1&ordering=-airdate&airdate_before=$(date -u +%FT%T.000Z)"' | jq -r '.results[0] | "KEXP: \(.artist) - \(.song)"' '''
+
 [[block]]
 block = "pacman"
+format = "{pacman}/{aur}"
 critical_updates_regex = "zfs"
 
 [[block]]
@@ -60,6 +56,10 @@ primary_only = true
 [[block]]
 block = "backlight"
 
+# This block is still in PR
+# [[block]]
+# block = "hueshift"
+
 [[block]]
 block = "sound"
 
@@ -77,3 +77,8 @@ format = "{percentage}% {time}"
 block = "time"
 interval = 5
 format = "%a %Y-%m-%d %R"
+
+[[block]]
+block = "custom"
+command = ''' hostname '''
+

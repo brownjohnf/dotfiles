@@ -24,6 +24,7 @@ sudo pacman -S --needed \
   i3status-rust \
   i3-gaps \
   i3lock \
+  keybase-gui \
   libpng \
   libreoffice \
   libvncserver \
@@ -51,8 +52,10 @@ sudo pacman -S --needed \
   virtualbox-host-modules-arch \
   vlc \
   wireshark \
+  x11-ssh-askpass \
   xorg \
   xorg-server-xephyr \
+  xorg-xclock \
   xorg-xinit \
   xsel \
   zlib

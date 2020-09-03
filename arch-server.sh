@@ -123,7 +123,9 @@ yay -S --needed \
   --answerclean NotInstalled \
   --answerupgrade None \
   aws-vault \
+  networkmanager-l2tp \
   ngrok \
+  stress-ng \
   wrk \
   yq2-bin
 

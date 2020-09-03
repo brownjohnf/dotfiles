@@ -95,9 +95,9 @@
   (setq-default org-todo-keywords
     '((sequence "TODO(t)" "STARTED(s!)" "BLOCKED(b@/!)" "|" "DONE(d!)"))))
 
-;; This is fix for poor performance in rustic
-(add-hook! rustic-mode
-  (setq syntax-propertize-function nil))
+;; This is to avoid poor performance in the rustic lib
+;;(add-hook! rustic-mode
+;;  (setq syntax-propertize-function nil))
 
 ;; Disable smartparens because it's very irritating
 ;;(after! smartparens
