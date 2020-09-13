@@ -9,6 +9,8 @@ command = ''' bash -c 'curl "https://api.kexp.org/v2/plays/?format=json&limit=1&
 block = "pacman"
 format = "{pacman}/{aur}"
 critical_updates_regex = "zfs"
+warning_updates_regex = "(linux|systemd|dbus)"
+aur_command = "yay -Qua"
 
 [[block]]
 block = "time"
@@ -56,9 +58,9 @@ primary_only = true
 [[block]]
 block = "backlight"
 
-# This block is still in PR
-# [[block]]
-# block = "hueshift"
+# This block is only in master
+[[block]]
+block = "hueshift"
 
 [[block]]
 block = "sound"
