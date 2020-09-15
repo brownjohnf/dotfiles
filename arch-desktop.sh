@@ -20,6 +20,7 @@ sudo pacman -S --needed \
   go-tools \
   graphviz \
   gsfonts \
+  hacksaw \
   htop \
   i3status-rust \
   i3-gaps \
@@ -43,6 +44,7 @@ sudo pacman -S --needed \
   rust-analyzer \
   sane \
   seahorse \
+  shotgun \
   signal-desktop \
   thunar \
   transmission-cli \

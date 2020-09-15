@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -eu
+
+shotgun --geometry $(hacksaw) --format png /tmp/screenshot-$(date +%s).png
