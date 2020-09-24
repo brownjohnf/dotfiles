@@ -74,7 +74,6 @@ ln -fs $HERE/doom $HOME/.doom.d
 [[ -d $HOME/.emacs.d ]] || (
   git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d \
     && $HOME/.emacs.d/bin/doom --yes install)
-$HOME/.emacs.d/bin/doom sync && $HOME/.emacs.d/bin/doom upgrade
 
 # git
 ln -fs $HERE/git/.git-completion.bash $HOME/.git-completion.bash
@@ -89,15 +88,19 @@ if [ ! -d $HOME/.asdf ]; then
   echo "--> Installing asdf..."
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.0
 fi
-asdf plugin-add ruby
-asdf plugin-add nodejs
-asdf plugin-add python
+asdf plugin-add ruby || true
+asdf plugin-add nodejs || true
+asdf plugin-add python || true
 
 # myvault
 sudo wget \
   https://raw.githubusercontent.com/brownjohnf/vault/master/bin/vault \
   -O /usr/local/bin/myvault
 sudo chmod +x /usr/local/bin/myvault
+
+# psql
+ln -fs $HERE/.psqlrc $HOME/.
+touch $HOME/.psql_history
 
 # Add some customization to the rust installation.
 which cargo-udeps || cargo install cargo-udeps
