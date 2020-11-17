@@ -14,6 +14,7 @@ sudo pacman -S --needed \
   bandwhich \
   base-devel \
   bat \
+  cargo-watch \
   clang \
   cmake \
   colordiff \
@@ -33,6 +34,7 @@ sudo pacman -S --needed \
   gnupg \
   go \
   hdparm \
+  hexyl \
   htop \
   jq \
   iotop \
@@ -117,11 +119,24 @@ yay -S --needed \
   --answeredit None \
   --answerclean NotInstalled \
   --answerupgrade None \
+  archlinux-nix \
   aws-vault \
   networkmanager-l2tp \
   ngrok \
+  nix \
   stress-ng \
   tiptop \
   wrk \
   yq2-bin
 
+# Set up nix
+# This will bootstrap a group to build packages.
+sudo archlinux-nix setup-build-group
+# Set up the directory structure we need.
+sudo archlinux-nix bootstrap
+# Add the unstable channel, and update it.
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+nix-channel --update
+# Update the root channel, even though we don't really want to use it. This will
+# silence warnings.
+sudo nix-channel --update

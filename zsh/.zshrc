@@ -79,6 +79,8 @@ else
 fi
 
 setopt HIST_IGNORE_DUPS
+# This will enable sharing history between sessions.
+setopt share_history
 setopt interactivecomments
 bindkey -e
 

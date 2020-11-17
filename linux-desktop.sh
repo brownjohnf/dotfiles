@@ -46,6 +46,12 @@ echo "SUCCESS"
 cat <<EOF
 Linux desktop setup complete.
 
+Update the firefox config settings by going to about:config and setting the
+following settings:
+
+* privacy.firstparty.isolate = true
+* toolkit.legacyUserProfileCustomizations.stylesheets = true
+
 To fix the horizontal tabs in FF, add the following to the userChrome.css file
 (you may need to create the file and the chrome directory; your profile probably
 ends in '.default-release'):

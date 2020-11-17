@@ -90,14 +90,6 @@ ln -fs $HERE/git/.gitignore           $HOME/.gitignore
 ln -fs $HERE/ruby/.irbrc $HOME/.irbrc
 touch $HOME/.irb_history
 
-if [ ! -d $HOME/.asdf ]; then
-  echo "--> Installing asdf..."
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.0
-fi
-asdf plugin-add ruby || true
-asdf plugin-add nodejs || true
-asdf plugin-add python || true
-
 # myvault
 sudo wget \
   https://raw.githubusercontent.com/brownjohnf/vault/master/bin/vault \

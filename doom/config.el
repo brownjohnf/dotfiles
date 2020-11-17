@@ -96,8 +96,8 @@
     '((sequence "TODO(t)" "STARTED(s!)" "BLOCKED(b@/!)" "|" "DONE(d!)"))))
 
 ;; This is to avoid poor performance in the rustic lib
-;;(add-hook! rustic-mode
-;;  (setq syntax-propertize-function nil))
+(add-hook! rustic-mode
+  (setq syntax-propertize-function nil))
 
 ;; Disable smartparens because it's very irritating
 ;;(after! smartparens

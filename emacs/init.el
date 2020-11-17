@@ -89,7 +89,7 @@
 ;;paths in ~/.zshenv. Leaving this here in case I need to add something in the
 ;; future.
 ;;(setenv "PATH" (concat (getenv "PATH") ":~/dotfiles/bin"))
-;;(dolist (dir '("~/.asdf/shims/" "~/dotfiles/bin/", "~/go/bin"))
+;;(dolist (dir '("~/dotfiles/bin/", "~/go/bin"))
 ;;  (add-to-list 'exec-path dir))
 
 ;; Disable gui cruft

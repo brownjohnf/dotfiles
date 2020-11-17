@@ -7,7 +7,7 @@ set -eux
 
 trap "i3-msg restart" EXIT
 
-machine=$(sudo dmidecode --string system-product-name)
+machine=$(cat /sys/devices/virtual/dmi/id/product_name)
 
 if [ "$machine" == "XPS 15 9560" ]; then
   if [ "$1" == "dock-hdmi" ]; then

@@ -1,6 +1,8 @@
 #!/bin/sh
 
 alias cb='cargo build'
+alias cl='cargo +nightly clippy -- -W clippy::pedantic'
+alias cr='cargo run'
 alias cat=bat
 alias c=clear
 alias cdd="cd ~/Downloads"
