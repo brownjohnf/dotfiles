@@ -5,6 +5,12 @@ set -x
 
 source ./config.sh
 
+sudo ufw --force status
+sudo ufw --force default deny
+sudo ufw --force limit ssh
+sudo ufw --force status
+sudo ufw --force enable
+
 # Setup tmux plugin manager for tmux plugin management
 mkdir -p $HOME/.tmux/plugins
 if [ ! -d $HOME/.tmux/plugins/tpm ]; then

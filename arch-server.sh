@@ -67,7 +67,6 @@ sudo pacman -S --needed \
   sysstat \
   tar \
   tcpdump \
-  tiptop \
   tmux \
   traceroute \
   tree \
@@ -91,11 +90,6 @@ sudo ln -fs "$(command -v nvim)" /usr/local/bin/vim
 
 sudo systemctl enable ufw
 sudo systemctl start ufw
-sudo ufw status
-sudo ufw default deny
-sudo ufw limit ssh
-sudo ufw status
-sudo ufw enable
 
 # Install the neovim python3 interface
 python -m pip install --user --upgrade pynvim
@@ -118,6 +112,7 @@ else
 fi
 
 yay -S --needed \
+  --noremovemake \
   --answerdiff None \
   --answeredit None \
   --answerclean NotInstalled \
@@ -126,6 +121,7 @@ yay -S --needed \
   networkmanager-l2tp \
   ngrok \
   stress-ng \
+  tiptop \
   wrk \
   yq2-bin
 

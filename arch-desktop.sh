@@ -53,7 +53,8 @@ sudo pacman -S --needed \
   virtualbox \
   virtualbox-host-modules-arch \
   vlc \
-  wireshark \
+  wireshark-cli \
+  wireshark-qt \
   x11-ssh-askpass \
   xorg \
   xorg-server-xephyr \
