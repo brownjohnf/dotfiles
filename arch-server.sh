@@ -8,7 +8,7 @@ for s in 's/.*Color$/Color/' 's/.*VerbosePkgLists$/VerbosePkgLists/'; do
 done
 
 # install packages
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   arp-scan \
   aws-cli \
   bandwhich \

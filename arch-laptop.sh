@@ -5,7 +5,7 @@ set -ex
 # Set the keymap to dvorak if we're on a laptop.
 sudo localectl --no-convert set-x11-keymap us pc104 dvorak
 
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   acpi \
   ethtool \
   light \

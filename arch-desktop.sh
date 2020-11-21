@@ -3,7 +3,7 @@
 source ./config.sh
 
 # install packages
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   alacritty \
   android-tools \
   archiso \
@@ -67,7 +67,7 @@ sudo systemctl enable lxdm.service
 
 # If the device has bluetooth, install the tools we need to manage it.
 if dmesg | grep Bluetooth; then
-  sudo pacman -S --needed \
+  sudo pacman -S --needed --noconfirm \
     blueman \
     bluez \
     bluez-utils \
