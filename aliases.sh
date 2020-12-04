@@ -14,6 +14,7 @@ alias fgrep='fgrep --color=auto'
 alias fprint="ssh-keygen -l -E md5 -f"
 alias gg='git lg'
 alias gis='git status'
+alias authors='git log --format="%an"'
 alias grep='grep --color=auto'
 alias k="kubectl"
 alias lla="exa -lah"

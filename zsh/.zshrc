@@ -103,7 +103,7 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
 
-# Grab the auth sock 
+# Grab the auth sock
 source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 
 #[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
