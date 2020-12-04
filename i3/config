@@ -119,7 +119,7 @@ set $w8 8
 set $w9 9
 set $w10 10
 set $w11 11
-set $w12 12
+set $w13 13
 
 workspace $w1 output primary
 workspace $w2 output primary

@@ -67,12 +67,9 @@
 ;; Column width
 (setq-default auto-fill-function 'do-auto-fill)
 (setq-default fill-column 80)
+(setq-default turn-on-fci-mode t)
 
 (+global-word-wrap-mode)
-
-(use-package! fill-column-indicator
-  :config
-  (turn-on-fci-mode))
 
 (after! projectile
   :config
