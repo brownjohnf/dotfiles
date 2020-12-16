@@ -1,0 +1,49 @@
+# Source the local mailbox configs from ./muttrc.local.
+source ~/.muttrc.local
+
+set imap_check_subscribed
+
+# folder to use when moving messages
+#set mbox=
+set header_cache=~/.cache/mutt
+set message_cachedir=~/.cache/mutt
+unset imap_passive
+set imap_keepalive=300
+set mail_check=5
+
+# don't confirm a bunch of stuff when replying to messages
+set fast_reply=yes
+set include=yes
+
+set signature=~/.signature
+set sort=threads
+set ssl_force_tls=yes
+set copy=no
+set realname="Jack Brown"
+
+set editor=nvim
+set charset=utf-8
+
+macro index gd "<change-folder>$postponed<enter>" "go to drafts"
+macro index gs "<change-folder>$record<enter>" "go to sent"
+macro index gi "<change-folder>$spoolfile<Enter>" "go to inbox"
+macro index gt "<change-folder>$trash<enter>" "go to trash""
+
+# Jump to the bottom of whatever list is active, vim-style
+#macro index,pager G "<last-entry><enter>" "move to the last entry"
+bind index G last-entry
+
+source /usr/share/doc/mutt/samples/colors.linux
+
+color indicator underline default default
+#color index red default ~N
+set cursor_overlay
+set attach_save_dir = ~/Downloads
+
+color header brightgreen black ^From:
+color header cyan black ^Subject:
+color quoted brightblack black
+
+set pager_index_lines = 50
+set pager_context = 3
+set pager_stop = yes

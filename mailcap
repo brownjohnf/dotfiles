@@ -1,0 +1,2 @@
+# Open image files with feh
+image/*; feh --draw-filename --draw-tinted --draw-exif --scale-down %s
