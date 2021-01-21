@@ -105,7 +105,7 @@ set cursorline
 set equalalways " always set window splits to equal heights
 set expandtab " use spaces in place of tabs
 set formatoptions+=w
-set hidden
+set hidden " needed for operations altering multiple buffers (LSP stuff)
 set history=100
 set hlsearch
 set ignorecase
@@ -147,6 +147,7 @@ nmap <Leader>r :tags<CR>
 " clear search highligts (noh), quickfix list (ccl), location list (lcl)
 " and preview window (pclose)
 nmap <Leader>c :noh <bar> ccl <bar> lcl <bar> pclose<CR>
+
 " Map leader+n to go to the next location in the location list, and N to
 " go to previous
 nnoremap <Leader>n :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
@@ -164,7 +165,7 @@ if has('nvim')
   nnoremap <M-1> :b term://<CR>
 
   " enter normal mode from within terminal
-  tnoremap <Esc> <C-\><C-n>
+  "tnoremap <Esc> <C-\><C-n>
 
   " send a literal escape to a program in the terminal
   tnoremap <M-0> <Esc>
@@ -183,7 +184,7 @@ let g:go_def_reuse_buffer = 1
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ 'go': ['gopls'],
     \ }
 let g:LanguageClient_loggingLevel = 'DEBUG'

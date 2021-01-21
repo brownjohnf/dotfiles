@@ -31,6 +31,16 @@ ln -fs $HERE/leftwm/config.toml $HOME/.config/leftwm/config.toml
 mkdir -p $HOME/.config/alacritty
 ln -fs $HERE/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
+# Mutt (email)
+mkdir -p $HOME/.config/mutt
+ln -fs $HERE/mutt/muttrc $HOME/.config/mutt/muttrc
+
+# Mailcap (mime -> application mappings, used by mutt and others)
+ln -fs $HERE/mailcap $HOME/.mailcap
+
+# Signature for email. Don't symlink it since it might be different on different machines.
+[[ -f $HOME/.signature ]] || cp $HERE/mutt/.signature $HOME/.signature
+
 # YouCompleteMe
 # Source the zshrc so we pick up any env settings
 #source $HOME/.zshrc

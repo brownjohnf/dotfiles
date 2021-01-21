@@ -58,12 +58,12 @@ primary_only = true
 [[block]]
 block = "backlight"
 
-# This block is only in master
-[[block]]
-block = "hueshift"
-
 [[block]]
 block = "sound"
+
+[[block]]
+block = "bluetooth"
+mac = "B8:27:EB:91:72:07"
 
 [[block]]
 block = "music"

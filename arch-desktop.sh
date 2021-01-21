@@ -63,7 +63,8 @@ sudo pacman -S --needed --noconfirm \
   xsel \
   zlib
 
-sudo systemctl enable lxdm.service
+sudo systemctl enable --now lxdm.service
+sudo systemctl enable cups.socket
 
 # If the device has bluetooth, install the tools we need to manage it.
 if dmesg | grep Bluetooth; then

@@ -10,6 +10,7 @@ alias dc=docker-compose
 alias diffd='diff -s -t -E --tabsize 2 --suppress-common-lines'
 alias dir='dir --color=auto'
 alias egrep='egrep --color=auto'
+alias f=fzf
 alias fgrep='fgrep --color=auto'
 alias fprint="ssh-keygen -l -E md5 -f"
 alias gg='git lg'

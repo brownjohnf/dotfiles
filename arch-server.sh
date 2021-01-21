@@ -7,6 +7,17 @@ for s in 's/.*Color$/Color/' 's/.*VerbosePkgLists$/VerbosePkgLists/'; do
   sudo sed -i $s /etc/pacman.conf
 done
 
+sudo pacman -S --needed pacman-contrib
+
+# Make sure our mirrors are current
+MIRRORLIST_URL="https://www.archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on"
+echo "Updating mirror list"
+curl -s "$MIRRORLIST_URL" | \
+    sed -e 's/^#Server/Server/' -e '/^#/d' | \
+    rankmirrors -n 5 - > /tmp/mirrorlist \
+  && sudo mv /tmp/mirrorlist /etc/pacman.d/mirrorlist
+
+
 # install packages
 sudo pacman -S --needed --noconfirm \
   arp-scan \

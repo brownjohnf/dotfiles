@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -u
+
+bluetoothctl power on
+
+while : ; do
+  bluetoothctl info || bluetoothctl connect $1
+  sleep 5
+done
+
